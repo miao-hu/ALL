@@ -37,11 +37,21 @@ int main()
 	return 0;
 }
 
+
 //递归法
 void reverse_string(char * string)
 {
-
+	int len = strlen(string);
+	int temp = *string;
+	*string = *(string + len - 1);
+	*(string + len - 1) = '\0';
+	if (strlen(string + 1) > 1)
+	{
+		reverse_string(string + 1);
+	}
+	*(string + len - 1) = temp;
 }
+
 int main()
 {
 	char s[] = "abcdef";                 //注意：此处必须为数组
