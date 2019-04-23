@@ -1,2 +1,3 @@
 # ALL
-随便练习
+C-Practice
+JAVA-Practice
