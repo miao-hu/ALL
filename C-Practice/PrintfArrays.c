@@ -49,14 +49,14 @@ int main()
 #endif
 
 //第三种
-void PrintArr3(int(*arr)[3], int row, int col)  //数组指针
-{//定义了一个名为arr的指针变量，它可以指向每行有三个整数元素的二维数组
+void PrintArr3(int(*arr)[3], int row, int col)  //数组指针:是指针
+{//定义了一个名为arr的指针变量，它可以指向每行有三个整型元素的一维数组
 	int i, j;
 	for (i = 0; i <row; i++)
 	{
 		for (j = 0; j < col; j++)
 		{
-			printf("%d ", *(arr[i])+ j);
+			printf("%d ", arr[i][j]);
 		}
 		printf("\n");
 	}
@@ -65,6 +65,9 @@ int main()
 {
 	int arr[3][3] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 	PrintArr3(arr, 3, 3);   
+	//数组名arr，表示首元素的地址
+	//二维数组的首元素是二维数组的第一行
+	//这里传递的arr，其实相当于第一行的地址，是一位数组的地址，可以用数组指针来接收
 	system("pause");
 	return 0;
 }
