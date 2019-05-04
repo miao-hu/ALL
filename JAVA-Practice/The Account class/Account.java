@@ -2,7 +2,7 @@ import java.util.Date;   //这个类提供了与系统无关的对日期和时�
 
 public class Account {
 
-	private int id;      //数据域
+	private int id;      //数据域（私有的）
 
 	private double balance;
 
@@ -10,7 +10,7 @@ public class Account {
 
 	private Date dateCreated;
 
-	Account(){      //无参构造方法
+	Account(){      //无参构造方法    目的：初始化数据域
 
 		id = 0;
 
@@ -33,13 +33,13 @@ public class Account {
 
 	}
 
-	public void setId(int newId){
+	public void setId(int newId){        //修改器
 
 		id = newId;
 
 	}
 
-	public int getId(){
+	public int getId(){                //访问器
 
 		return id;
 
@@ -77,19 +77,19 @@ public class Account {
 
 	}
 
-	public double getMonthlyInterestRate(){
+	public double getMonthlyInterestRate(){               //函数
 
 		return balance * annualInterestRate / 100 / 12;
 
 	}
 
-	public void withDraw(double withDrawBalance){
+	public void withDraw(double withDrawBalance){         //函数
 
 		balance -= withDrawBalance;
 
 	}
 
-	public void deposit(double depositBalance){
+	public void deposit(double depositBalance){            //函数
 
 		balance += depositBalance;
 
