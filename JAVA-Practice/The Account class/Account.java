@@ -1,16 +1,16 @@
-import java.util.Date;   //这个类提供了与系统无关的对日期和时间的封装
+import java.util.Date;           //这个类提供了与系统无关的对日期和时间的封装
 
-public class Account {
+public class Account {           //一个名为Account的类
 
-	private int id;      //数据域（私有的）
+	private int id;          //数据域（私有的）
 
-	private double balance;
+	private double balance;            //余额
 
 	private double annualInterestRate;
 
-	private Date dateCreated;
+	private Date dateCreated;       //一个名为dateCreated的Date类型的私有数据域存储账户的开户日期
 
-	Account(){      //无参构造方法    目的：初始化数据域
+	Account(){      //无参构造方法    目的：初始化数据域（创建默认账户）
 
 		id = 0;
 
@@ -77,19 +77,19 @@ public class Account {
 
 	}
 
-	public double getMonthlyInterestRate(){               //函数
+	public double getMonthlyInterestRate(){               //函数（计算月利率）
 
 		return balance * annualInterestRate / 100 / 12;
 
 	}
 
-	public void withDraw(double withDrawBalance){         //函数
+	public void withDraw(double withDrawBalance){         //函数（计算余额）withDrawBalance为提取的特定数额
 
 		balance -= withDrawBalance;
 
 	}
 
-	public void deposit(double depositBalance){            //函数
+	public void deposit(double depositBalance){            //函数（计算余额）depositBalance为存储的特定数额
 
 		balance += depositBalance;
 
