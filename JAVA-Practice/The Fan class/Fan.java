@@ -1,21 +1,22 @@
+//一个名为Fan的类
 
 public class Fan {
 
-	private final short SLOW = 1;
+	private final short SLOW = 1;     //三个名为SLOW，MEDIUM，FAST而值为1，2，3的常量表示风扇的速度
 
 	private final short MEDIUM = 2;
 
 	private final short FAST = 3;
 
-	private int speed;
+	private int speed;         //私有数据域
 
 	private boolean on;
 
 	private double radius;
 
-	private String color;
+	private String color;      //风扇的颜色
 
-	Fan(){
+	Fan(){           //无参构造方法（初始化对象）默认值为，SLOW，false,5,blue
 
 		speed = SLOW;
 
@@ -29,25 +30,25 @@ public class Fan {
 
 	
 
-	public void turnOn(){
+	public void turnOn(){    //函数：风扇开
 
 		on = true;
 
 	}
 
-	public void turnOff(){
+	public void turnOff(){       //函数：风扇关
 
 		on =false;
 
 	}
 
-	public void setRadius(double newRadius){
+	public void setRadius(double newRadius){      //修改器
 
 		radius = newRadius;
 
 	}
 
-	public double getRadius(){
+	public double getRadius(){         //访问器
 
 		return radius;
 
@@ -85,7 +86,7 @@ public class Fan {
 
 		else
 
-			System.out.println("fan is off");
+			System.out.println("fan is off"+);
 
 	}
 
