@@ -31,6 +31,7 @@ class MyPoint{
  
     public double distance(MyPoint p){         //求MyPoint类型的两个点之间的距离
         return Math.sqrt(Math.pow(this.x - p.x, 2) + Math.pow(this.y - p.y, 2));
+      //return Math.sqrt(Math.pow(this.x - p.getX(), 2) + Math.pow(this.y - p.getY(), 2));
     }
 
     public double diatance(double x, double y){         //求指定x,y坐标两点之间的距离
