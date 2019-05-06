@@ -57,12 +57,28 @@ class MyInteger{
         return num == 1 ? false : true;
     }
 
+    public static boolean isEven(MyInteger num){
+        return (num.value%2 == 1 )? false : true;
+    }
+
+    public static boolean isOdd(MyInteger num){
+        return (num.value%2 == 1 ) ? true : false;
+    }
+
+    public static boolean isPrime(MyInteger num){    //此处只能用 num.value 不能用 num.getValue()
+        for(int i = 2; i<num.value; ++i)
+            if(num.value%i == 0)
+                return false;
+        return num.value == 1 ? false : true;
+    }
+	
     public boolean equals(int num){
         return this.value == num;
     }
 
     public boolean equals(MyInteger num){
         return this.value == num.getMyInteger();
+      //return this.value == num.value;
     }
 
     public static int parseInt(char[] str){
