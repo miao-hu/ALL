@@ -38,3 +38,5 @@ class MyPoint{
         return Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2));
     }
 }
+
+//Math.sqrt 开平方     Math.pow( , )    求次方
