@@ -20,7 +20,7 @@ class MyInteger{
         this.value = value;
     }
 
-    public int getMyInteger(){       //访问器
+    public int getValue(){       //访问器
         return value;
     }
 
@@ -57,6 +57,7 @@ class MyInteger{
         return num == 1 ? false : true;
     }
 
+   /*  第一种
     public static boolean isEven(MyInteger num){
         return (num.value%2 == 1 )? false : true;
     }
@@ -65,11 +66,27 @@ class MyInteger{
         return (num.value%2 == 1 ) ? true : false;
     }
 
-    public static boolean isPrime(MyInteger num){    //此处只能用 num.value 不能用 num.getValue()
+    public static boolean isPrime(MyInteger num){    
         for(int i = 2; i<num.value; ++i)
             if(num.value%i == 0)
                 return false;
         return num.value == 1 ? false : true;
+    }
+    */
+    
+    public static boolean isEven(MyInteger num){
+        return (num.getValue()%2 == 1 )? false : true;
+    }
+
+    public static boolean isOdd(MyInteger num){
+        return (num.getValue()%2 == 1 ) ? true : false;
+    }
+
+    public static boolean isPrime(MyInteger num){
+        for(int i = 2; i<num.getValue(); ++i)
+            if(num.getValue()%i == 0)
+                return false;
+        return num.getValue() == 1 ? false : true;
     }
 	
     public boolean equals(int num){
