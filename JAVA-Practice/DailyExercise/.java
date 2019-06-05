@@ -1,5 +1,5 @@
 1.（找到能被5或被6整除，但不能同时被5或6整除的数）编写一个程序，显示从100到200中，
-每十个数一行，能被5或被6整除，但不能同时被5或6整除的数，数字之间用一个空格隔开。
+   每十个数一行，能被5或被6整除，但不能同时被5或6整除的数，数字之间用一个空格隔开。
 
 import java.util.Scanner; 
 public class DivBy5or6ButNotBoth{
@@ -40,3 +40,29 @@ public class SumDigitsInAnInteger{
 	return sum;	
 	}
 }
+
+
+
+3.（使用isPrime方法）提供一个测试一个数字是否是素数的方法isPrime（int	number)
+		    10000的素数个数。
+	
+public class IsPrime{    
+	public static void main(String[] args){   
+	int count = 0;   
+	for(int i = 2; i <= 10000; i++){   
+		if(isPrime(i))    		
+		count++;    	
+	}    
+	System.out.println("The count is "+count);   
+ }  
+ 
+	public static boolean isPrime(int n){      
+		for(int i = 2; i<= n/2; i++){   
+			if(n%i == 0)    			
+				return false;    
+		}    
+		return true;   
+	}
+}
+
+	
