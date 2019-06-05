@@ -66,3 +66,33 @@ public class IsPrime{
 }
 
 	
+
+4.（找最小元素）编写一个方法，使用下面的方法头找出一个double型数组中的最小元素。
+               public	static	double	min(double[]	array)
+               编写测试程序，提示用户输入10个数字，调用这个方法返回最小值，显示其最小值。
+               下面是该程序的运行示例：
+               Enter	ten	numbers:1.9  2.5  3.7  2  1.5  6  3  4  5  2
+               The	minimum	    number	is:1.5
+	
+import java.util.Scanner; 
+public class FindSmallestElement{		
+	public static void main(String[] args){	
+		double[] nums = new double[10];	
+		Scanner input= new Scanner(System.in);
+		System.out.print("Enter ten numbers:");	
+		for(int i = 0; i < 10; i++){			
+			nums[i] = input.nextDouble();		
+		}				
+		double smallest = min(nums);	
+		System.out.println("The minimum number is :"+smallest);	
+	} 		
+	public static double min(double[] array){	
+		double small = array[0];	
+		for(int i = 0; i < 10; i++){	
+			if(array[i] < small)				
+				small = array[i];		
+		}		
+	return small;	
+	}
+}
+
