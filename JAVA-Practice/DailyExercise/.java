@@ -96,3 +96,41 @@ public class FindSmallestElement{
 	}
 }
 
+
+
+5.（求数组的平均值）编写两个重载方法，使用下面的方法头返回一个数组的平均值。
+		  public static int average(int[] array)
+		  public static double average(double[] array)
+		  编写测试程序，提示用户输入10个double型值，调用这个方法显示其平均值。
+		  
+import java.util.Scanner;
+public class AverageArray{		
+	public static void main(String[] args){
+	Scanner input = new Scanner(System.in);	
+	double[] nums = new double[10];	
+	System.out.print("Enter ten number:");	
+	for(int i = 0; i < 10; ++i){			
+		nums[i] = input.nextDouble();	
+	}				
+	double ret= average(nums);	
+	System.out.println("The average array is "+ret);	
+	}	
+	
+	public static int average(int[] array){	
+		int sum = 0;	
+		for(int i = 0; i < array.length; i++){		
+			sum += array[i];	
+		}	
+		return sum/array.length;
+	}	
+	
+	public static double average(double[] array){	
+		double sum = 0;		
+		for(int i = 0; i < array.length; i++){	
+			sum += array[i];		
+		}		
+		return sum/array.length;	
+	}
+ } 
+
+
