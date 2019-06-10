@@ -167,3 +167,38 @@ public class AverageArray{
 
 
 
+7.（求矩阵的主对角线元素的和）编写一个方法。求n*n的double矩阵中主对角线上所有的数字之和。使用下面的方法头：
+			    public static double sumMajorDiagonal(double[][] m)
+			    一个测试程序读取4*4的矩阵，然后显示它的主对角线上所有的元素的和。这儿是一个简单地运行例子：
+			    Enter a 4-by-4 matrix row by row:
+				1	2	3	4.0
+				5	6.5	7	8
+				9	10	11	12
+				13	14	15	16
+			    Sum of the elements in the major diagonal is 34.5	
+					
+import java.util.Scanner;
+public class SumMagorDiagonalMatrix{	
+	public static void main(String[] args){	
+	Scanner input = new Scanner(System.in);	
+	final int row= 4;		
+	double[][] num = new double[row][row];	
+	System.out.println("Enter a 4-by-4 matrix row by row:");	
+	for(int i = 0; i < row; ++i){			
+		for(int j = 0; j < row; ++j){			
+			num[i][j] = input.nextDouble();
+		}
+	}		
+	double ret = sumMajorDiagonal(num);	
+	System.out.println("Sum of the elements in the major diagonal is "+ret);	
+	}
+	
+	public static double sumMajorDiagonal(double[][] m){
+		double sum=0;
+		for(int i = 0; i < m.length; i++){	
+			sum += m[i][i];
+		}		
+		return sum;
+	}	
+}
+
