@@ -202,3 +202,55 @@ public class SumMagorDiagonalMatrix{
 	}	
 }
 
+
+
+8.（指定等级）写一个程序，读入学生成绩，获得最高分best，然后根据下面的规则赋等级值。
+	     如果分数>=best-10,等级为A
+	     如果分数>=best-20,等级为B
+	     如果分数>=best-30,等级为C
+	     如果分数>=best-40,等级为D
+	     其他情况等级为F
+	     程序提示用户输入学生的总数，然后提示用户去输入所有的分数，然后显示等级得出结论，下面是一个运行实例：
+	     Enter the number of students:4
+	     Enter 4 scores:	40	55	70	58
+	     Student  0 score is  40  and grade is 	C
+	     Student  1 score is  55  and grade is 	B
+	     .......
+
+import java.util.Scanner;
+public class AssignGrades{	
+	public static void main(String[] args){	
+	Scanner input = new Scanner(System.in);	
+	int best = 0;
+	
+	System.out.print("Enter the number of students:");	
+	int numStudent = input.nextInt();
+	
+	int[] student = new int[numStudent];
+	
+	System.out.print("Enter "+numStudent+" scores:");
+	for(int i = 0; i < numStudent; i++){	
+		student[i] = input.nextInt();	
+		if(student[i] >= best)			
+	    best = student[i];		
+	}
+	
+	for(int i = 0; i < numStudent; ++i){	
+		System.out.print("Student " + i + " score is " + student[i] + " and grade is ");			
+	if(student[i] >= best - 10)			
+		System.out.println("A");			
+	else if(student[i] >= best - 20)	
+			System.out.println("B");			
+		 else if(student[i] >= best - 30)	
+				System.out.println("C");			
+			  else if(student[i] >= best - 40)	
+					  System.out.println("D");
+				   else
+					  System.out.println("F");
+	}	
+	}
+}
+
+
+
+
