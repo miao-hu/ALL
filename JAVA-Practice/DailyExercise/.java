@@ -253,4 +253,14 @@ public class AssignGrades{
 
 
 
+9.（任意字母）使用Math.random()方法编写程序，显示一个任意的小写字母。
+
+//Math.random()是令系统随机选取大于等于 0.0 且小于 1.0 的伪随机 double 值[0.0,1.0)
+public class LittercaseLetter{
+  public static void main(String[] args){
+    int number=97+(int)(Math.random()*26);
+    char letter=(char)number;
+    System.out.println(letter);
+  }
+}
 
