@@ -28,7 +28,7 @@ public class ReadNumberData
         while (input.hasNext())  //文件还没有读取完
         {
             numbers[index++] = input.nextInt();
-            input.skip(" ");
+            input.skip(" ");     //跳过空格字符串
         }
         input.close(); //关闭
 
