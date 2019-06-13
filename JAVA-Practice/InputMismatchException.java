@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 //import java.util.*；可以代替上面两个
 
 public class CalculateSum{
+	public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         boolean continueInput = false;
         
@@ -16,10 +17,10 @@ public class CalculateSum{
                 System.out.println(a + " + " + b + " = " + (a + b));
                 continueInput = true;
             }
+	}
             catch (InputMismatchException ex){
                 System.out.print("Try again. Enter two Integer: ");
 			        	input.nextLine();    //丢弃当前输入行，用户可以键入一个新行
             }   
-        }
     }
 }
