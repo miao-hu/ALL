@@ -65,5 +65,63 @@ int main()
 
 分析：最差时间复杂度为O(n^2),平均时间复杂度为O(n^2)。稳定性：稳定。辅助空间O(1)
 
-  
+--------- 升级版冒泡排序法：通过从低到高选出最大的数放到后面，再从高到低选出最小的数放到前面，
+   如此反复，直到左边界和右边界重合。当数组中有已排序好的数时，这种排序比传统冒泡排序性能稍好。 
+   
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<Windows.h>
+
+void bubbleSort_1(int *arr, int n)
+{
+	//设置数组左右边界
+	int left = 0,right = n - 1,i,j,temp;
+	while (left < right)   //当左右边界未重合时进行排序
+	{
+		// 从左到右遍历选出最大的数放到数组右边
+		for (i = left; i < right; i++)  //5个数排4次
+		{
+				if (arr[i]>arr[i+1])
+				{
+					temp = arr[i];
+					arr[i] = arr[i + 1];
+					arr[i + 1] = temp;
+				}
+			}
+			right--;
+		}
+	//从右到左遍历选出最小的数放到数组左边
+	for (j= right; j>left; j--)
+	{
+		if (arr[j]>arr[j + 1])
+		{
+			temp = arr[j];
+			arr[j] = arr[j + 1];
+			arr[j + 1] = temp;
+		}
+	}
+	left++;
+}	
+int main()
+{
+	int arr[] = { 4, 7, 24, 0, 67, 46, 89 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+	printf("排序前的数组为:");
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+	bubbleSort_1(arr, n);
+	printf("排序后的数组为:");
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	system("pause");
+	return 0;
+}
+
+
+
 
