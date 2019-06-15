@@ -1,3 +1,18 @@
+//(MyInteger类）设一个名为MyInteger的类，这个类包括：
+//	*一个名为value的int型数据域，存储这个对象代表的int值
+//	*一个指定的int值创建一个MyInteger对象的构造方法
+//	*一个返回int值的get方法
+//	*如果值分别为偶数，奇数，素数，那么isEven(),isOdd(),isPrime()方法都会返回true
+//	*如果指定值分别为偶数，奇数，素数，那么isEven(int),isOdd(int),isPrime(int)方会返回true
+//	*如果指定值分别为偶数，奇数，素数，那么isEven(MyInteger),isOdd(MyInteger),isPrime(MyInteger)方法都会返回true
+//	*如果该对象的值和指定的值相等，那么equals(int)和equals(MyInteger)方法都会返回true
+//	*静态方法parseInt(char [])将数字字符构成的数组转换为一个Int值
+//	*静态方法parseInt(String)将一个字符串转换为一个Int值
+
+//	实现这个类，编写客户程序测试这个类中的所有方法
+
+
+
 //测试这个类
 public class TestMyInteger {
     public static void main(String[] agrs){
