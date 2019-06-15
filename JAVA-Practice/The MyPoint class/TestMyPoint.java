@@ -1,3 +1,15 @@
+//（MyPoint类）设计一个名为MyPoint的类，表示一个带x坐标和带y坐标的点，这个类他包括：
+//	*两个带get方法的数据域x和y，分别表示它们的坐标
+//	*创建点（0，0）的无参构造方法
+//	*一个创建特定坐标点的构造方法
+//	*一个名为distance的方法，返回MyPoint类型的两个点之间的距离
+//	*一个名为distance的方法，返回指定x和y坐标的两个点之间的距离
+
+//	写一个测试程序去创建两个点（0，0）和（10，30.5）展示它们之间的距离。
+
+
+
+
 //测试这个类
 public class TestMyPoint {
     public static void main(String[] agrs){
