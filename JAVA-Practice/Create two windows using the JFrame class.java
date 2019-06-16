@@ -1,3 +1,5 @@
+//创建两个windows窗口
+
 import javax.swing.JFrame;
 
 public class TestFrame{
