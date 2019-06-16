@@ -1,3 +1,6 @@
+//判断一个字符串是不是回文串
+
+
 import java.util.Scanner;
 
 public class CheckPalindrome{      //判断回文
