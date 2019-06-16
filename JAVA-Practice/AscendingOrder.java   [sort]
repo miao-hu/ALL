@@ -1,4 +1,4 @@
-//JAVA调用包直接升序（一个简单的例子）
+//JAVA调用包直接将一个数组升序显示其内容（一个简单的例子）
 
 public class AscendingOrder{
   public static void main(String[] args){
