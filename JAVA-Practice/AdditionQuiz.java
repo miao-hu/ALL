@@ -1,3 +1,8 @@
+//（游戏：加法实验）随机产生一个加法问题。
+//随机产生一个计算两个小于100的整数的加法问题。
+
+
+
 import java.util.Scanner;
 
 public class AdditionQuiz{
