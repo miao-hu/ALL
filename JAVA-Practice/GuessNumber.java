@@ -1,3 +1,7 @@
+//猜数字游戏：相同则输出Yes,the number is +number
+//	     大于则输出Your guess is too high
+//           小于则输出Your guess is too low
+
 import java.util.Scanner;
 
 public class GuessNumber{
