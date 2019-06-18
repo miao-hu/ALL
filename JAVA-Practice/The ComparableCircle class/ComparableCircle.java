@@ -1,3 +1,10 @@
+//(ComparableCircle类)设计一个名为ComparableCircle的类，它扩展Circle类并实现Comparable接口，
+//                    实现comparTo方法去利用两个圆的面积比较两个圆的大小。
+
+//                    编写一个测试程序，求出ComparableCircle对象中两个实例的较大者。
+
+
+
 public class ComparableCircle extends Circle implements Comparable<ComparableCircle>{
 
 
