@@ -1,3 +1,8 @@
+//（写/读数据）写一个程序去创建一个名为Exercise12_15.txt的文件，如果该文件不存在的话。
+//            使用文本I/O设备往文件中写100的随机整数，在文件中这些数字用空格分开。
+//            然后从文件中读取数字，并且展示这个数字以升序的方式。
+
+
 import java.util.Scanner;
 import java.util.Random;
 import java.util.Arrays;
