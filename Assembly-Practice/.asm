@@ -23,5 +23,6 @@ t:      rol bx,1
 
         mov ah,4ch
         int 21h
-code ends
-     end begin
+code    ends
+        end begin
+ 
