@@ -1,17 +1,17 @@
 1.要求在数据段定义一个dw类型的数据，编写程序将其以二进制形式在屏幕上显示。
 
-data    segment
+data    segment        //数据段
 dat1    dw      5678h
 data    ends
 
-code    segment
+code    segment        //代码段
         assume cs:code,ds:data
 begin:
         mov ax,data
         mov ds,ax
 
         mov bx,dat1
-        mov cx,16
+        mov cx,16     //dw类型16位，CX循环次数
 
 t:      rol bx,1
         mov dl,bl
@@ -19,7 +19,7 @@ t:      rol bx,1
         add dl,30h
         mov ah,2
         int 21h
-        loop t
+        loop t        //循环
 
         mov ah,4ch
         int 21h
@@ -123,14 +123,14 @@ begin:
         mov ax,data
         mov ds,ax
 
-		call bin_show
-		call hex_show
-		call dec_show
+	call bin_show    //2进制
+	call hex_show    //16进制
+	call dec_show    //10进制
 
-		mov ah,4ch
+	mov ah,4ch     //返回操作系统
         int 21h
 
-hex_show proc
+hex_show proc     //子程序
         mov bx,dat1
         mov cx,4
 
@@ -144,13 +144,13 @@ t2:     push cx
         cmp dl,39h
         jbe print
         add dl,7
-print:  mov ah,2
+print:  mov ah,2   //显示字符
         int 21h
         loop t2
-		ret
+	ret
 hex_show endp
 
-bin_show proc
+bin_show proc      //子程序
         mov bx,dat1
         mov cx,16
 
@@ -158,10 +158,10 @@ t1:     rol bx,1
         mov dl,bl
         and dl,01h
         add dl,30h
-        mov ah,2
+        mov ah,2  //显示字符
         int 21h
         loop t1
-		ret
+	ret
 bin_show endp
 
 dec_show proc
@@ -176,11 +176,9 @@ dec_show proc
         call dec_div
         mov cx,1
         call dec_div
-		ret
+	ret
 dec_show endp
         
-    
-
 dec_div proc
         mov dx,0
         mov ax,bx
@@ -192,6 +190,7 @@ dec_div proc
         int 21h
         ret
 dec_div endp
+
 code    ends
         end begin
 
@@ -201,7 +200,7 @@ code    ends
 
 data    segment
 dat1    dw     0ffffh
-cn      dw		?
+cn      dw		?    //统计个数
 data    ends
 
 code    segment
@@ -220,14 +219,14 @@ begin:
 
 		mov bx,dat1
 		call dec_show
-    	call crlf
+    		call crlf
 
 		call count1
 		mov bx,cn
 		call dec_show
 
 		mov ah,4ch
-        int 21h
+       		int 21h
 
 hex_show proc
         mov cx,4
@@ -275,8 +274,6 @@ dec_show proc
 		ret
 dec_show endp
         
-    
-
 dec_div proc
         mov dx,0
         mov ax,bx
@@ -302,7 +299,7 @@ next:   loop t
 count1	endp
 
 crlf	proc
-        mov dl,0dh
+        	mov dl,0dh
 		mov ah,2
 		int 21h
 		mov dl,0ah
@@ -310,6 +307,7 @@ crlf	proc
 		int 21h
 		ret
 crlf	endp
+
 code    ends
         end begin
  
