@@ -209,24 +209,24 @@ begin:
         mov ax,data
         mov ds,ax
 
-		mov bx,dat1
-		call bin_show
-		call crlf
+	mov bx,dat1
+	call bin_show
+	call crlf
 
-		mov bx,dat1
-		call hex_show
-		call crlf
+	mov bx,dat1
+	call hex_show
+	call crlf
 
-		mov bx,dat1
-		call dec_show
-    		call crlf
+	mov bx,dat1
+	call dec_show
+    	call crlf
 
-		call count1
-		mov bx,cn
-		call dec_show
+	call count1
+	mov bx,cn
+	call dec_show
 
-		mov ah,4ch
-       		int 21h
+	mov ah,4ch
+       	int 21h
 
 hex_show proc
         mov cx,4
@@ -244,7 +244,7 @@ t2:     push cx
 print:  mov ah,2
         int 21h
         loop t2
-		ret
+	ret
 hex_show endp
 
 bin_show proc
@@ -271,7 +271,7 @@ dec_show proc
         call dec_div
         mov cx,1
         call dec_div
-		ret
+	ret
 dec_show endp
         
 dec_div proc
@@ -287,25 +287,25 @@ dec_div proc
 dec_div endp
 
 count1	proc
-		mov dx,0
-		mov bx,dat1
-		mov cx,16
+	mov dx,0
+	mov bx,dat1
+	mov cx,16
 t:      shl bx,1
-		jnc next
-		inc dx
+	jnc next
+	inc dx
 next:   loop t
-		mov cn,dx
-		ret
+	mov cn,dx
+	ret
 count1	endp
 
 crlf	proc
-        	mov dl,0dh
-		mov ah,2
-		int 21h
-		mov dl,0ah
-		mov ah,2
-		int 21h
-		ret
+        mov dl,0dh
+	mov ah,2
+	int 21h
+	mov dl,0ah
+	mov ah,2
+	int 21h
+	ret
 crlf	endp
 
 code    ends
@@ -327,17 +327,17 @@ begin:
         mov ax,data
         mov ds,ax
 
-		mov bx,dat1
-		call dec_show
+	mov bx,dat1
+	call dec_show
 		
-		mov ah,4ch
+	mov ah,4ch
         int 21h
 
 
 
 dec_show proc
         push cx
-		mov flag,1
+	mov flag,1
         mov cx,10000
         call dec_div
         mov cx,1000
@@ -348,26 +348,25 @@ dec_show proc
         call dec_div
         mov cx,1
         call dec_div
-		pop cx
-		ret
+	pop cx
+	ret
 dec_show endp
         
     
-
 dec_div proc
         mov dx,0
         mov ax,bx
         div cx
         mov bx,dx
         mov dl,al
-		cmp dl,0
-		jnz print
-		cmp flag,1
-		jz  exit
+	cmp dl,0
+	jnz print
+	cmp flag,1
+	jz  exit
 print:  add dl,30h
         mov ah,2
         int 21h
-		mov flag,0
+	mov flag,0
 exit:   ret
 dec_div endp
 
@@ -376,5 +375,73 @@ code 	ends
 
 
 
+7.十进制数显示程序：要求在数据段定义一个dw类型的数据，编写程序将其以十进制形式在屏幕上显示。
+		   以带符号数形式显示十进制数。
+		  
+data    segment
+dat1    dw     -20180
+flag    dw     ?
+data    ends
+
+code    segment
+        assume cs:code,ds:data
+begin:
+        mov ax,data
+        mov ds,ax
+
+	mov bx,dat1
+	call f_dec_show
+
+	mov ah,4ch
+        int 21h
+
+f_dec_show proc
+	and bx,bx
+	jns show
+	mov dl,'-'
+	mov ah,2
+	int 21h
+	neg bx
+show:	call dec_show
+	ret
+f_dec_show endp
+
+dec_show proc
+        push cx
+	mov flag,1
+        mov cx,10000
+        call dec_div
+        mov cx,1000
+        call dec_div
+        mov cx,100
+        call dec_div
+        mov cx,10
+        call dec_div
+        mov cx,1
+        call dec_div
+	pop cx
+	ret
+dec_show endp
+        
+    
+dec_div proc
+        mov dx,0
+        mov ax,bx
+        div cx
+        mov bx,dx
+        mov dl,al
+	cmp dl,0
+	jnz print
+	cmp flag,1
+	jz  exit
+print:  add dl,30h
+        mov ah,2
+        int 21h
+	mov flag,0
+exit:   ret
+dec_div endp
+
+code 	ends
+    	end begin
 
  
