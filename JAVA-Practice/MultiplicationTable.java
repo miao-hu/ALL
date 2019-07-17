@@ -14,6 +14,8 @@
 9 |
 
 
+		    
+//第一种
 public class MultiplicationTable{ 
 	public static void main(String[] args){
 	  System.out.println("\n           MultiplicationTable");
@@ -29,5 +31,20 @@ public class MultiplicationTable{
 		}
 		System.out.println();
 	  }
+	}
+}
+
+
+
+
+//第二种
+public class MulTable{
+	public static void main(String[] args){
+	for(int i=1;i<10;i++){
+		for(int j=1;j<=i;j++){
+			System.out.printf("%d*%d=%-4d",i,j,i*j);
+		}
+		System.out.println();
+		}
 	}
 }
