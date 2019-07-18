@@ -264,3 +264,28 @@ public class LittercaseLetter{
   }
 }
 
+
+
+10.//区别%n和\n的使用，即main函数的形参args[0]越界问题
+
+public class Test{
+	public static void main(String[] args){
+	
+	System.out.printf("%s%n",args[0]);  //zhangsan
+	System.out.printf("%s\n",args[0]);  //zhangsan
+	}
+}
+
+//javac Test.java 
+//java Test zhangsan
+
+/*
+在windows平台下，\r\n表示回车换行
+在Linux平台下，\n表示回车换行
+而JAVA语言是支持跨平台的，因此使用%n可以自动识别平台
+而不用去因为平台的不同而去辨别到底书写\r\n还是书写\n
+*/
+	
+
+
+11.
