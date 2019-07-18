@@ -16,7 +16,7 @@
 
 		    
 //第一种
-public class MultiplicationTable{ 
+public class PrintMultiplicationTable{ 
 	public static void main(String[] args){
 	  System.out.println("\n           MultiplicationTable");
 	  System.out.print("\n   ");
@@ -50,13 +50,18 @@ public class MultiplicationTable{
 	
 	
 //第二种
-public class MultiplicationTable{
+public class PrintMultiplicationTable{
 	public static void main(String[] args){
 	for(int i=1;i<10;i++){
 		for(int j=1;j<=i;j++){
 			System.out.printf("%d*%d=%-4d",j,i,i*j);
+		//System.out.print(j + "*" + i + "=" +(i * j));
 		}
 		System.out.println();
 		}
 	}
 }
+
+
+
+
