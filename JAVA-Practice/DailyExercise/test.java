@@ -288,4 +288,53 @@ public class Test{
 	
 
 
-11.
+11.  * 利用公式
+     * e = 1/0! + 1/1! + 1/2! + 1/3! + 1/4! + ...
+     * 计算自然对数的底 e
+     * @param n 计算多少项
+     * @return
+
+/*
+注意：输入的n不能太大，太大结果会为Infinity
+	0.0并不是真正意义上的0，它只不过是一个非常接近0的数而已，
+	所以一个数除以一个非常接近0的数，那么结果应该为无穷大。
+	在JAVA浮点范围内存在Infinity表示无穷大的概念。
+*/
+
+import java.util.Scanner;
+
+public class CalE{
+	public static void main(String[] args){
+		System.out.print("please enter a number:");
+		Scanner input=new Scanner(System.in);
+		int n=input.nextInt();
+		double e=0;
+		for(int i=0;i<=n;i++){
+			e+=(1.0/factorial(i));
+		}
+		System.out.println(e);    //2.7182818284590455
+	}
+	
+	/*方法一(利用迭代方式计算阶乘)
+	public static long factorial(int num){
+		long sum=1;
+		for(int i=1;i<=num;i++){
+			sum*=i;
+		}
+		return sum;
+	}
+	*/
+	
+	//方法二(利用递归方式计算阶乘)
+	public static long factorial(int num){
+		if(num==0||num==1){
+			return 1;
+		}else{
+			return num*factorial(num-1);
+		}
+	}
+}
+
+
+
+12.
