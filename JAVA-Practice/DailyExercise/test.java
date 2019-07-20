@@ -337,4 +337,46 @@ public class CalE{
 
 
 
-12.
+12.  /**
+     * 利用公式
+     * Pi / 4 = 1/1 - 1/3 + 1/5 - 1/7 + 1/9 - ...
+     * 计算 pi 的值
+     * @param n 一共计算多少项
+     * @return
+     */
+	 
+import java.util.Scanner;
+
+public class CalPi{
+	public static void main(String[] args){
+		System.out.print("please enter a number:");
+		Scanner input=new Scanner(System.in);
+		int n=input.nextInt();
+		
+		/*第一种(设置标志位)
+		double tag=1,sum=0;  //tag为标志位
+		for(int i=1;i<n;i++){
+			sum+=tag/(2*i-1);
+			tag=-tag;
+		}
+		*/
+
+		
+		//第二种
+		double sum=0;
+		for(int i=0;i<n;i++){
+			int fenmu=2*i+1;
+			double shang=1.0/fenmu;
+			if(i%2==0){
+				sum+=shang;    //奇数判断用：i%2!=0
+			}else{				//i%2==1是错误的（ -3也是奇数）
+				sum-=shang;
+			}
+		}
+		System.out.println(sum*4);  //double*int可能有精度损失
+	}
+}
+
+
+
+13.
