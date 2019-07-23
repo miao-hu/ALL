@@ -423,46 +423,49 @@ public class DecToHex{
 
 
 
-14./**
-     * 10 进制转 16 进制，计算公式如下例
-     * 1958 转 16 进制
-     * 1958 % 16 == 6   1958 / 16 == 122
-     * 122 % 16 == 10 也就是 A   122 / 16 == 7
-     * 7 < 16
-     * 1958 的 16 进制 为 7A6
-     * @param n
-     * @return
-     */
-
-import java.util.Scanner;
-
-public class DecToHex{
+14.//二分查找：前提数组有序
+	
+public class BinarySearch{
 	public static void main(String[] args){
-		System.out.print("please enter a number:");
-		Scanner input=new Scanner(System.in);
-		int n=input.nextInt();
-		String s="";
-		while(n>0){
-			int yushu=n%16;
-			if(yushu<10){
-				s+=yushu;
-			}
-			else{
-				char c=(char)((yushu-10)+'A');
-				s+=c;
-			}
-			n/=16;
-		}
-		System.out.println(reverse(s));
+	int[] a={1,2,3,4,5,6,7,8,9,10};
+	int pos=binarySearch(a,8);
+	System.out.printf("pos=%d%n",pos);
 	}
-    public static String reverse(String s){
-        int length=s.length();
-        String r ="";
-        for (int i=length-1;i>=0;i--) {
-            r+=s.charAt(i);
-        }
-        return r;
-    }
+	
+	/*第一种
+	public static int binarySearch(int[] a, int v){
+		int left=0;
+		int right=a.length-1;
+		while(left<=right){
+			int mid=(left+right)/2;
+			if(v==a[mid]){
+				return mid;
+			}else if(v>a[mid]){
+				left=mid+1;
+			}else{
+				right=mid-1;
+			}
+		}
+		return -1;
+	}
+	*/
+	
+	//第二种
+	public static int binarySearch(int[] a, int v){
+		int left=0;
+		int right=a.length;
+		while(left<right){
+			int mid=(left+right)/2;
+			if(v==a[mid]){
+				return mid;
+			}else if(v>a[mid]){
+				left=mid+1;
+			}else{
+				right=mid;
+			}
+		}
+		return -1;
+	}	
 }
 
 
