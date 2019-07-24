@@ -471,9 +471,40 @@ public class BinarySearch{
 
 
 15.
+//模仿copyOf()函数进行拷贝
+//拷贝到一个数组长度为newLength的新数组中
+
+/*(1)若原数组长度比新数组长度小
+-----把原数组元素全部拷贝，新数组剩余元素默认为0(int类型的默认值)
+  (2)若原数组长度比新数组长度大
+-----只拷贝新数组长度的个数元素
+
+综上：取两个数组长度最小的那个作为衡量值
+*/
+import java.util.Arrays;
+
+public class CopyArray{
+	public static void main(String[] args){
+	int[] a={1,2,3,4,5};
+	System.out.println(Arrays.toString(copyOf(a,10)));//[1, 2, 3, 4, 5, 0, 0, 0, 0, 0]
+	System.out.println(Arrays.toString(copyOf(a,3)));//[1, 2, 3]
+	System.out.println(Arrays.toString(Arrays.copyOf(a,7)));//[1, 2, 3, 4, 5, 0, 0]
+	System.out.println(Arrays.toString(Arrays.copyOf(a,4)));//[1, 2, 3, 4]
+	
+	}
+
+	public static int[] copyOf(int[] original, int newLength){
+		int[] dest=new int[newLength];  //定义一个新数组长度为NewLength
+		int length=original.length<=newLength?original.length:newLength;
+		for(int i=0;i<length;i++){
+			dest[i]=original[i];
+		}
+		return dest;
+	}
+}
 	
 	
 	
-	
+16.	
 	
 	
