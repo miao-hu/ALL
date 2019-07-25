@@ -505,6 +505,32 @@ public class CopyArray{
 	
 	
 	
-16.	
+16.//模仿fill()函数填充一个数组
+
+import java.util.Arrays;
+public class FillArray{
+	public static void main(String[] args){
+		int[] a=new int[5];
+		fill(a,6);
+		System.out.println(Arrays.toString(a));//[6, 6, 6, 6, 6]
+		Arrays.fill(a,24);   
+		System.out.println(Arrays.toString(a));//[24, 24, 24, 24, 24]
+	}
+	
+	public static void fill(int[] a, int v){
+		for(int i=0;i<a.length;i++){
+			a[i]=v;
+		}
+	}
+}
+
+
+
+17.
+	
+	
+	
+	
+	
 	
 	
