@@ -526,10 +526,30 @@ public class FillArray{
 
 
 
-17.
+17.//仿照indexOf()函数的功能
+   //从一个数组中找一个元素，若找到返回元素的下标
+   //若没有找到返回-1
+
+import java.util.Arrays;
+public class FindNumber{
+	public static void main(String[] args){
+		int[] a={1,2,3,4,5};
+		System.out.println(indexOf(a,10));
+	}
+	
+	public static int indexOf(int[] a, int v){
+		for(int i=0;i<a.length;i++){
+			if(v==a[i]){
+				return i;
+			}
+		}
+		return -1;
+	}
+}
+
 	
 	
-	
+18.	
 	
 	
 	
