@@ -549,8 +549,30 @@ public class FindNumber{
 
 	
 	
-18.	
+18.
+/*
+public static void arraycopy(Object src,int srcPos,
+							Object dest,int destPos,
+							int length);
+		将src从srcPos位置起复制length长度个元素
+		到dest的destPos起的位置
+*/
+
+import java.lang.System;
+//不用添加这个包也可以，系统自动添加
+import java.util.Arrays;
+public class ToArrayCopy{
+	public static void main(String[] args){
+		int[] a={1,2,3,4,5,6,7,8,9};
+		int[] b=new int[10];
+		System.arraycopy(a,3,b,4,3);
+		System.out.println(Arrays.toString(b));
+		//[0, 0, 0, 0, 4, 5, 6, 0, 0, 0]
+	}
+}
+
 	
 	
+19.	
 	
 	
