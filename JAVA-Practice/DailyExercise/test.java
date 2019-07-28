@@ -573,6 +573,86 @@ public class ToArrayCopy{
 
 	
 	
-19.	
+19.
+/*
+冒泡排序
+正向：无序[0,a.length-i)
+      有序[a.length-i,a.length)
+反向：有序[0,i)
+	  无序[i,a.length)
+*/
+import java.util.Arrays;
+
+public class BubbleSort{
+	public static void main(String[] args){
+		int[] a = { 1, 2, 3, 4, 5, 6, 7 };
+		int[] b = { 7, 6, 5, 4, 3, 2, 1 };
+		int[] c = { 3, 5, 2, 4, 1, 7, 6 };
+		int[] d = { 3, 3, 3, 3, 3, 3, 3 };
+		
+		testBubbleSort(a);
+		testBubbleSort(b);
+		testBubbleSort(c);
+		testBubbleSort(d);
+	}
+	
+	public static void testBubbleSort(int[] arr){
+		System.out.print("排序前:");
+		System.out.println(Arrays.toString(arr));
+		System.out.println();
+		bubbleSort1(arr);
+		System.out.print("排序后:");
+		System.out.println(Arrays.toString(arr));
+		System.out.println();
+	}
+	
+	//正向
+	public static void bubbleSort(int[] a){
+		for(int i=0;i<a.length;i++){//控制趟数
+			boolean sorted=true;
+			for(int j=0;j<a.length-i-1;j++){
+				//-1是为了保证最后两项进行比较
+				if(a[j]>a[j+1]){
+					swap(a,j,j+1);
+					sorted=false;
+				}	
+			}
+			if(sorted==true){
+				return;
+			}
+		}
+	}
+	
+	//反向
+	public static void bubbleSort1(int[] a){
+		for(int i=0;i<a.length;i++){//控制趟数
+			boolean sorted=true;
+			for(int j=a.length-1;j>i;j--){
+				if(a[j]<a[j-1]){
+					swap(a,j,j-1);
+					sorted=false;
+				}	
+			}
+			if(sorted==true){
+				return;
+			}
+		}
+	}
+	
+	public static void swap(int[] a,int i,int j){			
+		int temp=a[i];
+		a[i]=a[j];
+		a[j]=temp;
+	}
+	
+}	
+	
+	
+
+20.
+	
+	
+	
+	
 	
 	
