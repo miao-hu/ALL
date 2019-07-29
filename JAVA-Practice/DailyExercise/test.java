@@ -650,6 +650,54 @@ public class BubbleSort{
 	
 
 20.
+/*
+n代表盘子个数，source代表源柱子，dest代表目标柱子
+用0 1 2分别代表三个柱子
+将此题分为3个步骤：
+(1)将n-1个盘子从source移动到other
+(2)将第n个盘子从source移动到dest
+(3)将n-1个盘子从other移动到dest
+*/
+
+public class Hannoi{
+	public static void main(String[] args){
+		//String "11"-->int 11
+		move(Integer.parseInt(args[0]),0,2);  //将n个盘子从源移动到目的
+	}
+	
+	public static void move(int n,int source,int dest){
+		if(n==1){
+			System.out.printf("从 %d 移动到 %d%n",source,dest);
+			return;
+		}
+		int other=3-source-dest;
+		move(n-1,source,other);
+		System.out.printf("从 %d 移动到 %d%n",source,dest);
+		move(n-1,other,dest);
+	}
+}
+
+
+//javac -encoding UTF-8 Hannoi.java
+//java Hannoi 3
+
+//从 0 移动到 2
+//从 0 移动到 1
+//从 2 移动到 1
+//从 0 移动到 2
+//从 1 移动到 0
+//从 1 移动到 2
+//从 0 移动到 2
+	
+	
+	
+21.
+	
+	
+	
+	
+	
+	
 	
 	
 	
