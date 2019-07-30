@@ -691,11 +691,41 @@ public class Hannoi{
 	
 	
 	
-21.
+21./*
+将一个数组右旋K位，求新数组的值,使用下列方法
+public static void arraycopy(Object src,int srcPos,
+                             Object dest,int destPos,
+                             int length);
+public static void copyOf(int[] original, int newLength);
+
+思路:1,2,3,4,5       k=3   //3,4,5,1,2
+	 1,2,3,4,5,6,7   k=8   //7,1,2,3,4,5,6
+	 先开辟一个新的数组
+	 先把4,5移动到新数组
+	 把1,2,3在原数组进行移动
+	 把4,5从新数组移动到原数组
+*/
+import java.util.Arrays;
+
+public class Rotate{
+	public static void main(String[] args){
+	System.out.println(Arrays.toString(rotate(new int[]{1,2,3,4,5},3)));
+	System.out.println(Arrays.toString(rotate(new int[]{1,2,3,4,5},8)));
+	System.out.println(Arrays.toString(rotate(new int[]{1,2,3,4,5,6,7},8)));
+	}
+	
+	public static int[] rotate(int[] nums,int k){
+		k=k%nums.length;
+		int[] other=Arrays.copyOfRange(nums,nums.length-k,nums.length);
+		System.arraycopy(nums,0,nums,k,nums.length-k);
+		System.arraycopy(other,0,nums,0,other.length);
+		return nums;
+	}	
+}
 	
 	
 	
-	
+22.	
 	
 	
 	
