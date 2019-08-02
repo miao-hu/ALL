@@ -725,7 +725,73 @@ public class Rotate{
 	
 	
 	
-22.	
+22.//将数组中的奇数值全部放到右边
+//将数组中的偶数值全部放到左边
+
+import java.util.Arrays;
+
+public class SortArrayByParity{
+	public static void main(String[] args){
+		int[] arr={2,3,6,7,8,10};	
+		System.out.println(Arrays.toString(sortArrayByParity1(arr)));
+	}
+	
+	//[0,a)都为偶数,[a,i)之间的都为奇数,i右边的都没有判断
+	public static int[] sortArrayByParity(int[] nums){
+		int a=0;
+		for(int i=0;i<nums.length;i++){
+			if(nums[i]%2==0){  //偶数
+				swap(nums,a,i);
+				a++;
+			}	
+		}
+		return nums;
+	}
+	
+	/*
+		[begin, end] 区间内的数是未判断的数
+		[0, begin)	偶数
+		[end, nums.length) 奇数
+	*/
+	public static int[] sortArrayByParity1(int[] nums){
+		int begin=0;
+		int end=nums.length-1;
+		while(begin<end){
+			while(begin<end&&nums[begin]%2==0){
+				/*这里的begin<end是为了防止数组下标越界
+				  若没有begin<end，那么要是数组全是偶数
+				  begin一直++，那么最终下标会越界报错
+				*/
+				begin++;
+			}
+			while(begin<end&&nums[end]%2!=0){
+				end--;
+			}
+			//走到这的原因之一是
+			//begin下标对应的是奇数，end下标对应的是偶数
+			swap(nums,begin,end);
+			
+		}
+		return nums;
+	}
+	
+	public static void swap(int[] a ,int i,int j){
+		int temp=a[i];
+		a[i]=a[j];
+		a[j]=temp;	
+	}
+}
+
+
+
+23.
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
