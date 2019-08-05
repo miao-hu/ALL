@@ -784,11 +784,53 @@ public class SortArrayByParity{
 
 
 
-23.
+23.//去掉数组中一个最大值和一个最小值求平均值
+
+public class Test{
+	public static void main(String[] args){
+		int[] a={1,2,3,4,5,6,7};
+		System.out.println(average(a));
+		System.out.println(average1(new int[]{1,2,3,4,5,6,7}));//匿名数组
+		//两个结果都是4.0
+	}
+	
+	public static double average(int[] a){
+		int sum=0;
+		int max=a[0];
+		int min=a[0];
+		for(int i=0;i<a.length;i++){
+			sum+=a[i];
+			if(max<a[i]){
+				max=a[i];
+			}
+			if(min>a[i]){
+				min=a[i];
+			}
+		}
+		return (double)(sum-max-min)/(a.length-2);
+	}
+		
+	public static double average1(int[] a){
+		int sum=0;
+		int max=Integer.MIN_VALUE; //-2^31
+		int min=Integer.MAX_VALUE; //2^31-1
+		for(int v:a){  //遍历这个数组
+			sum+=v;
+			if(v>max){
+				max=v;
+			}
+			if(v<min){
+				min=v;
+			}
+		}
+		return (double)(sum-max-min)/(a.length-2);
+	}
+
+}
 	
 	
 	
-	
+24.	
 	
 	
 	
