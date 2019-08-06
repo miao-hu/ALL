@@ -830,7 +830,50 @@ public class Test{
 	
 	
 	
-24.	
+24.class Person {
+	public String name;
+	public int age;
+	
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	public Person self() {
+		return this;
+	}
+	
+	public String name() {
+		return this.name;
+	}
+}
+
+public class TestThis {
+	public static void main(String[] args) {
+		Person p = new Person("小比特", 18);
+		System.out.println(p.self().name());   //小比特
+		System.out.println(p.self());   //Person@15db9742
+		System.out.println(p.name());    //小比特
+	}
+}
+
+
+
+25.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
