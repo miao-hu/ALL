@@ -859,7 +859,53 @@ public class TestThis {
 
 
 
-25.
+25.//java中导入自己设定的包
+	
+package hello;  //属于hello包
+public class HelloJava{
+	
+	public void say(){
+		System.out.println("Hello Java");
+	}
+	
+}
+
+
+package hello;  //属于hello包
+public class HelloWorld{
+	
+	public void say(){
+		System.out.println("Hello world");
+	}
+	
+}
+	
+
+import hello.HelloWorld;  //import 包名.类名；
+import hello.HelloJava;  //导入这个包
+public class Practice0722{
+	public static void main(String[] args){
+		HelloWorld p=new HelloWorld();
+		p.say();  //Hello world
+		HelloJava q=new HelloJava();
+		q.say();  //Hello Java
+		//new HelloJava().sayHello();  //Hello Java
+		//注意：最后一条代码是匿名对象
+	}
+}
+
+
+
+26.
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
