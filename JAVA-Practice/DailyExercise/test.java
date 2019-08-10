@@ -896,7 +896,97 @@ public class Practice0722{
 
 
 
-26.
+26.//代码块
+
+public class A{
+
+	public A(){
+		System.out.println("构造方法中a=30");
+		a=30;
+	}
+	
+	{
+		System.out.println("构造代码块1中a=40");
+		a=40;
+	}
+	
+	int a=init();
+	
+	{
+		System.out.println("构造代码块2中a=60");
+		a=60;
+	}
+	
+	public int init(){
+		System.out.println("初始化中a=90");
+		return 90;
+	}
+	
+	static{
+		System.out.println("静态代码块1中B=100");
+		B=100;
+	}
+	
+	static int B=staticInit();
+	
+	static{	
+		System.out.println("静态代码块2中B=400");
+		B=400;
+	}
+	
+	//初始化static int类型的属性时，初始化方法也必须是static int类型的
+	public static int staticInit(){   
+		System.out.println("初始化中B=500");
+		return 500;
+	}
+	public static void main(String[] args){
+		A p=new A();
+		A q=new A();
+			/*
+			静态代码块1中B=100
+			初始化中B=500
+			静态代码块2中B=400		注意：static代码块只执行一次
+			构造代码块1中a=40       	（static代码块只在类加载时执行,
+			初始化中a=90				 类是用类加载器来读取的，
+			构造代码块2中a=60			 类加载器是带有一个缓存区的，
+　　　　　　构造方法中a=30				 它会把读取到的类缓存起来，
+			构造代码块1中a=40			 所以在一次虚拟机运行期间,
+			初始化中a=90				 一个类只会被加载一次，这样的话
+　　　　　	构造代码块2中a=60			 静态代码块只会运行一次）
+			构造方法中a=30
+			*/
+	
+	/*zhuyi:对属性进行初始化和执行代码块是同级的，谁先在前先执行谁
+			然后再执行构造方法
+			当静态static出现时先执行有static出现的代码
+	*/
+	}
+}
+
+
+
+27.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
