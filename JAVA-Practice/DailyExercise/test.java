@@ -965,7 +965,30 @@ public class A{
 
 
 
-27.
+27./*
+System.out.println();
+表示：System类的out属性的println()方法      (嵌套调用)
+*/
+
+class System{
+	static PrintWriter out;   //System类的out属性
+}
+
+//PrintWriter也是一个类
+class PrintWriter {   
+	public void println() {
+	}
+}
+
+//等同于
+PrintWriter temp=System.out;
+temp.println();
+
+//对象名.方法名()调用PrintWriter类的println()方法
+
+
+
+28.
 	
 	
 	
