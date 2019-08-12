@@ -988,7 +988,155 @@ temp.println();
 
 
 
-28.
+28./*
+定义一个名为Data的类，它的属性包括年-月-日
+原则：一切从用户角度出发
+功能：1）定义一个构造方法（初始化）
+		*无参（显示当前年-月-日）
+		*有参（更新新的年-月-日）
+	  2）必须对用户输入的年-月-日进行效验
+	    *年支持范围[1999,2999]
+		*月支持范围[1,12]
+		*日支持范围（根据月份而定）
+		注：每月的天数1   2     3  4  5  6  7  8  9  10 11 12 
+					  31 28/29  31 30 31 30 31 31 30 31 30 31
+	  3）days天之后的年-月-日
+	  4）days天之前的年-月-日
+*/
+
+class Data{
+	private int year;
+	private int month;
+	private int day;
+	
+	//内部属性，这些属性没有必要为每个对象都存一份所以定义为static
+	//大家共享就行，final不可变的，每个月多少天是不可变的
+	private static final int[] DAYS_OF_MONTH={
+					31,28,31,30,31,30,31,31,30,31,30,31
+					};
+	
+	public Data(){
+		this.year=2019;
+		this.month=7;
+		this.day=20;
+	}
+	
+	public Data(int year,int month,int day){
+		//对用户输入的年-月-日进行合法性效验
+		if(year<1999||year>2999){
+			System.err.println("输入的年份有问题");
+			return;
+		}
+		if(month<1||month>12){
+			System.err.println("输入的月份有问题");
+			return;
+		}
+		if(day<1||day<calMonthNumber(year,month)){
+			System.err.println("输入的日有问题");
+			return;
+		}
+		
+		//执行到这一步说明输入的年-月-日是正确的
+		this.year=year;
+		this.month=month;
+		this.day=day;
+	}
+	
+	private static  int calMonthNumber(int year,int month){
+		if(month!=2){  //说明不是2月
+			return DAYS_OF_MONTH[month-1];  //月份下标[0,11]
+		}
+		if(isLaepYear(year)){
+			return 29;   //闰年2月29天
+		}
+		else{
+			return 28;   //别的年份2月29天
+		}
+	}
+	
+	//判断是否是闰年不为用户提供服务，因此用private
+	//这个方法不调用普通属性和方法，因此用static
+	private static  boolean isLaepYear(int year){
+		if((year%4==0&&year%100!=0)||year%400==0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public  Data after(int days){
+		day+=days;
+		//当day>这个月的天数   那么就循环
+		while(day>calMonthNumber(year,month)){
+			//day-=DAYS_OF_MONTH[month-1];错误：应该减去这个月的天数
+			day-=calMonthNumber(year,month);
+			month+=1;   //到下一月
+			if(month>12){
+				month=1;
+				year+=1;
+			}
+		}
+		return this;   //返回这个对象
+	}	
+	
+	public  String toString(){
+		return String.format("%04d-%02d-%02d",year,month,day);
+		//和System.out.printf一样格式化输出
+		//年占4个字节，月占2个，日占两个，不够用0填充
+	}
+}	
+
+//public更多是提供给用户用的
+//对外提供的服务是public的
+public class TestData{
+	public static void main(String[] args){
+		Data now=new Data();   
+		System.out.println(now.toString());  //2019-7-20
+		
+		Data afterNow=now.after(300);
+		System.out.println(afterNow.toString());  //2020-05-15
+		System.out.println(now.toString());       //2020-05-15
+		
+		now=new Data();
+		Data beforeNow=now.before(500);
+		System.out.println(beforeNow.toString());
+	}
+}
+	
+	
+	
+	
+	
+public Data before(int days) {
+		day-=days;
+		while(day<1){
+			month-=1;   //到上一月
+			day+=calMonthNumber(year,month);	
+			if(month==1){
+				month=12;
+				year-=1;
+			}
+		}
+		return this;   //返回这个对象
+	}
+		
+	public Date immutableAfter(int days) {//当前对象不可变
+		Date other = new Date(year, month, day);//吧自己的年月日传进去
+		
+		// 修改的是 other 的属性
+		return other;
+	}
+	
+	
+	// TODO: 实现 a - b 相差多少天
+	public static int diff(Date a, Date b) {
+		return 0;
+	}	
+	
+	
+	
+29.	
 	
 	
 	
@@ -997,50 +1145,4 @@ temp.println();
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
