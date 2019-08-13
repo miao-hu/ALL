@@ -1136,7 +1136,43 @@ public Data before(int days) {
 	
 	
 	
-29.	
+29.// 这个 public 是顶级的(top-level)
+public class TestStatic{
+	int a;
+	static int b=1;
+	
+	public void print(){
+	}
+	
+	// 这个 public 是成员级的 (member-level)
+	public static void main(String[] args){
+		
+		//a=10;  //报错：无法从静态上下文中引用非静态 变量 a（隐式使用了 this.a）
+		b=10;  //正确
+		//print(); //报错:无法从静态上下文中引用非静态 方法 print()  (隐式使用了 this.print();)
+		//System.out.println(a);//无法从静态上下文中引用非静态 变量 a
+		
+		System.out.println(b);  //10
+		new TestStatic().b=100;
+		System.out.println(b);  //100
+		TestStatic p=new TestStatic();
+		System.out.println(p.b);  //100
+		
+		//static定义的变量满足用户共享
+		
+	}
+}
+
+
+
+30.
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
