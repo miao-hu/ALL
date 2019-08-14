@@ -1189,14 +1189,230 @@ public class TestStatic{
 
 
 
-31.
+31.//顺序表
+//插入前都要判断数组容量够不够
+
+public class MyArrayList{
+	private int[] array;  /*数组名：array
+							数组容量：array.length
+						  */
+	private int size;	  //数组中实际存的元素个数
 	
+	//构造方法
+	public MyArrayList(){
+		//1.申请空间
+		array=new int[3];
+		// 2. 初始化数据个数
+		size=0;    //刚开始数组中没有元素
+	}
 	
+	//后插
+	public void pushBack(int element){
+		ensureCapacity();	//先确保数组容量够不够
+		array[size]=element;
+		size++;	
+	}
 	
+	//前插
+	public void pushFront(int element){
+		ensureCapacity();
+		for(int i=size-1;i>=0;i--){
+			array[i+1]=array[i];
+		}
+		array[0]=element;
+		size++;
+	}
 	
+	//插入
+	public void insert(int index, int element){
+		if(index<0||index>=size){
+			System.out.println("输入的下标不对");
+			return;
+		}
+		ensureCapacity();//输入下标对，确保容量够不够
+		for(int i=size-1;i>=index;i--){
+			array[i+1]=array[i];
+		}
+		array[index]=element;
+		size++;
+	}
 	
+	//从后面删
+	public void popBack(){
+		if(size<=0){
+			System.out.println("顺序表中没有元素");
+			return;
+		}
+		array[size-1]=0;
+		size--;
+	}
 	
+	//从前面删
+	public void popFront(){
+		if(size<=0){
+			System.out.println("顺序表中没有元素");
+			return;
+		}
+		for(int i=1;i<size;i++){
+			array[i-1]=array[i];
+		}
+		array[size]=0;
+		size--;
+	}
 	
+	//从任意位置删
+	public void earse(int index){
+		if(size<=0){
+			System.out.println("顺序表中没有元素");
+			return;
+		}
+		if(index<0||index>=size){
+			System.out.println("输入的下标不对");
+			return;
+		}
+		for(int i=index+1;i<size;i++){
+			array[i-1]=array[i];
+		}
+		array[--size]=0;
+
+	}
+	
+	//打印
+	public void print(){
+		System.out.println("打印顺序表：顺序表容量是:"+array.length);
+		for(int i=0;i<size;i++){
+			System.out.print(array[i]+" ");
+		}
+		System.out.println();
+	}
+	
+	//保证容量够用，否则进行扩容
+	private void ensureCapacity(){
+		if(size<array.length){  //容量够
+			return;
+		}
+		int newCapacity=array.length*2; //新容量
+		int[] newArray=new int[newCapacity];
+		for(int i=0;i<size;i++){  //拷贝
+			newArray[i]=array[i];
+		}
+		array=newArray;
+	}
+	
+	//返回元素值为element的元素在顺序表中第一次出现的位置
+	public int indexOf(int element){
+		for(int i=0;i<size;i++){
+			if(array[i]==element){
+				return i;
+			}
+		}
+		return -1;  //没有找到返回-1
+	}
+	
+	//返回下标为Index的元素在顺序表中的值
+	public int get(int index){
+		if(index<0||index>=size){
+			System.err.println("输入的下标有误");
+			return -1;
+		}
+		return array[index];  //返回值
+	}
+	
+	//把下标为Index的元素的值设置为element
+	public void set(int index, int element){
+		if(index<0||index>=size){
+			System.err.println("输入的下标有误");
+			return;
+		}
+		array[index]=element;
+	}
+	
+	//删除顺序表中元素值为element元素的值，出现多次只删除第一次的
+	public void remove(int element){
+		int index=indexOf(element);  //找到被删除元素第一次出现的下标
+		if(index!=-1){   //找到该元素
+			earse(index);  //删除该下标的元素
+		}
+	}
+	
+	//返回顺序表中实际存储的元素个数
+	public int size(){
+		return size;
+	}
+	
+	//判断顺序表是否为空
+	public boolean isEmpty(){
+		return size==0;
+	}
+	
+	//删除顺序表中所有元素值为element的元素
+	public void removeAll(int element){
+		
+		/*第一种:时间复杂度o(n^2),空间复杂度o(1)
+		int index;
+		while((index=indexOf(element)!=-1){   //直到为-1没有找到才退出
+			earse(index);
+		}
+		*/
+		
+		/*第二种:时间复杂度o(n),空间复杂度o(n)
+		int[] newArray=new int[array.length];
+		int k=0;
+		for(int i=0;i<size;i++){
+			if(array[i]!=element){
+				newArray[k++]=array[i];
+			}
+		}
+		size=k;
+		array=newArray;
+		*/
+		
+		//第三种:时间复杂度o(n),空间复杂度o(1)
+		int k=0;
+		for(int i=0;i<size;i++){
+			if(array[i]!=element){
+				array[k++]=array[i];
+			}
+		}	
+		size=k;
+	}
+	
+	public static void main(String[] args){
+		MyArrayList list=new MyArrayList();
+		list.print();//顺序表容量是:3    空表
+		list.pushFront(1);
+		list.pushFront(2);
+		list.pushFront(3);
+		list.pushFront(4);
+		list.print();//顺序表容量是:6    4 3 2 1
+		list.insert(2, 10);
+		list.insert(3, 20);
+		list.print();//顺序表容量是:6    4 3 10 20 2 1
+		list.earse(3);
+		list.earse(3);
+		list.print();//顺序表容量是:6    4 3 10 1
+		list.pushBack(22);
+		list.pushBack(33);	
+		list.pushBack(44);	
+		list.print();//顺序表容量是:12   4 3 10 1 22 33 44
+		list.popBack();
+		list.popBack();
+		list.popBack();
+		list.popBack();
+		list.popBack();
+		list.popBack();
+		list.popBack();
+		list.print();//顺序表容量是:12   空表
+		list.popBack();	//报错：顺序表中没有元素
+		int ret=list.size();
+		System.out.println(ret);  //0
+		
+	}
+}
+
+
+
+32.
 	
 	
 	
