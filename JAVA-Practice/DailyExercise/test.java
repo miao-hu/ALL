@@ -1165,7 +1165,31 @@ public class TestStatic{
 
 
 
-30.
+30.public class TestToString{
+	public String toString(){
+		return "abcdefgh";
+	}
+	
+	public static void main(String[] args){
+		TestToString p=new TestToString();
+		//System.out.println(p);			   //TestToString@15db9742
+		//System.out.println(p.toString());    //TestToString@15db9742
+		
+		//注意:p和p.toString()实际是一样的
+		
+		System.out.println(p);             //abcdefgh
+		System.out.println(p.toString());  //abcdefgh
+		
+		/*
+		若没有重载一个类的toString()方法，那么他就返回  类名@地址
+		若有重载的toString()方法，那么他就返回toString()方法中的返回值
+		*/
+	}
+}
+
+
+
+31.
 	
 	
 	
