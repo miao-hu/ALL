@@ -1413,6 +1413,36 @@ public class MyArrayList{
 
 
 32.
+class A {
+	private int a;
+	public int getA(){
+		return a;
+	}
+}
+
+public class Review {
+	public static void main(String[] args) {
+		//System.out.println(new A().a);
+		System.out.println(new A().getA());  //默认值0
+	}
+}
+
+/*
+Review.java:7: 错误: a 在 A 中是 private 访问控制
+                System.out.println(new A().a);
+*/
+	
+	
+	
+33.
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
