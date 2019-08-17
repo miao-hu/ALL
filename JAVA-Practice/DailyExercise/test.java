@@ -1434,7 +1434,104 @@ Review.java:7: 错误: a 在 A 中是 private 访问控制
 	
 	
 	
-33.
+33.public class TestTime{
+	private int hour;   //内部的外部不可见（好比加牛肉）
+	private int minute;
+	private int second;
+	
+	public TestTime(){
+		
+	}
+
+	public TestTime(int hour,int minute,int second){
+		if(hour<0||hour>23){
+			System.err.println("输入的小时不对");
+			return;
+		}
+		if(minute<0||minute>59){
+			System.err.println("输入的分钟不对");
+			return;
+		}
+		if(second<0||second>59){
+			System.err.println("输入的秒数不对");
+			return;
+		}
+		this.hour=hour;
+		this.minute=minute;
+		this.second=second;
+	}
+
+	public TestTime immutableAfter(int seconds){
+		if(seconds<0){
+			System.err.println("输入的描述不正确");
+			return null;  
+		}
+		TestTime other = new TestTime(hour, minute, second);  //相当于把隐藏的this传了进来
+		other.second+=seconds;
+		while(other.second>=60){
+			other.second-=60;
+			other.minute+=1;
+			if(other.minute>=60){
+				other.minute=0;
+				other.hour+=1;
+				if(other.hour>=24){
+					other.hour=0;
+				}
+			}
+		}
+		return other;
+	}
+
+	public String toString(){
+		return String.format("%02d:%02d:%02d",hour,minute,second);
+		//每个分别占2位，不够用0来补
+	}
+	
+	public static void main(String[] args){
+		TestTime now=new TestTime(8,38,26);
+		TestTime nowAfter=now.immutableAfter(800);
+		System.out.println(now);                  //08:38:26
+		System.out.println(nowAfter);			  //08:51:46
+		//注意：直接打印对象，就相当于调用对象.toString()方法
+		
+		System.out.println(now.toString());		  //08:38:26
+		System.out.println(nowAfter.toString());  //08:51:46
+	}
+}
+
+
+
+
+
+
+
+	public Time immutableAfter(int minutes, int seconds) {
+		return null;
+	}
+	
+	
+	public Time immutableAfter(int hours, int minutes, int seconds) {
+		return null;
+	}
+	
+	// TODO: a - b 相差多少秒
+	public static int diff(Time a, Time b) {
+		return 0;
+	}
+
+
+
+34.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
