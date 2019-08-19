@@ -1522,30 +1522,262 @@ Review.java:7: 错误: a 在 A 中是 private 访问控制
 
 
 34.
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+//链表
+//前驱 previous   后继next
 
+//这个类定义结点信息
+
+class Node{
+	int val;
+	Node next;  //如果next==null表明这个结点是最后一个结点
+	
+	public Node(int val){
+		this.val=val;         //每一个结点中存放的值
+		this.next=null;		  //存的是下一个节点的引用
+	}
+	
+	public String toString(){
+		return String.format("Node(%d)",val);	
+	}
+}
+
+//我的链表
+public class MyLinkedList{
+	public static void main(String[] args){
+		Node head=null;	//刚开始链表中没有值
+		/*
+		head其实就是链表的第一个结点
+		通过第一个结点就可以找到链表中的所有结点
+		链表的第一个结点往往代表整个链表
+		空的链表就是一个结点都没有的链表
+		head==null代表第一个结点不存在，也就是整个链表为空	
+		*/
+		head=pushFront(head, 1);
+		head=pushFront(head, 2);
+		print(head);		//打印链表：2-->1-->null
+		head=pushBack(head, 3);
+		head=pushBack(head, 4);
+		head=pushBack(head, 5);
+		head=pushFront(head, 6);
+		print(head);		//打印链表：6-->2-->1-->3-->4-->5-->null
+		head=popFront(head);
+		head=popFront(head);
+		print(head);		//打印链表：1-->3-->4-->5-->null
+		head=popBack(head);
+		head=popBack(head);
+		head=popBack(head);
+		head=popBack(head);
+		print(head);		//打印链表：null
+		head=popBack(head); //链表为空，无法删除
+		print(head);		//打印链表：null
+		
+	}
+	
+	//打印
+	private static void print(Node head){
+		System.out.print("打印链表:");
+		Node cur=head;  //打印链表要保存head的值，防止head被改，
+						//当主方法调用其它方法用到head时,head值已变
+		for(cur=head;cur!=null;cur=cur.next){
+			System.out.print(cur.val+"-->");   //cur.val当前结点的值
+		}
+		System.out.print("null");   //最后一个结点指向null
+		System.out.println();
+	}
+	
+	/*头插
+		head:原来链表的第一个结点
+		val:新节点的值（要插入结点的值）
+		return:返回新的链表的第一个结点的值
+	*/
+	private static Node pushFront(Node head, int val){
+		//1.创建新结点
+		Node node=new Node(val);
+		//2.让原来的head成为node的下一个结点
+		node.next=head;
+		//3.返回新的第一个结点
+		return node;
+	
+	}
+	
+	//尾插
+	private static Node pushBack(Node head, int val){
+		Node node=new Node(val);
+		if(head==null){  //链表为空
+			return node;
+		}else{
+			Node last=head;
+			while(last.next!=null){   //找到最后一个结点
+				last=last.next;
+			}
+			last.next=node;    //将最后一个结点的下一个节点设置为node
+			return head;
+		}
+	
+	}
+	//链表
+//前驱 previous   后继next
+
+//这个类定义结点信息
+
+class Node{
+	int val;
+	Node next;  //如果next==null表明这个结点是最后一个结点
+	
+	public Node(int val){
+		this.val=val;         //每一个结点中存放的值
+		this.next=null;		  //存的是下一个节点的引用
+	}
+	
+	public String toString(){
+		return String.format("Node(%d)",val);	
+	}
+}
+
+//我的链表
+public class MyLinkedList{
+	public static void main(String[] args){
+		Node head=null;	//刚开始链表中没有值
+		/*
+		head其实就是链表的第一个结点
+		通过第一个结点就可以找到链表中的所有结点
+		链表的第一个结点往往代表整个链表
+		空的链表就是一个结点都没有的链表
+		head==null代表第一个结点不存在，也就是整个链表为空	
+		*/
+		head=pushFront(head, 1);
+		head=pushFront(head, 2);
+		print(head);		//打印链表：2-->1-->null
+		head=pushBack(head, 3);
+		head=pushBack(head, 4);
+		head=pushBack(head, 5);
+		head=pushFront(head, 6);
+		print(head);		//打印链表：6-->2-->1-->3-->4-->5-->null
+		head=popFront(head);
+		head=popFront(head);
+		print(head);		//打印链表：1-->3-->4-->5-->null
+		head=popBack(head);
+		head=popBack(head);
+		head=popBack(head);
+		head=popBack(head);
+		print(head);		//打印链表：null
+		head=popBack(head); //链表为空，无法删除
+		print(head);		//打印链表：null
+		
+	}
+	
+	//打印
+	private static void print(Node head){
+		System.out.print("打印链表:");
+		Node cur=head;  //打印链表要保存head的值，防止head被改，
+						//当主方法调用其它方法用到head时,head值已变
+		for(cur=head;cur!=null;cur=cur.next){
+			System.out.print(cur.val+"-->");   //cur.val当前结点的值
+		}
+		System.out.print("null");   //最后一个结点指向null
+		System.out.println();
+	}
+	
+	/*头插
+		head:原来链表的第一个结点
+		val:新节点的值（要插入结点的值）
+		return:返回新的链表的第一个结点的值
+	*/
+	private static Node pushFront(Node head, int val){
+		//1.创建新结点
+		Node node=new Node(val);
+		//2.让原来的head成为node的下一个结点
+		node.next=head;
+		//3.返回新的第一个结点
+		return node;
+	
+	}
+	
+	//尾插
+	private static Node pushBack(Node head, int val){
+		Node node=new Node(val);
+		if(head==null){  //链表为空
+			return node;
+		}else{
+			Node last=head;
+			while(last.next!=null){   //找到最后一个结点
+				last=last.next;
+			}
+			last.next=node;    //将最后一个结点的下一个节点设置为node
+			return head;
+		}
+	
+	}
+	
+	//前删
+	private static Node popFront(Node head){
+		if(head==null){
+			System.err.println("链表为空，无法删除");
+			return null;
+		}
+		return head.next;   //返回第二个结点
+							//原来第一个结点会因为没有指向而被回收
+	}
+	
+	//尾删
+	private static Node popBack(Node head){
+		if(head==null){
+			System.err.println("链表为空，无法删除");
+			return null;
+		}
+		if(head.next==null){  //原来的链表只有一个结点
+			return null;
+		}else{
+			Node lastSecond=head;
+			while(lastSecond.next.next!=null){  //找到倒数第二个结点
+				lastSecond=lastSecond.next;  //更新
+			}
+			lastSecond.next=null;	//把倒数第二个结点的下一个结点设置为空
+			return head;
+		}
+	}
+}
+	//前删
+	private static Node popFront(Node head){
+		if(head==null){
+			System.err.println("链表为空，无法删除");
+			return null;
+		}
+		return head.next;   //返回第二个结点
+							//原来第一个结点会因为没有指向而被回收
+	}
+	
+	//尾删
+	private static Node popBack(Node head){
+		if(head==null){
+			System.err.println("链表为空，无法删除");
+			return null;
+		}
+		if(head.next==null){  //原来的链表只有一个结点
+			return null;
+		}else{
+			Node lastSecond=head;
+			while(lastSecond.next.next!=null){  //找到倒数第二个结点
+				lastSecond=lastSecond.next;  //更新
+			}
+			lastSecond.next=null;	//把倒数第二个结点的下一个结点设置为空
+			return head;
+		}
+	}
+}
+	
+	
+	
+35.	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
