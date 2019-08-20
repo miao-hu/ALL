@@ -1768,7 +1768,79 @@ public class MyLinkedList{
 	
 	
 	
-35.	
+35./*逆置面试题
+1-->2-->3-->4-->5
+5-->4-->3-->2-->1
+*/
+
+/*方法1
+不断从原来链表中取出结点，采用头插法到一个新链表上
+*/
+class Solution1{
+    public ListNode reverseList(ListNode head){
+		if(head==null){ //链表中无结点
+			return null;
+		}
+		ListNode dest=null;  //空的新链表，dest为新链表的第一个结点
+		ListNode cur=head;  //设置cur用来遍历旧链表
+		
+		while(cur!=null){  //遍历旧链表
+			ListNode next=cur.next;		//cur.next的值会发生改变，所以要保留
+			cur.next=dest;  //把每个遍历到的结点(cur)，头插到新链表中（dest代表的新链表）
+			dest=cur;  //更新最新的第一个结点
+			cur=next;	
+		}
+		return dest;
+	}
+}
+     
+ /*方法2
+ 设置三个结点p1,p2,p3
+ */
+class Solution2{
+    public ListNode reverseList(ListNode head){
+		if(head==null){	//链表中无结点
+			return null;
+		}
+		ListNode p1=null;
+		ListNode p2=head;
+		while(p2!=null){
+			ListNode p3=p2.next;
+			p2.next=p1;
+			p1=p2;
+			p2=p3;		
+		}
+		return p1;
+	}
+}
+
+ /*方法3
+ 设置三个结点p1,p2,p3
+ */
+class Solution3{
+    public ListNode reverseList(ListNode head){
+		if(head==null){	//链表中无结点
+			return null;
+		}
+		ListNode p1=null;
+		ListNode p2=head;
+		ListNode p3=head.next;
+		
+		while(p2!=null){
+			p2.next=p1;
+			p1=p2;
+			p2=p3;	
+			if(p3!=null){  //必须判断p3是否为空，因为不判断若对null进行操作，就会产生空指针异常
+				p3=p3.next;  //判断无误后，进行p3值的更新
+			}
+		}
+		return p1;
+	}
+}
+
+
+
+36.
 	
 	
 	
