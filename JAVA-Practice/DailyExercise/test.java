@@ -1840,16 +1840,79 @@ class Solution3{
 
 
 
-36.
+36.class Node{
+	int val;
+	Node next=null;
+	Node(int val){
+		this.val=val;
+	}
 	
+}
+
+//头插
+Node pushFront(Node head,int val){
+	Node node=new Node(val);
+	node.next=head;
+	return node;
+}
+
+//尾插
+Node pushBack(Node head,int val){
+	Node node=new Node(val);
+	if(head==null){   //尾插一定要记得链表为空的情况
+		return node;
+	}
+	/*第一种
+	Node last=null;
+	while(last.next!=null){
+		last=last.next;
+	}
+	last.next=node;
+	*/
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//第二种
+	//注意last必须定义在for循环外边，
+	//要是last定义在for循环里边，那么last的作用域就为for循环内部
+	//循环结束就被释放了
+	Node last=null;
+	for(last;last.next!=null;last=last.next){
+		;
+	}
+	last.next=node;
+	return head;
+}
+
+//逆序(第一种）
+Node reverse(Node head){
+	Node p1=null;
+	Node p2=head;
+	while(p2!=null){
+		Node p3=p2.next;
+		p2.next=p1;
+		p1=p2;
+		p2=p3;
+	}
+	return p1;
+}
+
+//逆序(第二种）
+Node reverse(Node head){
+	Node p1=null;
+	Node p2=head;
+	Node p3=head.next;
+	while(p2!=null){
+		p2.next=p1;
+		p1=p2;
+		p2=p3;
+		if(p3!=null){  //防止空指针异常
+			P3=P3.next;
+		}		
+	}
+	return p1;
+}
+
+
+
+37.
+
+
