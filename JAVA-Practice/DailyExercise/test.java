@@ -1913,6 +1913,228 @@ Node reverse(Node head){
 
 
 
-37.
+37.class Node{
+    int val;   //结点里的值
+    Node next=null;   
+    Node(int val){
+        this.val=val;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Node(%d)",val);
+    }
+}
+
+public class MyLinkedList {
+    public static void main(String[] args){
+        Node head=new Node(1);
+        head.next=new Node(2);
+        head.next.next=new Node(2);
+        head.next.next.next=new Node(4);
+        print(head); //打印链表:1-->2-->2-->4-->null
+        pushAfter(head.next, 200);
+        pushAfter(head.next.next, 100);
+        print(head);//打印链表:1-->2-->200-->100-->2-->4-->null
+        popAfter(head.next);
+        print(head);//打印链表:1-->2-->100-->2-->4-->null
+        removeElements4(head, 2);
+        print(head);//打印链表:1-->100-->4-->null
+        Node l1=new Node(1);
+        l1.next=new Node(10);
+        Node l2=new Node(8);
+        l2.next=new Node(9);
+        Node paixu=mergeTwoLists2(l1, l2);
+        print(paixu); //打印链表:1-->8-->9-->10-->null
+
+    }
+
+    //在pos位置之后插入一个结点，结点值为val
+    private static void pushAfter(Node pos, int val){
+        Node node=new Node(val);
+        node.next=pos.next;
+        pos.next=node;
+    }
+
+    //删除位置为pos的后一个结点
+    private static void popAfter(Node pos){
+        pos.next=pos.next.next;
+    }
+
+    /*移除链表中所有值为val的结点(方法一)
+    * 创建一个新的链表，采用尾插法
+    * 把所有元素值不是val的结点插到新链表
+    * */
+    public static Node removeElements1(Node head, int val){
+        Node result=null;	//新链表
+        Node cur=head;		//当前结点
+        Node last=null;		//新链表的最后一个结点
+        while(cur!=null){
+            if(cur.val==val){ 
+                cur=cur.next;  //越过当前结点，从下一个结点判断
+                continue;
+            }
+            Node next=cur.next;//尾插法
+            cur.next=null;
+            if(result==null){ //新链表为空
+                result=cur;
+            }else {
+                last.next = cur;
+            }
+            last=cur;
+            cur=next;
+        }
+        return result; //rusult为新链表的头结点
+    }
+
+    //判断若被删结点刚好第一个结点是，那么特殊处理（不创建新链表）
+    public static Node removeElements2(Node head, int val){
+        Node prev=null;	  //当前结点的前驱结点
+        Node cur=head;	  //当前结点
+        while(cur!=null){
+            if(cur.val==val){
+                if(cur==head){
+                    head=cur.next;  //头变为第二个结点
+                }
+                else{
+                    prev.next=cur.next;
+                }
+            }
+            else{
+                prev=cur;
+            }
+            cur=cur.next;
+        }
+        return head;
+    }
+
+    //先避开一个结点回头再说（不创建新链表）
+    public static Node removeElements3(Node head, int val){
+        Node prev=head;//当前结点的前驱结点
+        Node cur=head.next;//当前结点
+        while(cur!=null){
+            if(cur.val==val){
+                    prev.next=cur.next;
+            }
+            else{
+                prev=cur;
+            }
+            cur=cur.next;
+        }
+        if(head.val==val){
+            head=head.next;
+        }
+        return head;
+    }
+
+    //强行给第一个结点找一个前驱结点，前驱结点里面的值无所谓（不创建新链表）
+    public static Node removeElements4(Node head, int val){
+        Node tempHead=new Node(-1);
+        tempHead.next=head;
+        Node prev=tempHead;//上一个结点
+        Node cur=head;//当前结点
+        while(cur!=null){
+            if(cur.val==val){
+                prev.next=cur.next;
+            }
+            else{
+                prev=cur;
+            }
+            cur=cur.next;
+        }
+        return tempHead.next;
+    }
+
+    //有两个升序链表  请把他们按顺序排成一个升序链表（递归法）
+    public static Node mergeTwoLists1(Node l1, Node l2) {
+        if(l1==null){
+            return l2;
+        }
+        if(l2==null){
+            return l1;
+        }
+        if(l1.val<=l2.val){ //统一以l1为链开始链接
+            l1.next=mergeTwoLists1(l1.next, l2);
+            return l1;
+        }
+        else{
+            l2.next=mergeTwoLists1(l1,l2.next);
+            return l2;
+        }
+
+    }
+
+	//有两个升序链表  请把他们按顺序排成一个升序链表（采用建立新链表，尾插法）
+    public static Node mergeTwoLists2(Node l1, Node l2) {
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+        Node result = null;   //新的链表
+        Node last = null;	//新的链表的最后一个结点
+        Node cur1 = l1;
+        Node cur2 = l2;
+
+        while (cur1 != null && cur2 != null) {
+            if (cur1.val <= cur2.val) {
+                Node next = cur1.next;
+                cur1.next=null;
+                if (result == null) { //当前链表为空
+                    result = cur1;
+                } else {
+                    last.next = cur1;   //当前结点和最后一个结点的下一个结点相连
+                }
+                last = cur1;  //更新最后一个结点
+                cur1 = next;
+            } else {
+                Node next = cur2.next;
+                cur2.next=null;
+                if (result == null) {
+                    result = cur2;
+                } else {
+                    last.next = cur2;
+                }
+                last = cur2;
+
+                cur2 = next;
+            }
+        }
+		//有可能一个链表遍历完了
+        if (cur1 != null) {
+            last.next = cur1;  //最后一个结点与l1剩下的结点相连
+        } else {
+            last.next = cur2;
+        }
+
+        return result;
+    }
+
+
+    //打印
+    private static void print(Node head){
+        System.out.print("打印链表:");
+        Node cur=head;  //打印链表要保存head的值，防止head被改，
+        //当主方法调用其它方法用到head时,head值已变
+        for(cur=head;cur!=null;cur=cur.next){
+            System.out.print(cur.val+"-->");   //cur.val当前结点的值
+        }
+        System.out.print("null");   //最后一个结点指向null
+        System.out.println();
+    }
+}
+
+
+
+38.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
