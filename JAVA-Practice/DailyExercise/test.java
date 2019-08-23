@@ -2123,18 +2123,315 @@ public class MyLinkedList {
 
 
 
-38.
+38.1.第一题
+/*编写代码，以给定值x为基准将链表分割成两部分
+  所有小于x的结点排在大于等于x的结点的左边
+  注意分割以后保持原来的数据顺序不变
+  3	1 2 4 9 5 8 6 3 9 7  假设x=5
+  前：3 1 2 4 3    后： 9 5 8 6 9 7
+  思路：创建两个新链表（采用尾插法）
+		有可能结果只有一个链表
+		保证最终链表的最后一个结点的next是null
+*/
+
+//第一种
+public Node partition(Node head,int x){
+	Node result1=null;  //新链表1
+	Node result2=null;  //新链表2
+	Node last1=null;	//新链表1的最后一个结点
+	Node last2=null;	//新链表2的最后一个结点
+	Node cur=head;		//当前链表的遍历结点
+	while(cur!=null){
+		if(cur.val<x){
+			Node next=cur.next;
+			cur.next=null;	//已经把当前结点的下一个节点设置为null
+			if(result1==null){//空链表
+				result1=cur;
+			}
+			else{
+				last1.next=cur;
+			}
+			last1=cur;
+			cur=next;
+		}
+		else{
+			Node next=cur.next;
+			cur.next=null;
+			if(result2==null){
+				result2=cur;
+			}
+			else{
+				last2.next=cur;
+			}
+			last2=cur;
+			cur=next;
+		}
+	}
+	if(result1==null){
+		return result2;
+	}
+	else if(result2==null){
+		return result1;
+	}
+	else{
+		cur1.next=result2; //两个链表都不为空的情况
+		//不用给最后一个结点设置为null，因为前面已经设置了
+	}
+}
+
+//第二种
+public Node partition(Node head,int x){
+	Node small=null;   //存小值的链表
+	Node smallLast=null;  //最后一个结点
 	
+	Node big=null;     //存大值的链表
+	Node bigLast=null;    //最后一个结点
+	Node cur=head;     //用于遍历的
+	while(cur!=null){
+		if(cur.val<x){
+			if(small==null){
+				small=cur;
+			}
+			else{
+				smallLast.next=cur;
+			}
+			smallLast=cur;
+			cur=cur.next;
+		}
+		else{
+			if(big==null){
+				big=cur;
+			}
+			else{
+				bigLast.next=cur;
+			}
+			bigLast=cur;
+			cur=cur.next;
+		}
+	}
+	if(small==null){
+		return big;
+	}else {   //小链表不为空的情况
+		smallLast.next=big;
+		if(bigLast!=null){
+			bigLast.next=null;  //大链表的最后一个结点设为空
+		}	
+		return small;
+	}
+}
+
+2.第二题
+/*返回链表的中间结点
+奇数返回最中间的结点1-->2-->3-->4-->5-->null    3(5/2=2走两步）
+偶数返回中间的下一个结点1-->2-->3-->4-->null    3（4/2=2走两步）
+*/
+
+//第一种
+class Solution {
+    private int getLength(Node head){
+		Node cur=head;
+		int len=0;
+		for(cur;cur!=null;cur=cur.next){
+			len++;
+		}
+		return len;
+	}
+	public Node middleNode(Node head){
+		int steps=getLength(head)/2;
+		Node node=head;
+		for(int i=0;i<steps;i++){
+			node=node.next;
+		}
+		return node;
+}
+
+
+//第二种
+/*快的走两步，慢的走一步，最后返回慢的结点
+（我走了100米时，你差不多就走了50米,）
+  采用快走，慢走，快走进行
+*/
+class Solution {
+    public Node middleNode(Node head){
+		Node fast=head;
+		Node slow=head;
+		while(fast!=null){  //只要快的不为null,那么慢的肯定不为Null
+			fast=fast.next;//快的先走一步
+			if(fast==null){   //快的为Null就退出，返回slow
+				break;
+			}
+			slow=slow.next;//慢的走一步
+			fast=fast.next;  //此时不用判断fast为不为null,因为进循环要判断
+		}
+		return slow;
+	}
+}
+
+
+3.第三题（输出链表的倒数第k个结点）
+/*
+思考：如果链表长度<k怎么办
+//		如果>=k怎么办
+	输出链表的倒数第k个结点，链表结点要至少为K个	
+*/
+
+//第一种
+/*  p1比p2先走k步，等到p1到达链表末尾
+    p2也就到了倒数第k个位置
+*/
+public class Solution {
+    public Node FindKthToTail(Node head,int k){
+		Node front=head;
+		Node back=head;
+		for(int i=0;i<k;i++){
+			if(front==null){  //链表的长度不够k
+				return null;
+			}
+			front=front.next;
+		}//走到这front比back多走了k步
+		while(front!=null){  //两者都一步一步走
+			back=back.next;
+			front=front.next;
+		}
+		return back;
+	}
+}
+
+
+
+//第二种
+/*遍历计算出链表的结点个数
+  如果小于k返回Null
+*/
+public class Solution {
+	private int getLength(Node head){
+		Node cur=head;
+		int len=0;
+		for(cur;cur!=null;cur=cur.next){
+			len++;
+		}
+		return len;
+	}
 	
+    public Node FindKthToTail(Node head,int k){
+		int len=getLength(head);  //计算链表长度
+		if(len<k){  //链表长度不够k
+			return null;
+		}
+		Node cur=head;
+		int steps=len-k;   //走几步就到倒数第K个结点
+		for(int i=0;i<steps;i++){
+			cur=cur.next;
+		}
+		return cur;
+	}
+}
+
+4.第四题
+/*知道Pos位置的结点，要求删除这个结点，不知道链表头结点在哪
+---?---?---pos---?---?---null
+---?---?---?---?---null
+思路：把pos.next结点的值给pos
+*/
+
+public Node removePos(Node pos){
+	pos.val=pos.next.val;
+	pos.next=pos.next.next;
+}
+
+5.第五题(判断链表是不是回文的)
+/*
+先找到链表的中间节点，奇数就是最中间的，偶数就是中间的下一个
+将后半部分链表逆置
+比较前后两个链表  分别对应的每一个结点的值
+1-->2-->3-->2-->1
+1-->3-->1
+*/
+
+public class PalindromeList {
+	public boolean chkPalindrome(Node A){
+		Node mid=getMid(A);
+		Node result=reverse(mid);//从mid结点开始往后逆序
+		Node cur1=A;
+		Node cur2=result;
+		while(cur1!=null&&cur2！=null){//遍历
+			if(cur1.val!=cur2.val){
+				return false;
+			}
+			cur1=cur1.next;
+			cur2=cur2.next;
+		}
+		return true;
+	}
 	
+	public Node getMid(Node head){  //得到链表的中间节点
+		Node fast=head; 
+		Node slow=head;
+		while(fast!=null){   //只要fast!=null  那么slow也就不为Null
+			fast=fast.next;  
+			if(fast==null){
+				break;  //return slow;
+			}
+			slow=slow.next;
+			fast=fast.next;
+		}
+		return slow;
+	}
 	
+	public Node reverse(Node head){ //逆序采用头插法
+		Node result=null;
+		Node cur=head;
+		while(cur!=null){
+			Node next=cur.next;
+			cur.next=result;
+			result=cur;
+			cur=next;	
+		}
+		return result;
+	}
+}
+
+6.第六题（在一个升序链表中删除链表中所有有出现两次以上的结点）
+/*1-->2-->3-->3-->4-->4-->5-->6-->null
+  1-->2-->5-->6-->null
+*/
+public class Solution {
+    public Node deleteDuplication(Node Head){
+		if(head==null) return null;//链表没有结点
+		Node prev=null;
+		Node p1=head;
+		Node p2=head.next;
+		while(p2！=null){//p1,p2要进行比较，p2不为空，p1也就不为空
+			if(p1.val!=p2.val){
+				prev=p1;
+				p1=p2;   //只要前后两值不相等就遍历
+				p2=p2.next;
+			}
+			else{
+				while(p2!=null&&p1.val==p2.val){//找到值与p1不相等的结点
+					p2=p2.next;
+				}
+				if(prev==null){
+					head=p2;
+				}
+				else{
+					prev.next=p2;
+				}	
+				p1=p2;//p1,p2两个从同一个位置开始重新比较
+				if(p2!=null){
+					p2=p2.next;//比较的时候p2要在p1的后边，所以要p2=p2.next
+				}
 	
-	
-	
-	
-	
-	
-	
-	
+			}
+		}
+		return head;
+	}
+}
+
+
+
+39.
+
+
 
 
