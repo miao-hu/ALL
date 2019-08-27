@@ -2656,7 +2656,272 @@ public class LinkedListInterview {
 
 
 
-41.
+41./*1.第一题
+判断两个链表是否相交，如果相交返回相交交点
+*/
+
+public class Solution {
+    private int getLength(Node head){//求链表的长度
+		int len=0;
+		Node cur=head;
+		for(cur;cur!=null;cur=cur.next){
+			len++;
+		}
+		return len;
+	}
+
+	public Node getIntersectionNode(Node headA, Node headB){
+		int lenA=getLength(headA);//链表A的长度
+		int lenB=getLength(headB);//链表B的长度
+		
+		Node longer=headA;  //假设长链表是A
+		Node shorter=headB; //假设短链表是B
+		int diff=lenA-lenB; //短长链表的长度差
+		if(diff<0){   //如果长度差<0说明，短长链表要互换
+			longer=headB;
+			shorter=headA;
+			diff=lenB-lenA;
+		}
+		for(int i=0;i<diff;i++){ //先让长链表多走diff步
+			longer=longer.next;
+		}
+		while(longer!=shorter){  //只要结点不相交就后移
+			longer=longer.next;
+			shorter=shorter.next;
+		}
+		return shorter;//返回shorter、longer都可以
+	}
+}
+	
+/*2.第二题（判断链表中是否存在回环,若回环存在则返回环的入口点）
+两种思路：1)起点设置为p，相遇点设置为q，将相遇点的.next设置为null
+			就相当第一题的求相交点问题
+			有相交点就有回环，相交点就是环的入口点
+		  2)快慢指针法（快的每次2步，慢的每次1步）
+		    一个引用从起点出发，一个引用从相遇点出发
+			一定会在环的入口点相遇
+		 ----快的一次n(n>=3)步不可以，有可能会一直错过
+*/
+
+//方法一
+public class Solution {
+    public Node detectCycle(Node head) {
+	Node fast=head;
+		Node slow=head;
+		// fast 遇到 null，表示不带环，返回 null
+		// fast == slow，表示遇到相遇点了,两点相遇了
+		
+		/*while循环不行，因为一开始fast本来就等于slow
+		  循环会认为这是相遇点，所以先要保证循环执行一次在判断
+		  需要用do...while循环
+		while(fast!=slow){
+			if(fast==null){
+				return null;
+			}
+			fast=fast.next;
+			if(fast==null){
+				return null;
+			}
+			fast=fast.next;
+			slow=slow.next;
+		}
+		*/
+		
+		do{
+			if(fast==null){  //判断是否第一个结点就是null
+				return null;
+			}
+			fast=fast.next;
+			if(fast==null){
+				return null;
+			}
+			fast=fast.next;
+			slow=slow.next;
+		}while(fast!=slow);//退出循环就是相遇点
+		
+		Node p=head;//起始点
+		Node q=slow.next;//保存相遇点的.next
+		slow.next=null;//将相遇点的.next设置为null
+		//从这里开始找两个链表的交点
+		Node dest=getIntersectionNode(p, q);
+		if(dest!=null){
+			return dest;//dest为环的入口点
+		}
+	}
+	
+	private int getLength(Node head){//求链表的长度
+		int len=0;
+		Node cur=head;
+		for(cur;cur!=null;cur=cur.next){
+			len++;
+		}
+		return len;
+	}
+
+	public Node getIntersectionNode(Node headA, Node headB){
+		int lenA=getLength(headA);//链表A的长度
+		int lenB=getLength(headB);//链表B的长度
+		
+		Node longer=headA;  //假设长链表是A
+		Node shorter=headB; //假设短链表是B
+		int diff=lenA-lenB; //短长链表的长度差
+		if(diff<0){   //如果长度差<0说明，短长链表要互换
+			longer=headB;
+			shorter=headA;
+			diff=lenB-lenA;
+		}
+		for(int i=0;i<diff;i++){ //先让长链表多走diff步
+			longer=longer.next;
+		}
+		while(longer!=shorter){  //只要结点不相交就后移
+			longer=longer.next;
+			shorter=shorter.next;
+		}
+		return shorter;//返回shorter、longer都可以
+	}
+	
+}
+
+
+//方法二
+public class Solution {
+    public Node detectCycle(Node head) {
+		Node fast=head;
+		Node slow=head;
+		// fast 遇到 null，表示不带环，返回 null
+		// fast == slow，表示遇到相遇点了,两点相遇了
+		
+		/*while循环不行，因为一开始fast本来就等于slow
+		  循环会认为这是相遇点，所以先要保证循环执行一次在判断
+		  需要用do...while循环
+		while(fast!=slow){
+			if(fast==null){
+				return null;
+			}
+			fast=fast.next;
+			if(fast==null){
+				return null;
+			}
+			fast=fast.next;
+			slow=slow.next;
+		}
+		*/
+		
+		do{
+			if(fast==null){  //判断当前结点是否就是null
+				return null;
+			}
+			fast=fast.next;
+			if(fast==null){
+				return null;
+			}
+			fast=fast.next;
+			slow=slow.next;
+		}while(fast!=slow);//退出循环就是相遇点
+		
+		Node p=head;//起始点
+		Node q=slow;//相遇点
+		while(p!=q){  //相遇点和起始点相同则为环的入口点
+			p=p.next;
+			q=q.next;
+		}
+		return p;
+	}
+}
+
+
+
+/*3.第三题（对一个链表进行拷贝）
+注意：拷贝不能改变原链表，只进行值得拷贝
+浅拷贝
+*/
+
+Node copy(Node head){
+	Node result=null;
+	Node last=null;
+	Node cur=head;
+	while(cur!=null){
+		Node node=new Node();//开辟一个新的结点
+		node.val=cur.val;//把当前结点的值复制一份到node结点
+		if(result==null){
+			result=node;
+		}
+		else{
+			last.next=node;
+		}
+		last=node;
+		cur=cur.next;
+	}
+}
+
+	
+/*第四题（复杂链表深拷贝）
+注意只是值和指向关系的拷贝，不改变原链表的结点之间的联系
+题目：给定一个链表，每个结点包含一个额外增加的随机指针，
+	  该指针可以指向链表中的任何结点或空结点
+	  要求返回这个链表的深拷贝
+	  
+思路：1.先复制所有结点
+      2.处理random指向
+*/	
+
+//深拷贝
+    public CNode complexCopy(CNode head) {
+        if (head == null) {	//空链表返回null
+            return null;
+        }
+        CNode p1 = head;
+		//（老-新-老-新...）
+        while (p1 != null) {//P1用于遍历旧链表
+            CNode p2 = new CNode(p1.val);
+            p2.next = p1.next;
+            p1.next = p2;
+
+            p1 = p2.next;//旧链表的下一个结点
+        } 
+
+        p1 = head;//从头开始
+		//处理random
+        while (p1 != null) {
+            CNode p2 = p1.next; //和p1的值是相对那个节点，p1的下一个结点
+            if (p1.random != null) {
+                p2.random = p1.random.next;
+            }
+
+            p1 = p2.next;//旧链表的下一个结点
+        }
+
+        p1 = head;		//旧链表的第一个结点
+        CNode newHead = head.next;//先保存一份新链表的第一个结点
+
+        while (p1 != null) {
+            CNode p2 = p1.next;//p1的下一个结点
+
+            p1.next = p2.next;//链接旧链表
+            if (p2.next != null) {
+                p2.next = p2.next.next;//链接新链表
+            }
+
+            p1 = p1.next;
+        }
+		//p2为新链表的第一个结点和newHead类似
+        return newHead;//返回新拷贝的链表
+    }
+	
+
+	
+42.
+
+
+
+
+
+
+
+
+
+
+	
 
 
 
