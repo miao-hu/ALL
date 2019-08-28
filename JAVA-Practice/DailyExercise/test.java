@@ -2910,32 +2910,153 @@ Node copy(Node head){
 	
 
 	
-42.
+42.public class CNode {
+    int val;
+    CNode next=null;
+    CNode random=null;
+
+    public CNode(int val){
+        this.val=val;
+    }
+}
+
+public class Solution {
+    /*按x分割列表，小于x的放在大于等于x的前面
+    遍历整个链表，把小于 x 的尾插到result1
+                  把大于等于 x 的尾插到result2
+    理想情况下，把result2接到sesult1后边
+    1) 如果result1为null，直接返回result2(result2可能为空）
+    2) 保证，返回链表的最后一个结点.next == null
+    */
+
+    /*尾插
+    1. 先分情况讨论：
+       1）如果当前链表为空，要插入的结点就是链表的第一个结点
+       2) 如果链表不为空，
+                1. 先找到当前的链表最后一个结点
+                2. 让当前链表的最后一个结点.next = 要插入的结点
+                3. 如果每次的最后一个结点都是我们插入的结点
+                    可以记录上次插入的最后一个结点
+                4. 不要忘记更新最后一个结点（即last)
+     */
+    public Node separateX(Node head,int x){
+        Node result1=null;//记录小链表的第一个结点
+        Node result2=null;//记录小链表的最后一个结点
+        Node last1=null;
+        Node last2=null;
+        Node cur=head;
+        while(cur!=null){
+            if(cur.val<x){
+                /* 尾插到小的链表中 */
+                if(result1==null){
+                    result1=cur;
+                }
+                else{
+                    last1.next=cur;
+                }
+                last1=cur;
+                cur=cur.next;
+            }
+            else{/* 尾插到大的链表中 */
+                if(result2==null){
+                    result2=cur;
+                }
+                else{
+                    last2.next=cur;
+                }
+                last2=cur;
+                cur=cur.next;
+            }
+        }
+        if(result1==null){
+            return result2;
+        }
+        else{
+            last1.next=result2;
+            if(last2!=null){
+                last2.next=null;
+            }
+            return result1;
+        }
+    }
+
+
+    //删除有序链表中的重复结点
+    public Node deleteDuplicated(Node head){
+        if(head==null) return null;
+        Node prev=null;
+        Node p1=head;
+        Node p2=head.next;
+        while(p2!=null){  //遍历，只要p2不为空，p1肯定不为空
+            if(p1.val!=p2.val){
+                prev=p1;   //三者同时往后走
+                p1=p2;
+                p2=p2.next;
+            }
+            else{
+                while(p2!=null&&p1.val==p2.val){
+                    p2=p2.next;  //直到遇见p1.val!=p2.val才退出循环
+                }
+                if(prev==null){
+                    head=p2;  //要删除的结点就是第一个结点
+                }
+                else{
+                    prev.next=p2;//删除prev到p2之间该删除的结点
+                }
+                p1=p2;//两者处于同一位置重开始判断
+                if(p2!=null){//小心空指针异常
+                    p2=p2.next;
+                }
+            }
+        }
+        return head;
+    }
+
+    //深拷贝
+    public CNode complexCopy(CNode head) {
+        if (head == null) {
+            return null;
+        }
+        CNode p1 = head;
+        while (p1 != null) {
+            CNode p2 = new CNode(p1.val);
+            p2.next = p1.next;
+            p1.next = p2;
+
+            p1 = p2.next;
+        }
+
+        p1 = head;
+        while (p1 != null) {
+            CNode p2 = p1.next;
+            if (p1.random != null) {
+                p2.random = p1.random.next;
+            }
+
+            p1 = p2.next;
+        }
+
+        p1 = head;
+        CNode newHead = head.next;
+
+        while (p1 != null) {
+            CNode p2 = p1.next;
+
+            p1.next = p2.next;
+            if (p2.next != null) {
+                p2.next = p2.next.next;
+            }
+
+            p1 = p1.next;
+        }
+
+        return newHead;
+    }
+}
 
 
 
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+43.
 
 
 
