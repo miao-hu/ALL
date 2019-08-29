@@ -3056,10 +3056,168 @@ public class Solution {
 
 
 
-43.
+43.public class Node {
+    int val;
+    Node next=null;
+
+    public Node(int val){
+        this.val=val;
+    }
+
+    public String toString(){
+        return String.format("Node(%d)",val);
+    }
+
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Solution solution=new Solution();
+        testSeparateX(solution);
+        testDeleteDuplicated(solution);
+        testComplexCopy(solution);
+    }
+
+    private static void testSeparateX(Solution solution) {
+        Node head1 = prepareListForSeparateX1();//创建链表
+        Node result1 = solution.separateX(head1, 5);
+        print(result1);
+
+        Node head2 = prepareListForSeparateX2();//创建链表
+        Node result2 = solution.separateX(head2, 5);
+        print(result2);
+
+        Node head3 = prepareListForSeparateX3();//创建链表
+        Node result3 = solution.separateX(head3, 5);
+        print(result3);
+    }
+
+    private static void testDeleteDuplicated(Solution solution) {
+        Node head1 = prepareListForDeleted1();//创建链表
+        Node result1 = solution.deleteDuplicated(head1);
+        print(result1);
+
+        Node head2 = prepareListForDeleted2();//创建链表
+        Node result2 = solution.deleteDuplicated(head2);
+        print(result2);
+
+        Node head3 = prepareListForDeleted3();//创建链表
+        Node result3 = solution.deleteDuplicated(head3);
+        print(result3);
+
+        Node head4 = null;//创建链表使链表为Null
+        Node result4 = solution.deleteDuplicated(head4);
+        print(result4);
+    }
+
+    private static void testComplexCopy(Solution solution) {
+        CNode n1 = new CNode(1);
+        CNode n2 = new CNode(2);
+        CNode n3 = new CNode(3);
+        CNode n4 = new CNode(4);
+
+        n1.random = n3; n2.random = n1; n3.random = n3;
+        n1.next = n2; n2.next = n3; n3.next = n4;
+
+        CNode result = solution.complexCopy(n1);//引用变量.方法名（）；
+        System.out.println("成功");
+    }
+
+    private static Node prepareListForSeparateX1() {
+        Node n1 = new Node(1);
+        Node n2 = new Node(1);
+        Node n3 = new Node(1);
+        Node n4 = new Node(1);
+        Node n5 = new Node(1);
+
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        return n1;
+    }
+
+    private static Node prepareListForSeparateX2() {
+        Node n1 = new Node(9);
+        Node n2 = new Node(9);
+        Node n3 = new Node(9);
+        Node n4 = new Node(9);
+        Node n5 = new Node(9);
+
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        return n1;
+    }
+
+    private static Node prepareListForSeparateX3() {
+        Node n1 = new Node(9);
+        Node n2 = new Node(1);
+        Node n3 = new Node(8);
+        Node n4 = new Node(2);
+        Node n5 = new Node(7);
+
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        return n1;
+    }
+
+    private static Node prepareListForDeleted1() {
+        Node n1 = new Node(9);
+        Node n2 = new Node(9);
+        Node n3 = new Node(9);
+        Node n4 = new Node(9);
+        Node n5 = new Node(9);
+
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        return n1;
+    }
+
+    private static Node prepareListForDeleted2() {
+        Node n1 = new Node(8);
+        Node n2 = new Node(8);
+        Node n3 = new Node(9);
+        Node n4 = new Node(9);
+        Node n5 = new Node(9);
+
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        return n1;
+    }
+
+    private static Node prepareListForDeleted3() {
+        Node n1 = new Node(1);
+        Node n2 = new Node(3);
+        Node n3 = new Node(4);
+        Node n4 = new Node(4);
+        Node n5 = new Node(5);
+
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        return n1;
+    }
+
+    private static void print(Node head){
+        for( Node cur=head;cur!=null;cur=cur.next){
+            System.out.print(cur.val+"-->");
+        }
+        System.out.println("null");
+    }
+}
 
 
 
+44.
 
 
 
