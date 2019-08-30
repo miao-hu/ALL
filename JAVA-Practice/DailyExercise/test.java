@@ -3217,7 +3217,215 @@ public class Main {
 
 
 
-44.
+44.//MyLinkedList.java
+class Node {
+    int val;
+    Node next = null;   // 指向后继结点，最后一个结点的 next == null
+    Node prev = null;   // 指向前驱结点，第一个结点的 prev == null
+
+    Node(int val) {
+        this.val = val;
+    }
+}
+
+public class MyLinkedList {
+    private Node head = null;//链表的第一个结点
+    private Node last = null;//链表的最后一个结点
+    private int size = 0;//链表中结点的个数
+
+    public static void main(String[] args) {
+        MyLinkedList list = new MyLinkedList();//创建一个空链表
+        list.pushFront(1);//头插
+        list.pushFront(2);
+        list.pushFront(3);
+        System.out.println("头插后：3 2 1");
+        list.popFront();//头删
+        list.popFront();
+        list.popFront();
+        System.out.println("头删后：空链表");
+        list.pushBack(10);//尾插
+        list.pushBack(20);
+        list.pushBack(30);
+        System.out.println("尾插后：10 20 30");
+        list.popBack();//尾删
+        list.popBack();
+        list.popBack();
+        System.out.println("尾删后：空链表");
+        list.pushBack(1);//尾插
+        list.pushBack(2);
+        list.pushBack(3);
+        list.pushBack(4);
+        list.pushBack(5);
+        System.out.println("尾插后：1 2 3 4 5");
+        list.add(1, 10);
+        System.out.println("1 10 2 3 4 5");
+        list.add(5, 20);
+        System.out.println("1 10 2 3 4 20 5");
+        list.remove(1);
+        System.out.println("1 2 3 4 20 5");
+        list.remove(4);
+        System.out.println("1 2 3 4 5");
+    }
+
+    //头插
+    public void pushFront(int val) {
+        Node node = new Node(val);//先创建一个结点
+        node.next = head;
+        if (head != null) {
+            head.prev = node;
+        } else {
+            last = node;
+        }
+        head = node;//不管怎样head都是刚插进来的结点
+        size++;
+    }
+
+    //头删
+    public void popFront() {
+        if (size <= 0) {
+            System.out.println("无法对空链表做删除");
+            return;
+        }
+        head = head.next;
+        if (head != null) {//这个新的head不为空
+            head.prev = null;
+        } else {
+            last = null;
+        }
+        size--;
+    }
+
+    //尾插
+    void pushBack(int val) {
+        Node node = new Node(val);//先创建一个新的结点
+        if (last == null) {//链表为空
+            head = node;
+        } else {
+            last.next = node;
+        }
+        node.prev = last;
+        last = node;//只要插入结点，这个结点就是最后一个结点
+        size++;
+    }
+
+    //尾删
+    void popBack() {
+        if (size <= 0) {
+            System.out.println("无法对空链表做删除");
+            return;
+        }
+
+        if (last == head) {//原链表本来就只有一个结点删除后为空链表
+            head = last = null;
+        } else {
+            last.prev.next = null;
+            last = last.prev;//Last成倒数第二个结点
+        }
+        size--;
+    }
+
+    //往下标为Index的结点前插入一个结点，该节点的值为val
+    public void add(int index, int val) {
+        if (index < 0 || index > size) {
+            System.out.println("下标错误");
+            return;
+        }
+        if (index == 0) {
+            pushFront(val);//头插
+        } else if (index == size) {
+            pushBack(val);//尾插
+        } else {
+            Node pos = getNode(index);//得到此下标处的结点
+            Node node = new Node(val);//创建一个新的结点
+            node.prev = pos.prev;
+            node.next = pos;
+            node.prev.next = node;
+            node.next.prev = node;
+            size++;
+        }
+    }
+
+    //删除下标为Index的结点
+    public void remove(int index) {
+        if (size <= 0) {
+            System.out.println("无法对空链表做删除");
+            return;
+        }
+
+        if (index < 0 || index >= size) {
+            System.out.println("下标错误");
+            return;
+        }
+
+        if (index == 0) {
+            popFront();//头删
+        } else if (index == size - 1) {
+            popBack();//尾删
+        } else {
+            Node pos = getNode(index);//得到下标为index处的结点
+            pos.prev.next = pos.next;
+            pos.next.prev = pos.prev;
+            size--;
+        }
+    }
+
+    //得到下标为index的结点
+    private Node getNode(int index) {
+        // 代码的复用性，所以创建一个方法
+        // 不需要校验 index 的合法性
+        // 因为使用者 add 和 remove 已经做过类似工作了
+        int backwardIndex = size - index - 1;//倒着数的下标
+        Node pos;
+        //正着数的下标<=倒着数的下标
+        if (index <= backwardIndex) {//正着来
+            pos = head;
+            for (int i = 0; i < index; i++) {
+                pos = pos.next;
+            }
+        } else {//反着来
+            pos = last;
+            for (int i = 0; i < backwardIndex; i++) {
+                pos = pos.prev;
+            }
+        }
+        return pos;
+    }
+
+    //得到链表的结点个数
+    public int size() {
+        return size;
+    }
+
+    //判断链表是否为空
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    //将链表清空
+    public void reset() {
+        head = last = null;
+        size = 0;
+    }
+
+}
+
+
+
+45.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
