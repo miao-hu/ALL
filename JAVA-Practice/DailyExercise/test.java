@@ -3411,7 +3411,68 @@ public class MyLinkedList {
 
 
 
-45.
+45.public class CNode {
+    int val;
+    CNode next = null;//指向下一个结点
+    CNode random = null;//指向随机结点
+
+    CNode(int val) {
+        this.val = val;
+    }
+
+    public String toString() {
+        return String.format("CNode(%d)", val);
+    }
+}
+
+public class Solution {
+    //深拷贝
+    public CNode copy(CNode head) {
+        if (head == null) {
+            return null;
+        }
+        CNode p1 = head;
+        while (p1 != null) {
+            CNode p2 = new CNode(p1.val);
+            p2.next = p1.next;
+            p1.next = p2;
+            p1 = p2.next;
+        }
+        p1 = head;
+        while (p1 != null) {
+            CNode p2 = p1.next;
+            if (p1.random != null) {
+                p2.random = p1.random.next;
+            }
+            p1 = p2.next;//更新p1
+        }
+        p1 = head;
+        CNode newHead = head.next;
+        while (p1 != null) {
+            CNode p2 = p1.next;
+            p1.next = p2.next;
+            if (p2.next != null) {//害怕空指针引用
+                p2.next = p2.next.next;
+            }
+            p1 = p1.next;
+        }
+        return newHead;//newHead其实和p2差不多
+    }
+}
+
+
+
+46.
+
+
+
+
+
+
+
+
+
+
 
 
 
