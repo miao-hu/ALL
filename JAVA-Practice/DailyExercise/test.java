@@ -3462,7 +3462,70 @@ public class Solution {
 
 
 
-46.
+46.import java.util.ArrayList;     //顺序表（java自带的）
+import java.util.LinkedList;    //链表
+
+class Person {
+    public String name;
+    public int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+public class TestMain {
+    public static void main(String[] args) {
+        /*  <>代表泛型 代表这个顺序表里面元素的类型
+            这里是Person类型的
+         */
+        ArrayList<Person> arrayList = new ArrayList<>();
+        arrayList.add(new Person("A", 7));
+        arrayList.add(new Person("B", 9));
+        arrayList.add(new Person("C", 19));
+
+        for (int i = 0; i < arrayList.size(); i++) {
+            Person p = arrayList.get(i);//得到顺序表的第i个元素
+            System.out.print(p.name + ":" + p.age+"   ");
+        }
+        System.out.println();
+        for (Person p : arrayList) {//遍历 arrayList
+            System.out.print(p.name + ":" + p.age+"   ");
+        }
+        System.out.println();
+
+        /*  <>代表泛型 代表这个链表里面元素的类型
+            这里是Person类型的
+         */
+        LinkedList<Person> linkedList = new LinkedList<>();
+        linkedList.add(new Person("A", 7));
+        linkedList.add(new Person("B", 9));
+        linkedList.add(new Person("C", 19));
+
+        for (int i = 0; i < linkedList.size(); i++) {
+            Person p = linkedList.get(i);
+            System.out.print(p.name + ":" + p.age+"   ");
+        }
+        System.out.println();
+        for (Person p : linkedList) {
+            System.out.print(p.name + ":" + p.age+"   ");
+        }
+    }
+}
+
+
+
+47.
+
+
+
+
+
+
+
+
+
 
 
 
