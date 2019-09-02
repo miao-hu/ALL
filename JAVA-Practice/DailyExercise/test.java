@@ -3516,40 +3516,65 @@ public class TestMain {
 
 
 
-47.
+47.//Stack.java
+import java.util.Arrays;//引入这个包
+
+public class Stack{
+	private int[] array;//采用顺序表定义栈
+	private int top;//当前栈的栈顶
+	
+	public Stack(int defaultCapacity){
+		array=new int[defaultCapacity];
+		top=0;
+	}
+	
+	public Stack(){
+		this(20);
+	}
+	
+	//插入数据（尾插）
+	public void push(int val){
+		if(top==arrary.length){//栈满需要扩容
+			array=Arrays.copyOf(array,array.length*2);
+		}
+		array[top]=val;
+		top++;
+	}
+	
+	//删除数据（尾删）
+	public void pop(){
+		if(top<=0){
+			System.out.println("栈为空，无法删除");
+			return;
+		}
+		top--;
+		array[top]=0;	
+	}
+	
+	//查看栈顶数据
+	public int pop(){
+		if(top<=0){
+			System.out.println("栈为空，无法返回栈顶元素");
+			return -1;
+		}
+		return array[top-1];
+	}
+	
+	//返回栈内数据元素个数
+	public int size(){
+		return top;
+	}
+	
+	//判断栈是否为空
+	public boolean isEmpty(){
+		return top==0;
+	}
+	
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+48.
 
 
 
