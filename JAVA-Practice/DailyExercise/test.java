@@ -3574,7 +3574,8 @@ public class Stack{
 
 
 
-48.import java.util.Arrays;//引入这个包
+48.//OtherStack.java
+import java.util.Arrays;//引入这个包
 
 public class OtherStack{
 	private int[] array;//采用顺序表定义栈
