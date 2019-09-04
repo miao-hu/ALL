@@ -3632,9 +3632,60 @@ public class OtherStack{
 
 
 
-49.
+49./*
+([{}])   括号匹配问题
+遍历字符串中的每个字符：
+    1.如果是左括号：全部入栈
+    2.如果是右括号：判断栈是否为空：若为空说明右括号多余不匹配
+                    不为空就出栈顶元素，判断栈顶元素和当前右括号是否匹配
+                    若匹配，则继续循环，否则直接返回false
+    3.字符串遍历完毕后判断栈是否为空，若不为空说明左括号多余，不匹配
+      若为空，说明字符串左右括号匹配，返回true
+ */
+
+import java.util.ArrayList; //定义java中已经实现的顺序表
+
+public class Match {
+    public boolean isValid(String s){
+        ArrayList<Character> stack=new ArrayList<>();
+       // 引用类型<对象类型>  变量名=new  引用类型<>();
+
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);     //获取字符串中的每一个字符
+            switch(c){   //如果是左括号压栈，结束本次循环
+                case '(':
+                case '[':
+                case '{':
+                    stack.add(c);   //压栈（吧所有的左括号都要压栈）
+                    break;
+                case ')':   //如果是右括号
+                case ']':
+                case '}':
+                    if(stack.isEmpty()){    //栈为空，右括号多余
+                        return false;
+                    }
+                    char left=stack.remove(stack.size()-1); //出栈顶元素
+                    if(!((left=='('&&c==')')||(left=='{'&&c=='}')
+                            ||(left=='['&&c==']'))){
+                        return false;
+                    }
+                    break;
+                default:break;
+            }
+        }
+
+        //字符串每个字符都判断完毕后，判断栈是否为空，若不为空则左括号多余
+        if(stack.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
 
 
+
+50.
 
 
 
