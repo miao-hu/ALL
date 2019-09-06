@@ -3685,7 +3685,8 @@ public class Match {
 
 
 
-50./*
+50.MinStackA.java
+/*
 设计一个支持push,pop,top的操作，并能在常数时间内检索到最小元素的栈
 Push（x)将元素x推入栈
 pop()删除栈顶元素
@@ -3738,9 +3739,64 @@ public class MinStackA {
 
 
 
-51.
+51.MinStackB.java
+/*
+设计一个支持push,pop,top的操作，并能在常数时间内检索到最小元素的栈
+Push（x)将元素x推入栈
+pop()删除栈顶元素
+top()获取栈顶元素
+getMin()检索栈中最小元素
+
+思路：设置两个栈，两个栈都入栈,最终两个栈的元素个数相同
+      一个栈normal入所有的元素，另一个栈min入小元素
+      如果刚刚压入normal栈的元素大于min的栈顶元素，则min栈还是入Min栈的栈顶元素
+      如果小于，则min栈入此时压入normal栈的小元素
+      如果等于，入min栈的栈顶元素
+ */
+
+import java.util.ArrayList; //导入java中自带的顺序表
+
+public class MinStackB {
+    private ArrayList<Integer> normal;
+    private ArrayList<Integer> min;
+
+    public MinStackB(){
+        normal=new ArrayList<>();
+        min=new ArrayList<>();
+    }
+
+    public void push(int x) {
+        normal.add(x);  //每个元素都必须压入normal栈
+
+        if(min.isEmpty()){
+            min.add(x);
+        }else if(x>min.get(min.size()-1)){  //x>min栈的栈顶元素
+            min.add(min.get(min.size()-1));
+        }else{
+            min.add(x);
+        }
+    }
+
+    //移除栈顶元素
+    public void pop() {
+        normal.remove(normal.size()-1);
+        min.remove(min.size()-1);
+    }
+
+    //得到栈顶元素并不删除
+    public int top() {
+        return normal.get(normal.size()-1);
+    }
+
+    //返回最小元素
+    public int getMin() {
+        return min.get(min.size()-1);
+    }
+}
 
 
+
+52.
 
 
 
