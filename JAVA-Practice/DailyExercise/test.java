@@ -3866,7 +3866,70 @@ class MyCircularQueue {
 
 
 
-53.
+53.MyQueue.java
+/* 用栈实现队列
+栈：先进后出      队列：先进先出
+栈：1 2 3         队列：3 2 1
+需要两个栈来实现
+入栈：in     出栈：out
+
+注意：用栈来实现队列用顺序表ArrayList
+      栈通过下标访问即可
+*/
+
+import java.util.ArrayList; //导入java中自带的顺序表
+
+public class MyQueue {
+    private ArrayList<Integer> in;  //入栈
+    private ArrayList<Integer> out; //出栈
+
+    //构造方法
+    public MyQueue() {
+        in=new ArrayList<Integer>();
+        out=new ArrayList<Integer>();
+    }
+
+    public void push(int x) {
+        in.add(x);   //把所有元素都压栈到In栈
+    }
+
+    public int pop() {
+        if(out.isEmpty()){  //out栈是空的
+            int size=in.size();
+            for(int i=0;i<size;i++){    //把in栈里的所有元素移到out栈
+                int v=in.remove(in.size()-1);
+                out.add(v);
+            }
+        }
+        return out.remove(out.size()-1);//返回栈顶元素并删除
+    }
+
+    public int peek() {
+        if(out.isEmpty()){  //如果out栈是空的
+            int size=in.size();
+            for(int i=0;i<size;i++){
+                int v=in.remove(in.size()-1);
+                out.add(v);
+            }
+        }
+        return out.get(out.size()-1);  //只返回栈顶元素并不删除
+    }
+
+    public boolean empty() {
+        return in.isEmpty()&&out.isEmpty();
+    }
+}
+
+
+
+54.
+
+
+
+
+
+
+
 
 
 
