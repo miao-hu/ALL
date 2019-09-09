@@ -3922,7 +3922,69 @@ public class MyQueue {
 
 
 
-54.
+54.MyStack.java
+/*用队列实现栈
+队列：先进先出     栈：先进后出
+队列：1 2 3        栈：3 2 1
+
+注意：用队列来实现栈用链表LinkedList
+      因为队列需要知道front  rear
+
+ */
+
+import java.util.LinkedList;    //导入java中自带的链表
+
+class MyStack {
+    private LinkedList<Integer> queue;//定义一个链表用来表示队列
+
+    /** Initialize your data structure here. */
+    public MyStack() {
+        queue=new LinkedList<>();
+    }
+
+    /** Push element x onto stack. */
+    public void push(int x) {
+        queue.addLast(x); //把x放到当前队列的最后一个元素下一个位置
+    }
+
+    /** Removes the element on top of the stack and returns that element. */
+    public int pop() {
+        for(int i=0;i<queue.size()-1;i++) {//先把队列内n-1个元素往后移
+            int v=queue.pollFirst();//得到队列中的第一个元素
+            queue.addLast(v);//把v放到当前队列的最后一个元素下一个位置
+        }
+        return queue.pollFirst();//返回队列中的第一个元素的值
+    }
+
+    /** Get the top element. */
+    public int top() {
+        for(int i=0;i<queue.size()-1;i++) {
+            int v=queue.pollFirst();
+            queue.addLast(v);
+        }
+        int v=queue.pollFirst();//得到队列中的第一个元素的值
+        queue.addLast(v);//把队列中的第一个元素移动到队列的最后一个元素的下一个位置
+        return v;
+    }
+
+    /** Returns whether the stack is empty. */
+    public boolean empty(){
+        return queue.isEmpty();
+    }
+}
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack obj = new MyStack();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.top();
+ * boolean param_4 = obj.empty();
+ */
+
+
+
+55.
 
 
 
