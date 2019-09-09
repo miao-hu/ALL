@@ -3984,7 +3984,93 @@ class MyStack {
 
 
 
-55.
+55.Queue.java
+class Node{
+    int val;
+    Node next;
+
+    Node(int val,Node next){
+        this.val=val;
+        this.next=next;
+    }
+
+    Node(int val){
+        this(val,null);
+    }
+}
+
+//队列
+public class Queue {
+    private Node front=null; //队列的第一个结点
+    private Node rear=null;  //队列的最后一个结点
+    private int size=0;   //队列中的元素个数
+
+    // 尾插
+    public void push(int val){
+        Node node=new Node(val);
+        if(front==null){
+            front=node;
+        }else{
+            rear.next=node;
+        }
+        rear=node;
+        size++;
+    }
+
+    // 头删
+    public void pop(){
+        if(size<=0){
+            System.out.println("队列为空，无法删除");
+            return;
+        }
+        front=front.next;
+        if(front==null){
+            rear=null;
+        }
+        size--;
+    }
+
+    //返回队首元素
+    public int front(){
+        if(size<=0){
+            System.out.println("队列为空，无法返回队首元素");
+            return -1;
+        }
+        return front.val;
+    }
+
+    //返回队尾元素
+    public int rear(){
+        if(size<=0){
+            System.out.println("队列为空，无法返回队尾元素");
+            return -1;
+        }
+        return rear.val;
+    }
+
+    //返回当前队列有多少个元素
+    public int size(){
+        return size;
+    }
+
+    //判断队列是否为空
+    public boolean isEmpty(){
+        return size==0;
+    }
+}
+
+
+
+56.
+
+
+
+
+
+
+
+
+
 
 
 
