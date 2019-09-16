@@ -4309,7 +4309,60 @@ Hello B! 构造⽅法
 
 
 
-60.
+60.//InstanceOrder.java
+class AA {
+    int a = initA();
+    private int initA() {
+        System.out.println("AA 的初始化");
+        return 0;
+    }
+    {
+        System.out.println("AA 的构造代码块");
+    }
+    AA(int x) {
+        System.out.println("AA 的构造方法");
+    }
+}
+
+class BB extends AA {
+    int b = initB();
+    private int initB() {
+        System.out.println("BB 的初始化 ");
+        return 0;
+    }
+    {
+        System.out.println("BB 的构造代码块");
+    }
+    BB(int x) {
+        super(x);
+        System.out.println("BB 的有参构造方法");
+    }
+    BB() {
+        this(100);
+        System.out.println("BB 的无参构造方法");
+    }
+}
+
+//实例的顺序
+public class InstanceOrder {
+    public static void main(String[] args) {
+        new BB();  //打印一次
+       // new BB();有这句话打印两次
+    }
+}
+
+/*
+AA 的初始化
+AA 的构造代码块
+AA 的构造方法
+BB 的初始化
+BB 的构造代码块
+BB 的有参构造方法
+BB 的无参构造方法
+ */
+
+
+61.
 
 
 
