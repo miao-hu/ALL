@@ -4592,22 +4592,74 @@ class LinkedList extends AbstractList implements List{
 
 
 66.
+class A {
+    public void method() {
+        System.out.println("A 的普通方法");
+    }
+
+    public static void staticMethod() {
+        System.out.println("A 的静态方法");
+    }
+}
+
+class B extends A {
+    @Override
+    public void method() {
+        System.out.println("B 的普通方法");
+    }
+
+    //在这里写@Override是错误的，因为静态方法没有重载一说
+    public static void staticMethod() {
+        System.out.println("B 的静态方法");
+    }
+
+    public void methodOfB() {
+        System.out.println("只有 B 所拥有的方法");
+    }
+}
+
+//B类继承A类   A父类  B子类
+public class Main {
+    public static void main(String[] args) {
+        A aa = new A();
+        B bb = new B();
+        A ab = new B();
+
+        //B ba = new A(); //编译错误
+
+        aa.method(); //A 的普通方法
+        ab.method(); //B 的普通方法
+
+        // aa.methodOfB(); 编译错误  编译看的是引用类型不是实际类型
+        // ab.methodOfB(); 编译错误
+        bb.method();    //B 的普通方法
+        bb.methodOfB(); //只有 B 所拥有的方法
+
+        System.out.println("=============");
+
+        // 警告，永远不要这么写   ！！！类名.方法名（）
+        aa.staticMethod();  //A 的静态方法
+        ab.staticMethod();  //A 的静态方法   静态方法看引用类型
+        bb.staticMethod();  //B 的静态方法
+
+        System.out.println("=============");
+
+        // 向下类型转化
+        if (ab instanceof B) {
+            B b = (B) ab;
+            b.methodOfB();  //只有 B 所拥有的方法
+        }
+
+        if (aa instanceof B) {
+            B c = (B) aa;
+            c.methodOfB();
+        }
+    }
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+67.
 
 
 
