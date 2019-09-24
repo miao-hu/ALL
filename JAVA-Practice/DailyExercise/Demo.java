@@ -4659,7 +4659,30 @@ public class Main {
 
 
 
-67.
+67.//产生随机数
+import java.util.Random; //导入这个包
+
+/*
+java.util.Random类：
+    Random(seed:long)以一个特定值作为种子创建一个Random对象
+    nextInt(n:int):int 返回一个0到n(不包含n）之间的随机Int类型的值
+ */
+public class RandomNumber {
+    public static void main(String[] args) {
+        Random number=new Random(20190907);
+        System.out.print("随机数字为：");
+        for(int i=0;i<5;i++){
+            System.out.print(number.nextInt(100)+" ");
+        }
+    }
+}
+
+
+
+68.
+
+
+
 
 
 
