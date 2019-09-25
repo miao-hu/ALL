@@ -4679,7 +4679,116 @@ public class RandomNumber {
 
 
 
-68.
+68.//YangHuiSanJiao.java
+import java.util.ArrayList;
+import java.util.List;
+
+public class YangHuiSanJiao {
+    public List<List<Integer>> generate1(int numRows) {  //numRows是行数
+        List<List<Integer>> list=new ArrayList<>();
+        for(int i=0;i<numRows;i++){
+            list.add(new ArrayList<>()); //给list增加numRows行
+        }
+        //将每行中的数字全部置为1
+        for(int i=0;i<numRows;i++){
+            for(int j=0;j<=i;j++){
+                list.get(i).add(1);//给第i+1行全部置为1
+            }
+        }
+        //修改
+        for(int i=2;i<numRows;i++){ //从第三行开始修改
+            for(int j=1;j<i;j++) {
+                int a = list.get(i - 1).get(j - 1);
+                int b = list.get(i - 1).get(j);
+                list.get(i).set(j,a+b);
+            }
+        }
+        return list;
+    }
+
+    /*
+    int[][] array= {{1},
+                    {1,2},
+                    {1,2,1},
+                    {1,3,3,1},
+                    {1,4,6,4,1}}
+     */
+    public List<List<Integer>> generate2(int numRows) {  //numRows是行数
+        List<List<Integer>> list=new ArrayList<>();
+        //第一行
+        list.add(new ArrayList<>());
+        list.get(0).add(1);
+        //第二行
+        list.add(new ArrayList<>());
+        list.get(1).add(1);
+        list.get(1).add(1);
+        //第三行
+        list.add(new ArrayList<>());
+        list.get(2).add(1);
+        list.get(2).add(2);
+        list.get(2).add(1);
+        //第四行
+        list.add(new ArrayList<>());
+        list.get(3).add(1);
+        list.get(3).add(3);
+        list.get(3).add(3);
+        list.get(3).add(1);
+        //第五行
+        list.add(new ArrayList<>());
+        list.get(4).add(1);
+        list.get(4).add(5);
+        list.get(4).add(10);
+        list.get(4).add(10);
+        list.get(4).add(5);
+        list.get(4).add(1);
+
+        if(numRows==5){
+            return list;
+        }
+
+        if(numRows<5){
+            return list.subList(0,numRows);
+        }
+
+        return null;
+    }
+
+    public List<List<Integer>> generate3(int numRows) {  //numRows是行数
+        List<List<Integer>> list=new ArrayList<>();
+        //第一行
+        list.add(new ArrayList<>());
+        list.get(0).add(1);
+        //第二行
+        list.add(new ArrayList<>());
+        list.get(1).add(1);
+        list.get(1).add(1);
+        //从第三行开始
+        for(int i=2;i<numRows;i++){
+            list.add(new ArrayList<>());//增加一行
+            list.get(i).add(1);//第一个为1
+            for(int j=1;j<i;j++){
+                int a=list.get(i-1).get(j-1);
+                int b=list.get(i-1).get(j);
+                list.get(i).add(a+b);
+            }
+            list.get(i).add(1);//最后一个为1
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new YangHuiSanJiao().generate1(4));
+        System.out.println(new YangHuiSanJiao().generate2(4));
+        System.out.println(new YangHuiSanJiao().generate3(6));
+    }
+}
+
+
+
+69.
+
+
+
 
 
 
