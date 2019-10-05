@@ -43,10 +43,40 @@ public class QuickSort {
                 }
             }
         }
+        /*  这种排大数据会产生栈溢出
         int pivotIndex=partition3(array,left,right);
-        //此时已经根据基准值将数组划分为左右区间
+        此时已经根据基准值将数组划分为左右区间
         quickSortInter(array,left,pivotIndex-1); //对左区间进行快排
         quickSortInter(array,pivotIndex+1,right); //对右区间进行快排
+        */
+
+        int[] pivotIndices = partition4(array, left, right);
+        quickSortInter(array, left, pivotIndices[0]);
+        quickSortInter(array, pivotIndices[1], right);
+    }
+
+    /*
+        保证less左边的都比基准值小    big右边的都比基准值大
+        [less,big]之间的都和基准值相同     i用来遍历整个d待排序的数组
+     */
+    private static int[] partition4(int[] array, int left, int right) {
+        int less=left;
+        int big=right;
+        int pivot=array[left];
+        int i=left;  //从头开始遍历
+        while(i<=big) {
+            if(array[i]==pivot){
+                i++;
+            }else if(array[i]>pivot){
+                swap(array,i,big);
+                big--;
+            }else{
+                swap(array,i,less);
+                less++;
+                i++;
+            }
+        }
+        return new int[] {less-1,big+1};
     }
 
     private static void swap(int[] array, int i, int j) {
