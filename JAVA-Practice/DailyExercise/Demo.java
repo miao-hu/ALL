@@ -4835,7 +4835,61 @@ public class CollectionDemo {
 
 
 
-70.
+70.import java.util.Scanner;
+/*
+    输入一个数字number   问最少还差几步可以得到最近的斐波那契数
+    即到离他最近的斐波那契数还需要几步  每次只能走减1加1步
+ */
+public class Solution {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        System.out.print("请输入一个数字：");
+        int number=input.nextInt();
+        int steps=getStep(number);
+        System.out.println(steps);
+    }
+
+    private static int getStep(int n){
+        for(int i=0;i<n;i++){
+            int num=Fibonacci(i);
+            if(n==num){
+                return 0;
+            }else if(n>Fibonacci(i)&&n<Fibonacci(i+1)){
+                int a=n-Fibonacci(i);
+                int b=Fibonacci(i+1)-n;
+                if(a<b){
+                    return a;
+                }else if(a==b){
+                    return a;
+                }else{
+                    return b;
+                }
+            }
+        }
+        return 0;
+    }
+
+    private static int  Fibonacci(int n) {
+        if(n==0){
+            return 0;
+        }else if(n==1||n==2){
+            return 1;
+        }else{
+            return Fibonacci(n-1)+Fibonacci(n-2);
+        }
+    }
+
+}
+
+
+
+71.
+
+
+
+
+
+
 
 
 
