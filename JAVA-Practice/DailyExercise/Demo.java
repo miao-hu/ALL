@@ -4883,14 +4883,40 @@ public class Solution {
 
 
 
-71.
+71.//编写一个函数，以字符串作为输入，反转该字符串中的元音字母。
+class Solution {
+    public String reverseVowels(String s) {
+        if(s.length()==0){
+            return "";
+        }
+       char[] a=s.toCharArray();
+        int i=0,j=a.length-1;
+        while(i<j){
+            while(i<j&&!isHave(a[i])){
+                i++;
+            }
+            while(i<j&&!isHave(a[j])){
+                j--;
+            }
+            char c=a[i];
+            a[i]=a[j];
+            a[j]=c;
+            i++;
+            j--;
+        }
+        return String.valueOf(a);
+    }
+    
+    private boolean isHave(char c){
+        return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'e' || c == 'u' || c == 'A' || c == 'E' || c == 'I'                                   || c == 'O' || c == 'E' || c == 'U');
+    }
+    
+}
 
 
 
 
-
-
-
+72.
 
 
 
