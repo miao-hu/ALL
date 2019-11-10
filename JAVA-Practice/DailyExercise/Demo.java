@@ -4916,7 +4916,61 @@ class Solution {
 
 
 
-72.
+72./*
+输出一个数字，表示把字符串B插入字符串A之后，
+构成一个回文串的方法数
+ */
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        String s1=input.nextLine();
+        String s2=input.nextLine();
+        int len=s1.length();
+        int count=0;
+        for(int i=0;i<=len;i++){
+            StringBuilder s3=new StringBuilder(s1);
+            s3.insert(i,s2);
+            if(isTrue(s3.toString())){
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+    public static boolean isTrue(String s){
+        int i=0;
+        int j=s.length()-1;
+        while(i<j){
+            if(s.charAt(i) != s.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+}
+
+
+
+73.import java.util.Scanner;
+
+public class Main4 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String s1 = "abc";
+        StringBuilder s2=new StringBuilder(s1);
+        System.out.println(s2);
+        StringBuilder s3=s2.reverse();
+        System.out.println(s2);
+        System.out.println(s3);
+    }
+}
+
+
+
+74.
 
 
 
