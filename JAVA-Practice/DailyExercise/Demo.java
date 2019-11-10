@@ -4970,7 +4970,47 @@ public class Main4 {
 
 
 
-74.
+74./*
+
+输出一个数字，表示把字符串B插入字符串A之后，
+构成一个回文串的方法数
+ */
+import java.util.*;
+
+public class Main1 {
+    public static void main(String[] args){
+        Scanner input= new Scanner(System.in);
+        String s1=input.nextLine();
+        String s2=input.nextLine();
+        int count=0;
+        if(isPlindrome(s2+s1,0,s1.length()+s2.length()-1)){
+            count++;
+        }
+        for(int i=1;i<s1.length();i++){
+            if(isPlindrome(s1.substring(0,i)+s2+s1.substring(i),0,s1.length()+s2.length()-1)){
+                count++;
+            }
+        }
+        if(isPlindrome(s1+s2,0,s1.length()+s2.length()-1)){
+            count++;
+        }
+        System.out.println(count);
+    }
+    public static boolean isPlindrome(String s,int i,int j){
+        while(i<j){
+            if(s.charAt(i)!=s.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+}
+
+
+
+75.
 
 
 
