@@ -5010,7 +5010,87 @@ public class Main1 {
 
 
 
-75.
+75./*
+有一组数，对于其中任意两个数组，若前面一个大于后面一个数字，
+则这两个数字组成一个逆序对。请设计一个高效的算法，
+计算给定数组中的逆序对个数。
+给定一个int数组A和它的大小n,请返回A中
+的逆序对个数。保证n小于等于5000。
+
+测试样例:
+[1,2,3,4,5,6,7,0],8
+返回: 7
+
+ */
+import java.util.*;
+
+public class Main {
+    public int count(int[] A, int n) {
+        int count=0;
+        for(int i=0;i<A.length;i++){
+            for(int j=i+1;j<A.length;j++){
+                if(A[i]>A[j]){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
+
+
+
+76./*
+有这样-道智力题:“某商店规定:三个空汽水瓶可以换一瓶汽水。小张手上有十个空汽水
+瓶，她最多可以换多少瓶汽水喝?”答案是5瓶，方法如下:先用9个空瓶子换3瓶汽水,喝
+掉3瓶满的，喝完以后4个空瓶子，用3个再换一瓶， 喝掉这瓶满的,这时候剩2个空瓶子。然
+后你让老板先借给你一瓶汽水,喝掉这瓶满的，喝完以后用3个空瓶子换-瓶满的还给老
+板。如果小张手上有n个空汽水瓶，最多可以换多少瓶汽气水喝?
+
+输入描述:
+输入文件最多包含10组测试数据，每个数据占一行，仅包含一一个正整数n (1<=n<=100) ,表
+示手上的空汽水瓶数。I
+n=0表示输入结束，你的程序不应当处理这一行。
+输出描述:
+对于每组测试数据，输出一行，表示最多可以.喝的汽水瓶数。如果一瓶也喝不到，输出0。
+ */
+import java.util.Scanner;
+
+public class Main1 {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        int n=0;
+        while(input.hasNext()){
+            n=input.nextInt();
+            nums(n);
+        }
+    }
+
+    private static void nums(int n) {
+        int kong=n;
+        if(n<2){
+            System.out.println(0);
+        }else if(n==2){
+            System.out.println(1);
+        }else{
+            int he,count=0;
+            while(kong>2){
+                he=kong/3;
+                count+=he;
+                kong= kong-he*3+he;
+            }
+            if(kong==2){
+                System.out.println(count+1);
+            }else{
+                System.out.println(count);
+            }
+        }
+    }
+}
+
+
+
+77.
 
 
 
