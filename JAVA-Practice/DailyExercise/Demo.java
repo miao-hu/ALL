@@ -5189,7 +5189,75 @@ public class Main5 {
 
 
 
-80.
+80./*
+用两个栈实现一个队列
+ */
+import java.util.Stack;
+
+public class Main7 {
+    Stack<Integer> stack1 = new Stack<Integer>();
+    Stack<Integer> stack2 = new Stack<Integer>();
+
+    public void push(int node) {
+        stack1.push(node);
+    }
+
+    public int pop() {
+        if(stack2.isEmpty()){
+            while(!stack1.isEmpty()) {
+                stack2.push(stack1.pop());
+            }
+        }
+        return stack2.pop();
+    }
+}
+
+
+
+81./*
+有一个神奇的口袋，总的容积是40,用这个口袋可以变出- -些物品，这些物
+品的总体积必须是40。有n个想要得到的物品，每个物品的体积分别是a1 ,
+a.....n.有多少种不同的选择物品的方式。
+
+ */
+import java.util.Scanner;
+
+public class Main8 {
+    static int count=0;
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        int n=input.nextInt();   //你想要的物品数
+        int[] a=new int[n+1];
+        for(int i=1;i<=n;i++){
+            a[i]=input.nextInt();  //你要要的每个物品的体积
+        }
+        koudai(a,40,n);
+        System.out.println(count);
+    }
+    //i为剩余物品体积，n为剩余可选物品数
+    private static void koudai(int[] a,int i, int n) {
+        if(i==0){  //如果剩余物品体积为0  ，刚好装满
+            ++count;
+            return;
+        }
+        if(i<0||(i>0&&n<1)){
+            return;
+        }
+        koudai(a,i-a[n],n-1);//从后往前装，装上a[n]后，若剩余物品任然有解
+        koudai(a,i,n-1);  //若装了a[n]后无解，删除该包，尝试第n-1个
+    }
+
+}
+
+
+
+82.
+
+
+
+
+
+
 
 
 
