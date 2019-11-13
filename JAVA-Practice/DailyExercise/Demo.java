@@ -5118,7 +5118,81 @@ public class Main3 {
 
 
 
-78.
+78./*合法括号序列判断：
+给定一个字符串A和它的长度n，请返回一个bool值代表它是否为一个合法的括号串
+一个合法的括号串定义为：
+1.只包括括号字符
+2.左括号和右括号匹配
+（）（）a,5     //false
+(())(),6        //true
+ */
+import java.util.*;
+
+public class Main4{
+    public static void main(String[] args) {
+        System.out.println(chkParenthesis("((a)",4));
+    }
+    public static boolean chkParenthesis(String A, int n) {
+        Stack<Character> t=new Stack<>();
+        for(int i=0;i<n;i++){
+            if(A.charAt(i)!='('&&A.charAt(i)!=')'){
+                return false;
+            }
+            if(A.charAt(i)=='('){
+                t.push('(');
+            }else{
+                if(A.charAt(i)==')'){
+                    if(t.isEmpty()){
+                        return false;
+                    }else{
+                        t.pop();
+                    }
+                }
+            }
+        }
+        if(t.isEmpty()){
+            return true;
+        }
+        return false;
+    }
+}
+
+
+
+79./*
+删除公共字符串
+ */
+import java.util.Scanner;
+
+public class Main5 {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        String s1=input.nextLine();
+        String s2=input.nextLine();
+        String s3=delete(s1,s2);
+        System.out.println(s3);
+    }
+
+    private static String delete(String s1, String s2) {
+        if(s1==null||s2==null){
+            return s1;
+        }
+        String s3="";
+        for(int i=0;i<s1.length();i++){
+                if(!s2.contains(s1.charAt(i)+"")){
+                    s3 += s1.charAt(i);
+                }
+        }
+        return s3;
+    }
+}
+
+
+
+80.
+
+
+
 
 
 
