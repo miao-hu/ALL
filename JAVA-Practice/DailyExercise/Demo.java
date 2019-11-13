@@ -5090,7 +5090,35 @@ public class Main1 {
 
 
 
-77.
+77./*
+输入一个字符串，输出其中最长的数字串
+ */
+import java.util.Scanner;
+public class Main3 {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        String s=input.nextLine();
+        int count=0;    //数字的个数
+        int max=0;      //最大的数字串长度
+        int end=0;      //最大的数字串结束于end下标
+        for(int i=0;i<s.length();i++){
+            if((s.charAt(i)>='0')&&(s.charAt(i)<='9')) {
+                count++;
+                if (count > max) {
+                    max = count;
+                    end = i;
+                }
+            }else{
+                   count=0;
+            }
+        }
+        System.out.println(s.substring(end-max+1,end+1));
+    }
+ }
+
+
+
+78.
 
 
 
