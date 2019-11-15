@@ -5251,7 +5251,67 @@ public class Main8 {
 
 
 
-82.
+82.import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        int n=input.nextInt();
+        int[] a=new int[n];
+        for(int i=0;i<n;i++){
+            a[i]=input.nextInt();
+        }
+        System.out.println(num(a,n));
+    }
+
+    private static int num(int[] a, int n) {
+        Arrays.sort(a);
+        return a[n/2];
+    }
+}
+
+
+
+83.import java.util.Scanner;
+
+public class Main1 {
+    public static void main(String[] args) {
+            Scanner input=new Scanner(System.in);
+            int[] arr=new int[4];
+            for(int i=0;i<4;i++){
+                arr[i]=input.nextInt();
+            }
+            float a=(arr[0]+arr[2])/2;
+            float b=(arr[1]+arr[3])/2;
+            float c=b-arr[1];
+            int a1=(int)a;
+            int b1=(int)b;
+            int c1=(int)c;
+            if(a!=a1){
+                System.out.println("No");
+            }
+            if(b!=b1){
+                System.out.println("No");
+            }
+            if(c!=c1){
+                System.out.println("No");
+            }
+            if(a<0){
+                System.out.println("No");
+            }else if(b<0){
+                System.out.println("No");
+            }else if(c<0){
+                System.out.println("No");
+            }else{
+                System.out.println(a+" "+b+" "+c);
+            }
+    }
+}
+
+
+
+84.
 
 
 
