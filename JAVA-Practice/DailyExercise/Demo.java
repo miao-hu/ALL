@@ -5311,7 +5311,89 @@ public class Main1 {
 
 
 
-84.
+84.import java.util.Scanner;
+/*
+二货小易有一个W*H的网格盒子，网格的行编号为0~H-1，
+网格的列编号为0~W-1。每个格子至多可以放一块蛋糕，
+任意两块蛋糕的欧几里得距离不能等于2。
+对于两个格子坐标(x1,y1),(x2,y2)的欧几里得距离为:
+( (x1-x2) * (x1-x2) + (y1-y2) * (y1-y2) ) 的算术平方根
+小易想知道最多可以放多少块蛋糕在网格盒子里。
+ */
+public class Main1 {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        int m=input.nextInt();
+        int n=input.nextInt();
+        int res=0;
+        if(m%4==0||n%4==0){
+            res=m*n/2;
+        }else{
+            res=m*n/2+1;
+        }
+        System.out.println(res);
+    }
+}
+
+
+
+85.import java.util.Scanner;
+/*
+正整数A和正整数B 的最小公倍数是指 能被A和B整除的最小的正整数值，
+设计一个算法，求输入A和B的最小公倍数。
+ */
+public class Main {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        int a=input.nextInt();
+        int b=input.nextInt();
+        System.out.println(mix(a,b));
+    }
+
+    private static int mix(int a, int b) {
+        int n=a*b;
+        for(int i=2;i<=n;i++){
+            if((i%a==0)&&(i%b==0)){
+                return i;
+            }
+        }
+        return n;
+    }
+}
+
+
+
+86.import java.util.Arrays;
+import java.util.Scanner;
+/*
+找出n个数里最小的k个
+ */
+public class Main3 {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        while(input.hasNext()){
+            String s=input.nextLine();
+            String[] a=s.split(" ");
+            int[] b=new int[a.length-1];
+            for(int i=0;i<b.length;i++){
+                b[i]=Integer.valueOf(a[i]);
+            }
+            int k=Integer.valueOf(a[a.length-1]);
+            Arrays.sort(b);
+            for(int i=0;i<k;i++){
+                System.out.print(b[i]+" ");
+            }
+        }
+    }
+}
+
+
+
+87.
+
+
+
+
 
 
 
