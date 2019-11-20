@@ -5389,7 +5389,152 @@ public class Main3 {
 
 
 
-87.
+87.import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+/*
+有一个数组a[n]顺序存放0~n-1,要求每隔两个数删除一个数，到末尾时循环至开头继续进行删除，
+求最后一个被删掉的数的原始下标，以8个数为列子：0--》1--》2删除--》3--》4--》5删除--》6--》7--》0删除
+如此循环直到最后一个数被删除
+ */
+/*
+其实就是相当于这样的一个游戏：n个人
+围城一圈，开始报数，报数为3的退出。问存活的是谁？
+
+都是从0到n-1的数字。因为每次删除的都是当前位置的后面第2个，那么我们就可以这样写：
+(i+2)%size; 当i==0的时候，我们移除的就是2号下标，接着需要移除4号下标，
+那么新的i =(i+2)%size; 那么结束条件应该是什么？
+我们要找到存活的，显而易见当集合的size等于1的时候停止删除。
+ */
+public class Main4 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int n=sc.nextInt();
+            if(n>1000){
+                n=999;
+            }
+            ArrayList<Integer> list=new ArrayList<>();
+            for(int i=0;i<n;i++){
+                list.add(i);
+            }
+            int i=0;
+            while(list.size()>1){
+                i=(i+2)%list.size();
+                list.remove(i);
+            }
+            System.out.println(list.get(0));
+        }
+
+    }
+}
+
+
+
+88.import java.util.Scanner;
+/*      n！末尾有多少个0
+计算阶乘里面的每一个元素包含5的个数
+ */
+public class Main5 {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        int n=input.nextInt();
+        System.out.println(counts(n));
+    }
+
+    private static int counts(int n) {
+        int count=0;
+        for(int i=1;i<=n;i++){
+            int j=i;
+            while(j%5==0){
+                count++;
+                j/=5;
+            }
+        }
+        return count;
+    }
+}
+
+
+
+89.import java.util.Scanner;
+/*
+输入一个整数  ，输出它的逆序
+100      001
+ */
+public class Main6 {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        int n=input.nextInt();
+        System.out.println(reverseInt(n));
+    }
+
+    private static String reverseInt(int n) {
+        String s=String.valueOf(n);
+        StringBuilder ss=new StringBuilder(s);
+        return ss.reverse().toString();
+    }
+}
+
+
+
+90.import java.util.Scanner;
+/*
+给一个数n,把n变成离他最近的斐波那契数，需要走几步
+每一只能走1步
+ */
+public class Main8 {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        int n=input.nextInt();
+        int steps=counts(n);
+        System.out.println(steps);
+    }
+
+    private static int counts(int n) {
+        for(int i=0;i<=n;i++){
+            if(Fib(i)==n){
+                return 0;
+            }else{
+                if(Fib(i)<=n&&Fib(i+1)>=n){
+                    int a=n-Fib(i);
+                    int b=Fib(i+1)-n;
+                    if(a==b){
+                        return a;
+                    }else if(a<b){
+                        return a;
+                    }else{
+                        return b;
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
+    private static int Fib(int n){
+        if(n==0){
+            return 0;
+        }else if(n==1||n==2){
+            return 1;
+        }else{
+            return Fib(n-1)+Fib(n-2);
+        }
+    }
+}
+
+
+
+91.
+
+
+
+
+
+
+
+
+
 
 
 
