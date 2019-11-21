@@ -5525,7 +5525,54 @@ public class Main8 {
 
 
 
-91.
+91.import java.util.Scanner;
+/*
+给一个数n,把n变成离他最近的斐波那契数，需要走几步
+每一只能走1步
+ */
+public class Main8 {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        int n=input.nextInt();
+        int steps=counts(n);
+        System.out.println(steps);
+    }
+
+    private static int counts(int n) {
+        for(int i=0;i<=n;i++){
+            if(Fib(i)==n){
+                return 0;
+            }else{
+                if(Fib(i)<=n&&Fib(i+1)>=n){
+                    int a=n-Fib(i);
+                    int b=Fib(i+1)-n;
+                    if(a==b){
+                        return a;
+                    }else if(a<b){
+                        return a;
+                    }else{
+                        return b;
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
+    private static int Fib(int n){
+        if(n==0){
+            return 0;
+        }else if(n==1||n==2){
+            return 1;
+        }else{
+            return Fib(n-1)+Fib(n-2);
+        }
+    }
+}
+
+
+
+92.
 
 
 
