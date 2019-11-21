@@ -5650,11 +5650,38 @@ public class Main1 {
 
 
 
-94.
+94.import java.util.*;
+/*
+输入：100311
+输出：
+    0:2
+    1:3
+    3:1
+ */
+public class Main3 {
+    public static void main(String[] args) {
+        Scanner intput=new Scanner(System.in);
+        String s=intput.nextLine();
+        char[] a=s.toCharArray();
+        List<Integer> list=new ArrayList<>();
+        for(int i=0;i<10;i++){
+            list.add(0);
+        }
+        for(int i=0;i<a.length;i++){
+            list.set(a[i]-'0',list.get(a[i]-'0')+1);
+        }
+        for(int i=0;i<list.size();i++){
+            if(list.get(i)>0){
+                System.out.println(i+":"+list.get(i));
+            }
+        }
+    }
+}
 
 
 
 
+95.
 
 
 
