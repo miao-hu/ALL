@@ -5572,7 +5572,42 @@ public class Main8 {
 
 
 
-92.
+92.import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
+/*
+输入：100311
+输出：
+    0:2
+    1:3
+    3:1
+ */
+public class Main {
+    public static void main(String[] args) {
+        Scanner intput=new Scanner(System.in);
+        String s=intput.nextLine();
+        char[] a=s.toCharArray();
+        int[] b=new int[a.length];
+        for(int i=0;i<a.length;i++){
+            b[i]=a[i]-'0';
+        }
+        Map<Integer,Integer> map=new TreeMap<>(); //有序
+        for(int i=0;i<b.length;i++){
+            int num=map.getOrDefault(b[i],0);
+            map.put(b[i],num+1);
+        }
+        for(Map.Entry<Integer,Integer> e:map.entrySet()){
+            int aa=e.getKey();
+            int bb=e.getValue();
+            System.out.println(aa+":"+bb);
+
+        }
+    }
+}
+
+
+
+93.
 
 
 
