@@ -5607,7 +5607,51 @@ public class Main {
 
 
 
-93.
+93.import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Main1 {
+    public static int[] multiply(int[] A) {
+        int[] c=new int[A.length];
+        if(A.length==0){
+            return null;
+        }
+        for(int i=0;i<A.length;i++){
+            int[] a= Arrays.copyOfRange(A,0,i);
+            int[] b=Arrays.copyOfRange(A,i+1,A.length);
+            c[i]=num(a,b);
+        }
+        return c;
+    }
+
+    private static int num(int[] a, int[] b) {
+        ArrayList<Integer> list=new ArrayList<>();
+        int result=1;
+        for(int i=0;i<a.length;i++){
+            list.add(a[i]);
+        }
+        for(int i=0;i<b.length;i++){
+            list.add(b[i]);
+        }
+        for(int i=0;i<list.size();i++){
+            result*=list.get(i);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] a={1,2,3,4,5};
+        int[] c=multiply(a);
+        for(int i=0;i<c.length;i++){
+            System.out.println(c[i]);
+        }
+    }
+}
+
+
+
+94.
+
 
 
 
