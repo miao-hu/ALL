@@ -5681,32 +5681,146 @@ public class Main3 {
 
 
 
-95.
+95.import java.util.Scanner;
+/*
+问题描述:
+　　输入一个单词，请输出这个单词中第一个出现的元音字母。
+　　元音字母包括 a, e, i, o, u，共五个。
+输入格式:
+　　输入一行，包含一个单词，单词中只包含小写英文字母。
+输出格式:
+　　输出一行包含一个字母，为单词中第一个出现的元素字母。若单词中不存在元音字母，输出字母n。
+ */
+public class Main1 {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        String s=input.nextLine();
+        char[] a=s.toCharArray();
+        boolean flag=true;
+        for(int i=0;i<a.length;i++){
+            if(a[i]=='a'||a[i]=='e'||a[i]=='i'||a[i]=='o'||a[i]=='u'){
+                System.out.println(a[i]);
+                flag=false;
+                break;
+            }
+        }
+        if(flag==true) {
+            System.out.println('n');
+        }
+    }
+}
+	
+
+
+96.import java.util.Scanner;
+/*
+　　给定三个整数 a, b, c，
+    如果一个整数既不是 a 的整数倍也不是 b 的整数倍还不是 c 的整数倍，
+    则这个数称为反倍数。
+　　请问在 1 至 n 中有多少个反倍数。
+ */
+public class Main2 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String aa=sc.nextLine();
+        int n=Integer.valueOf(aa);
+        String s=sc.nextLine();
+        String[] a=s.split(" ");
+        int[] b=new int[3];
+        for(int i=0;i<3;i++){
+            b[i]=Integer.valueOf(a[i]);
+        }
+        int count=0;
+        for(int i=1;i<=n;i++){
+            if((i%b[0]!=0)&&(i%b[1]!=0)&&(i%b[2]!=0)){
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+}
 
 
 
+97.import java.util.Scanner;
+/*
+小明非常不喜欢数字 2，包括那些数位上包含数字 2 的数。
+如果一个数的数位不包含数字 2，小明将它称为洁净数。
+　　请问在整数 1 至 n 中，洁净数有多少个？
+ */
+public class Main3 {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        int n=input.nextInt();
+        int count=0;
+        for(int i=1;i<=n;i++){
+            String s=String.valueOf(i);
+            if(!s.contains(String.valueOf(2))){
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+}
 
 
 
+98.import java.util.Scanner;
+/*
+问题描述:
+　　对于一个 n 行 m 列的表格，我们可以使用螺旋的方式给表格依次填上正整数
+，我们称填好的表格为一个螺旋矩阵。
+　　例如，一个 4 行 5 列的螺旋矩阵如下：
+　　1 2 3 4 5
+　　14 15 16 17 6
+　　13 20 19 18 7
+　　12 11 10 9 8
+输入格式:
+　　输入的第一行包含两个整数 n, m，分别表示螺旋矩阵的行数和列数。
+　　第二行包含两个整数 r, c，表示要求的行号和列号。
+输出格式:
+　　输出一个整数，表示螺旋矩阵中第 r 行第 c 列的元素的值。
+ */
+public class Main5 {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int m=s.nextInt();
+        int n=s.nextInt();
+        int r=s.nextInt();
+        int rr=s.nextInt();
+        int[][] arr=new int[m][n];
+        int x;
+        int y;
+        int z=1;
+        int c=0;
+        while(true){
+            if(z>m*n)
+                break;
+            for(x=c,y=c;y<n-c;y++){
+                arr[x][y]=z;
+                z++;
+            }
+            for(x=c+1,y=n-1-c;x<m-c;x++){
+                arr[x][y]=z;
+                z++;
+            }
+            for(x=m-1-c,y=n-2-c;y>=c;y--){
+                arr[x][y]=z;
+                z++;
+            }
+            for(x=m-2-c,y=c;x>c;x--){
+                arr[x][y]=z;
+                z++;
+            }
+            c++;
+        }
+        System.out.print(arr[r-1][rr-1]);
+    }
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+99.
 
 
 
