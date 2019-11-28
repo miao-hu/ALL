@@ -5839,7 +5839,18 @@ public class Main5 {
 
 
 
-100.
+100.public class Main {
+    public static int[] exchangeAB(int[] AB) {
+        AB[0]=AB[0]^AB[1];
+        AB[1]=AB[0]^AB[1];
+        AB[0]=AB[0]^AB[1];
+        return AB;
+    }
+}
+
+
+
+101.
 
 
 
