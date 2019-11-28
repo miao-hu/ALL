@@ -5820,7 +5820,26 @@ public class Main5 {
 
 
 
-99.
+99.public class Main1 {
+    public String[] getGray(int n) {
+        String[] g=new String[(int)Math.pow(2,n)];
+        if(n==1){
+            g[0]="0";
+            g[1]="1";
+            return g;
+        }
+        String[] s=getGray(n-1);
+        for(int i=0;i<s.length;i++){
+            g[i]="0"+s[i];   //从头开始加
+            g[g.length-1-i]="1"+s[i];   //从尾开始加
+        }
+        return g;
+    }
+}
+
+
+
+100.
 
 
 
