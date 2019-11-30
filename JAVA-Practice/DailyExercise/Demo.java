@@ -5942,7 +5942,26 @@ public class Main44 {
 
 
 
-105.
+105.public class Main11 {
+    public String[] getGray(int n) {
+        String[] res=null;
+        if(n==1){
+            res=new String[]{"0","1"};
+        }else{
+            String[] cur=getGray(n-1);
+            res=new String[cur.length*2];
+            for(int i=0;i<cur.length;i++){
+                res[i]="0"+cur[i];
+                res[res.length-1-i]="1"+cur[i];
+            }
+        }
+        return res;
+    }
+}
+
+
+
+106.
 
 
 
