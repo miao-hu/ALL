@@ -6030,5 +6030,23 @@ public class Main3{
 
 
 109.
+public class Main {
+    public static int[] exchangeAB(int[] AB) {
+        AB[0]=AB[0]^AB[1];
+        AB[1]=AB[0]^AB[1];
+        AB[0]=AB[0]^AB[1];
+        return AB;
+    }
+}
+
+
+
+110.
+
+
+
+
+
+
 
 
