@@ -5961,7 +5961,28 @@ public class Main44 {
 
 
 
-106.
+106.import java.util.Scanner;
+/*
+输入一个整数  ，输出它的逆序
+100      001
+ */
+public class Main4 {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        int n=input.nextInt();
+        System.out.println(reverseInt(n));
+    }
+
+    private static String reverseInt(int n) {
+        String s=String.valueOf(n);
+        StringBuilder ss=new StringBuilder(s);
+        return ss.reverse().toString();
+    }
+}
+
+
+
+107.
 
 
 
