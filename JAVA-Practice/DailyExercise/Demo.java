@@ -5898,7 +5898,28 @@ public class Main2 {
 
 
 
-103.
+103./*
+写一个函数，求两个整数之和
+要求在函数体内不得使用+、-、*、/四则运算符号。
+ */
+public class Solution {
+    public int Add(int num1,int num2) {
+        if(num1>0){
+            while(num1--!=0){
+                num2++;
+            }
+        }else{
+            while(num1++!=0){
+                num2--;
+            }
+        }
+        return num2;
+    }
+}
+
+
+
+104.
 
 
 
