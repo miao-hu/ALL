@@ -6041,7 +6041,69 @@ public class Main {
 
 
 
-110.
+110.import java.math.BigInteger;
+import java.util.Scanner;
+//两个超长正整数相加
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        while(input.hasNext()) {
+            String s1 = input.nextLine();
+            String s2 = input.nextLine();
+            BigInteger a = new BigInteger(s1);
+            BigInteger b = new BigInteger(s2);
+            System.out.println(a.add(b));
+        }
+    }
+}
+
+
+
+111.import java.util.Scanner;
+/*
+aaaaaaaaaa
+a        a
+a        a
+a        a
+aaaaaaaaaa
+ */
+public class Main11 {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int n= s.nextInt();
+        String c = s.next();
+        int row=n/2;
+        if(n%2!=0){
+            row=n/2+1;  //偶数n/2   奇数n/2+1
+        }
+        for(int i=0;i<n;i++){   //第一行
+            System.out.print(c);
+        }
+        System.out.println();
+        for(int i=0;i<row-2;i++){  //中间行
+            System.out.print(c);
+            for(int j=1;j<n-1;j++){
+                System.out.print(" ");
+            }
+            System.out.print(c);
+            System.out.println();  //空格行
+        }
+        for(int i=0;i<n;i++){   //最后一行
+            System.out.print(c);
+        }
+    }
+}
+
+
+
+112.
+
+
+
+
+
+
 
 
 
