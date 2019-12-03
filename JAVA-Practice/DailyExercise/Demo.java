@@ -6311,7 +6311,27 @@ public class Main2{
 
 
 118.
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 
+public class Main3 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        String[] a=s.split(" ");
+        List<String> list=new ArrayList<>();
+        for(int i=0;i<a.length;i++){
+            list.add(a[i]);
+        }
+        System.out.println((list.get(list.size()-1)).length());
+    }
+}
+
+
+
+120.
 
 
 
