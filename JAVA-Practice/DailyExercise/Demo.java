@@ -6206,8 +6206,85 @@ public class Main3 {
 
 
 115.
+/*
+/*读入两个整数m,n，输出一个m行n列的矩阵，
+ * 这个矩阵是1~m*n这些自然数按照右、下、左、上螺旋填入的结果。
+ * 例如读入数字4,5，则输出结果为：
+ * 1　　 2 　　3　　 4     5
+ * 14　　15　　16　　17    6
+ * 13　　20　　19　　18    7
+ * 12　　11　　10　　9     8
+ */
+
+import java.util.Scanner;
+
+public class Main4{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int m=sc.nextInt();
+        int n=sc.nextInt();
+        int[][] a=new int[m][n];
+        int z=1;
+        int c=0;
+        while(true){
+            if(z>m*n){
+                break;
+            }
+            //打印行的时候控制列
+            for(int x=c,y=c;y<n-c;y++){
+                a[x][y]=z;
+                z++;
+            }
+            //打印列的时候控制行
+            for(int x=c+1,y=n-1-c;x<m-c;x++){
+                a[x][y]=z;
+                z++;
+            }
+            //打印行的时候控制列
+            for(int x=m-1-c,y=n-2-c;y>=c;y--){
+                a[x][y]=z;
+                z++;
+            }
+            //打印列的时候控制行
+            for(int x=m-2-c,y=c;x>c;x--){
+                a[x][y]=z;
+                z++;
+            }
+            c++;
+        }
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(a[i][j]+"\t ");
+            }
+            System.out.println();
+        }
+    }
+}
 
 
+
+116.import java.util.*;
+
+public class Main {
+    public int addAB(int A, int B) {
+        if(A>0){
+            while(A!=0){
+                B++;
+                A--;
+            }
+        }else{
+            while(A!=0){
+                B--;
+                A++;
+            }
+        }
+        return B;
+    }
+}
+
+
+
+117.
 
 
 
