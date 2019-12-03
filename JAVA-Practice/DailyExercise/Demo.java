@@ -6180,7 +6180,32 @@ public class Main1 {
 
 
 
-114.
+114.import java.util.Scanner;
+//这个我认为是对的，但在牛客上边跑不通
+/*
+1^3= 1
+2^3= 3 +5
+3^3= 7 +9 +11
+4^3= 13 +15 +17 +19
+ */
+public class Main3 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int m=sc.nextInt();
+            int[] a=new int[m];
+            int first=m*(m-1)+1;
+            System.out.print(first);
+            for(int i=1;i<m;i++){
+                System.out.print("+"+(first+=2));
+            }
+        }
+    }
+}
+
+
+
+115.
 
 
 
