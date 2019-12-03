@@ -6285,7 +6285,32 @@ public class Main {
 
 
 117.
+import java.util.Scanner;
+/*
+4x + 3等于做了两次2x + 1， 8x + 7做了三次。
+从起点开始令x0 = 2*x0 + 1，统计做了多少次2x + 1后模1000000007等于0
+再把次数分解成若干个s3与2的和，3的个数加上2的个数最小，不超过100000
+ */
+public class Main2{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int x = sc.nextInt();
+        int count = 0;
+        while(x!=0&&count<=300000){
+            count++;
+            x=(2*x+1)%1000000007;
+        }
+        if((count+2)/3<=100000){
+            System.out.println((count+2)/3);
+        }else{
+            System.out.println(-1);
+        }
+    }
+}
 
+
+
+118.
 
 
 
