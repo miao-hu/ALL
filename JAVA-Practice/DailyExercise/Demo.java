@@ -6098,10 +6098,52 @@ public class Main11 {
 
 
 112.
+import java.util.Scanner;
+/*
+1^3= 1
+2^3= 3 +5
+3^3= 7 +9 +11
+4^3= 13 +15 +17 +19
+ */
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()) {
+            int m = sc.nextInt();
+            int mid = m * m;
+            int count = m / 2;
+            int[] a = new int[m];
+            if (m % 2 == 0) {
+                a[m / 2] = mid + 1;
+                for (int i = 0; i < count; i++) {
+                    a[i] = a[m / 2] - (m / 2 - i) * 2;
+                }
+                for (int i = m / 2 + 1; i < m; i++) {
+                    a[i] = a[m / 2] + (i - m / 2) * 2;
+                }
+            } else {
+                a[m / 2] = mid;
+                for (int i = 0; i < count; i++) {
+                    a[i] = a[m / 2] - (m / 2 - i) * 2;
+                }
+                for (int i = m / 2 + 1; i < m; i++) {
+                    a[i] = a[m / 2] + (i - m / 2) * 2;
+                }
+            }
+            for (int i = 0; i < a.length; i++) {
+                if (i != a.length - 1) {
+                    System.out.print(a[i] + "+");
+                } else {
+                    System.out.println(a[i]);
+                }
+            }
+        }
+    }
+}
 
 
 
-
+113.
 
 
 
