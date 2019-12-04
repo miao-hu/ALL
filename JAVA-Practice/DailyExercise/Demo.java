@@ -6397,7 +6397,59 @@ public class Main {
 
 
 
-123.
+123.import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+/*
+输入一个递增排序的数组和一个数字S，在数组中查找两个数，
+使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。
+ */
+public class Solution {
+    public static ArrayList<Integer> FindNumbersWithSum(int [] array,int sum) {
+        ArrayList<Integer> list=new ArrayList<>();
+        Map<Integer,Integer> map=new HashMap<>();
+        for(int i=0;i<array.length;i++){
+            for(int j=i+1;j<array.length;j++){
+                if((array[i]+array[j])==sum){
+                    map.put(array[i],array[j]);
+                }
+            }
+        }
+        int min=0;
+        if(map.isEmpty()){
+            return list;
+        }
+        for(Map.Entry<Integer,Integer> e:map.entrySet()){
+            int a=e.getKey();
+            int b=e.getValue();
+            min=a*b;
+            break;
+        }
+        int x=0,y=0;
+        for(Map.Entry<Integer,Integer> e:map.entrySet()){
+            int a=e.getKey();
+            int b=e.getValue();
+            if((a*b)<=min){
+                x=a;
+                y=b;
+            }
+        }
+        System.out.println(x);
+        System.out.println(y);
+        list.add(x);
+        list.add(y);
+        return list;
+    }
+
+    public static void main(String[] args) {
+        FindNumbersWithSum(new int[]{1,2,3,4,5,6,7},8);
+    }
+}
+
+
+
+124.
+
 
 
 
