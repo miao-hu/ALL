@@ -6381,7 +6381,23 @@ public class Main {
 
 
 
-122.
+122.public class Solution2 {
+    public int InversePairs(int [] array) {
+        int p=0;
+        for(int i=0;i<array.length;i++){
+            for(int j=i+1;j<array.length;j++){
+                if(array[i]>array[j]){
+                    p++;
+                }
+            }
+        }
+        return p%1000000007;
+    }
+}
+
+
+
+123.
 
 
 
