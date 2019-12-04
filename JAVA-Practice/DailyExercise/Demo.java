@@ -6356,7 +6356,32 @@ public class Main2 {
 
 
 
-121.
+121.class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
+
+    public TreeNode(int val) {
+        this.val = val;
+
+    }
+}
+public class Main {
+    public void Mirror(TreeNode root) {
+        if(root!=null){
+            TreeNode t=null;
+            t=root.left;
+            root.left=root.right;
+            root.right=t;
+            Mirror(root.left);
+            Mirror(root.right);
+        }
+    }
+}
+
+
+
+122.
 
 
 
