@@ -6331,7 +6331,32 @@ public class Main3 {
 
 
 
-120.
+120.import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main2 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int n=sc.nextInt();
+            int[] a=new int[n];
+            for(int i=0;i<n;i++){
+                a[i]=sc.nextInt();
+            }
+            List<int[]> list=new ArrayList<>();
+            Stack t=new Stack();
+            for(int i=0;i<n;i++){
+                t.push(a[i]);
+            }
+        }
+    }
+}
+
+
+
+121.
 
 
 
