@@ -6517,7 +6517,79 @@ public class Main11 {
 
 
 
-126.
+126.import java.util.*;
+/*
+查找和排序
+
+题目：输入任意（用户，成绩）序列，可以获得成绩从高到低或从低到高的排列,相同成绩
+      都按先录入排列在前的规则处理。
+
+   例示：
+   jack      70
+   peter     96
+   Tom       70
+   smith     67
+
+   从高到低  成绩
+   peter     96
+   jack      70
+   Tom       70
+   smith     67
+
+   从低到高
+
+   smith     67
+
+   Tom       70
+   jack      70
+   peter     96
+ */
+class Student{
+    String name;
+    int score;
+    public Student(String name,int score){
+        this.name=name;
+        this.score=score;
+    }
+}
+public class Main1 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()) {
+            int n=sc.nextInt();
+            int fangshi=sc.nextInt();
+            List<Student> list=new ArrayList<>();
+            for(int i=0;i<n;i++){
+                String name=sc.next();
+                int score=sc.nextInt();
+                list.add(new Student(name,score));
+            }
+            if(fangshi==0){   //降序
+                Collections.sort(list, new Comparator<Student>() {
+                    @Override
+                    public int compare(Student o1, Student o2) {
+                        return o2.score-o1.score;
+                    }
+                });
+            }
+            if(fangshi==1){  //升序
+                Collections.sort(list, new Comparator<Student>() {
+                    @Override
+                    public int compare(Student o1, Student o2) {
+                        return o1.score-o2.score;
+                    }
+                });
+            }
+            for(int i=0;i<list.size();i++){
+                System.out.println(list.get(i).name+" "+list.get(i).score);
+            }
+        }
+    }
+}
+
+
+
+127.
 
 
 
