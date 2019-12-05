@@ -6609,7 +6609,40 @@ public class Main {
 
 
 
-128.
+128.import java.util.Scanner;
+/*
+输入一个string型基因序列，和int型子串的长度
+找出GC比例最高的子串,如果有多个输出第一个的子串
+DNA由这四个字母组成A C T G
+ */
+public class Main1{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        int n=sc.nextInt();
+        int max=0;
+        int maxBegin=0;
+        if(s.length()>=n) {
+            for (int i = 0; i <=s.length() -n; i++) {
+                int count=0;
+                for(int j=i;j<i+n;j++){
+                    if(s.charAt(j)=='G'||s.charAt(j)=='C'){
+                        count++;
+                    }
+                }
+                if(count>max){
+                    max=count;
+                    maxBegin=i;
+                }
+            }
+            System.out.println(s.substring(maxBegin,maxBegin+n));
+        }
+    }
+}
+
+
+
+129.
 
 
 
