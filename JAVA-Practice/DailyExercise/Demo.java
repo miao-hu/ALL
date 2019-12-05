@@ -6589,7 +6589,27 @@ public class Main1 {
 
 
 
-127.
+127./*
+现有一个小写英文字母组成的字符串s和一个包含较短小写英文字符串的数组p，
+请设计一个高效算法，对于p中的每一个较短字符串，判断其是否为s的子串。
+ */
+public class Main {
+    public boolean[] chkSubStr(String[] p, int n, String s) {
+        boolean[] b=new boolean[n];
+        for(int i=0;i<n;i++){
+            if(s.indexOf(p[i])!=-1){
+                b[i]=true;
+            }else {
+                b[i]=false ;
+            }
+        }
+        return b;
+    }
+}
+
+
+
+128.
 
 
 
