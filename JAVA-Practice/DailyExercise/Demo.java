@@ -6714,6 +6714,27 @@ public class Main22 {
 
 
 
-132.
+132.import java.util.*;
+
+public class Main {
+    public int getValue(int[] gifts, int n) {
+        Arrays.sort(gifts);
+        int count=0;
+        for(int i=0;i<n;i++){
+            if(gifts[n/2]==gifts[i]){
+                count++;
+            }
+        }
+        if(count>n/2){
+            return gifts[n/2];
+        }else{
+            return 0;
+        }
+    }
+}
+
+
+
+133.
 
 
