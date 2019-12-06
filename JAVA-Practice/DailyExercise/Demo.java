@@ -6735,6 +6735,63 @@ public class Main {
 
 
 
-133.
+133.import java.util.*;
+/*
+编写代码，以给定值x为基准将链表分割成两部分，所有小于x的结点排在大于或等于x的结点之前
+给定一个链表的头指针 ListNode* pHead，请返回重新排列后的链表的头指针
+注意：分割以后保持原来的数据顺序不变。
+ */
+class ListNode {
+    int val;
+    ListNode next = null;
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+public class Main1 {
+    public static ListNode partition(ListNode pHead, int x) {
+        if(pHead==null){
+            return pHead;
+        }
+        ListNode left=new ListNode(-1);
+        ListNode leftlast=left;
+        ListNode right=new ListNode(-1);
+        ListNode rightlast=right;
+        ListNode cur=pHead;
+        while(cur!=null){
+            if(cur.val<x){
+                leftlast.next=cur;
+                leftlast=cur;
+            }else{
+                rightlast.next=cur;
+                rightlast=cur;
+            }
+            cur=cur.next;
+        }
+        leftlast.next=right.next;
+        rightlast.next=null;
+        return left.next;
+    }
+
+    public static void main(String[] args) {
+        ListNode p1=new ListNode(2);
+        ListNode p2=new ListNode(8);
+        ListNode p3=new ListNode(3);
+        ListNode p4=new ListNode(6);
+        p1.next=p2;
+        p2.next=p3;
+        p3.next=p4;
+        p4.next=null;
+        ListNode p=partition(p1,5);
+        while(p!=null){
+            System.out.print(p.val+" ");
+            p=p.next;
+        }
+    }
+}
+
+
+
+134.
 
 
