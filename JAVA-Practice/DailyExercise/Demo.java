@@ -6678,9 +6678,42 @@ public class Main2 {
 
 
 131.
+import java.util.*;
+
+class student{
+    String name;
+    int score;
+    public student(String name,int score){
+        this.name=name;
+        this.score=score;
+    }
+}
+public class Main22 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int n=sc.nextInt();
+            int fangshi=sc.nextInt();
+            List<student> list=new ArrayList<>();
+            for(int i=0;i<n;i++){
+                list.add(new student(sc.next(),sc.nextInt()));
+            }
+            if(fangshi==0){
+                list.sort((o1, o2) -> o2.score-o1.score);
+            }
+            if(fangshi==1){
+                list.sort(((o1, o2) -> o1.score-o2.score));
+            }
+            for(student p:list){
+                System.out.println(p.name+" "+p.score);
+            }
+        }
+
+    }
+}
 
 
 
-
+132.
 
 
