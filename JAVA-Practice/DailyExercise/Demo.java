@@ -7005,7 +7005,45 @@ public class Main1 {
 
 
 
-139.
+139.import java.util.*;
+/*
+    到底买不买
+    输入： ppRYYGrrYBR2258
+          YrR8RrY
+    输出：
+          Yes 8
+ */
+public class Main1 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s = sc.nextLine();
+        String buy = sc.nextLine();
+        List<Character> list = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            list.add(s.charAt(i));
+        }
+        int count = 0;
+        for (int i = 0; i < buy.length(); i++) {
+            for (int j = 0; j < list.size(); j++) {
+                if (buy.charAt(i) == list.get(j)) {
+                    list.remove(j);
+                    count++;
+                    break;
+                }
+            }
+        }
+        if (count == buy.length()) {
+            System.out.println("Yes " + (s.length() - buy.length()));
+        } else {
+            System.out.println("No " + (buy.length() - count));
+        }
+
+    }
+}
+
+
+
+140.
 
 
 
