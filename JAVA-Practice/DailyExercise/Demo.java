@@ -6959,7 +6959,53 @@ public class Main {
 
 
 
-138.
+138.import java.util.Scanner;
+
+public class Main1 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String s=sc.nextLine();
+            String ss="";
+            for(int i=0;i<s.length();i++){
+                if(s.charAt(i)==' '){
+                    ss+=" ";
+                }
+                if(s.charAt(i)>='F') {
+                    ss+=(String.valueOf((char) (s.charAt(i) - 5)));
+                }
+
+                if(s.charAt(i)=='A'){
+
+                    ss+=(String.valueOf('V'));
+                }
+                if(s.charAt(i)=='B'){
+
+                    ss+=(String.valueOf('W'));
+                }
+
+                if(s.charAt(i)=='C'){
+
+                    ss+=(String.valueOf('X'));
+                }
+                if(s.charAt(i)=='D'){
+
+                    ss+=(String.valueOf('Y'));
+                }
+                if(s.charAt(i)=='E'){
+
+                    ss+=(String.valueOf('Z'));
+                }
+
+            }
+            System.out.println(ss);
+        }
+    }
+}
+
+
+
+139.
 
 
 
