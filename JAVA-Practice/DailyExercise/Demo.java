@@ -7043,7 +7043,68 @@ public class Main1 {
 
 
 
-140.
+140.import java.util.*;
+/*
+链表A+B
+ */
+class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+public class Main2 {
+    public static ListNode plusAB(ListNode a, ListNode b) {
+        ListNode res=new ListNode(-1);
+        ListNode last=res;
+        ListNode p1=a;
+        ListNode p2=b;
+        int sum=0;
+        if(p1==null&&p2==null){
+            return null;
+        }
+        while(p1!=null||p2!=null||sum!=0){
+            if(p1!=null){
+                sum+=p1.val;
+                p1=p1.next;
+            }
+            if(p2!=null){
+                sum+=p2.val;
+                p2=p2.next;
+            }
+            last.next=new ListNode(sum%10);
+            last=last.next;
+            sum/=10;
+        }
+        return res.next;
+    }
+
+    public static void main(String[] args) {
+        ListNode a=new ListNode(1);
+        ListNode a1=new ListNode(2);
+        ListNode a2=new ListNode(5);
+        a.next=a1;
+        a1.next=a2;
+        a2.next=null;
+        ListNode b=new ListNode(3);
+        ListNode b1=new ListNode(2);
+        ListNode b2=new ListNode(1);
+        b.next=b1;
+        b1.next=b2;
+        b2.next=null;
+        ListNode res=plusAB(a,b);
+        while(res!=null){
+            System.out.print(res.val+" ");
+            res=res.next;
+        }
+    }
+}
+
+
+
+141.
 
 
 
