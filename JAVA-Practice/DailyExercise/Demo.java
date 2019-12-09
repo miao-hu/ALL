@@ -7231,6 +7231,132 @@ public class Main2 {
 
 
 143.
+import java.util.*;
+class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
+    public TreeNode(int val) {
+        this.val = val;
+    }
+}
+public class Main1 {
+    public boolean isBalance(TreeNode root) {
+        if(root==null){
+            return true;
+        }
+        int left=getLength(root.left);
+        int right=getLength(root.right);
+        if(Math.abs(left-right)<=1){
+            return isBalance(root.left)&&isBalance(root.right);
+        }else{
+            return false;
+        }
 
+    }
+
+    private int getLength(TreeNode root) {
+        if(root==null){
+            return 0;
+        }
+        int l=getLength(root.left);
+        int r=getLength(root.right);
+        if(l>r){
+            return l+1;
+        }else{
+            return r+1;
+        }
+    }
+}
+
+
+
+144.import java.util.Scanner;
+
+public class Main2 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int n=sc.nextInt();
+            int[] a=new int[n];
+            double[] res=new double[n];
+            for(int i=0;i<n;i++){
+                a[i]=sc.nextInt();
+            }
+            int a1=0;
+            for(int e:a){
+                if ((e % 5 == 0) && (e % 2 == 0)) {
+                    a1+=e;
+                }
+            }
+            if(a1==0){
+                System.out.print("N"+" ");
+            }else{
+                System.out.print(a1+" ");
+            }
+            int[] b=new int[n];
+            int k=0;
+            for(int e:a){
+                if(e%5==1){
+                    b[k++]=e;
+                }
+            }
+            int a2=0;
+            for(int j=0;j<k;j++){
+                if(j%2==0){
+                    a2+=b[j];
+                }else{
+                    a2-=b[j];
+                }
+            }
+            if(a2==0){
+                System.out.print("N"+" ");
+            }else{
+                System.out.print(a2+" ");
+            }
+            int a3=0;
+            for(int e:a){
+                if(e%5==2){
+                    a3++;
+                }
+            }
+            if(a3==0){
+                System.out.print("N"+" ");
+            }else{
+                System.out.print(a3+" ");
+            }
+            double a4=0;
+            int count=0;
+            for(int e:a){
+                if(e%5==3){
+                    a4+=e;
+                    count++;
+                }
+            }
+            if(count==0){
+                System.out.print("N"+" ");
+            }else{
+                System.out.printf("%.1f ",a4/count);
+            }
+            int a5=0;
+            for(int e:a){
+                if(e%5==4){
+                    if(e>a5){
+                        a5=e;
+                    }
+                }
+            }
+            if(a5==0){
+                System.out.print("N");
+            }else{
+                System.out.print(a5);
+            }
+        }
+    }
+}
+
+
+
+145.
 
 
