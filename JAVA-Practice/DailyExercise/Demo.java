@@ -7396,5 +7396,34 @@ public class Main22 {
 
 
 146.
+import java.util.Scanner;
+/*
+输入
+    HELLO WORLD
+    SNHJ
+输出
+    CZGGJ RJMGY
+    NICE
+ */
+public class Main11 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String s=sc.nextLine();
+            char[] arr=s.toCharArray();
+            for(int i=0;i<arr.length;i++){
+                if(arr[i]==' '){
+
+                } else if (arr[i] >= 'F') {
+                    arr[i]=(char)(arr[i]-5);
+                }else{
+                    arr[i]=(char)(arr[i]+21);
+                }
+            }
+            System.out.println(new String(arr));
+        }
+        sc.close();
+    }
+}
 
 
