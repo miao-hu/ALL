@@ -7475,7 +7475,47 @@ public class Main{
 
 
 
-148.
+148.import java.util.*;
+class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
+    public TreeNode(int val) {
+        this.val = val;
+    }
+}
+public class Main1 {
+    public boolean isBalance(TreeNode root) {
+        if(root==null){
+            return true;
+        }
+        int left=getLength(root.left);
+        int right=getLength(root.right);
+        if(Math.abs(left-right)<=1){
+            return isBalance(root.left)&&isBalance(root.right);
+        }else{
+            return false;
+        }
+
+    }
+
+    private int getLength(TreeNode root) {
+        if(root==null){
+            return 0;
+        }
+        int l=getLength(root.left);
+        int r=getLength(root.right);
+        if(l>r){
+            return l+1;
+        }else{
+            return r+1;
+        }
+    }
+}
+
+
+
+149.
 
 
 
