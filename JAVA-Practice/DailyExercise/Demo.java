@@ -7427,3 +7427,49 @@ public class Main11 {
 }
 
 
+
+147.import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String have=sc.nextLine();
+        String need=sc.nextLine();
+        Map<Character,Integer> shangren=new HashMap<>();
+        for(char c:have.toCharArray()){
+            int n=shangren.getOrDefault(c,0);
+            shangren.put(c,n+1);
+        }
+        Map<Character,Integer> maijia=new HashMap<>();
+        for(char c:need.toCharArray()){
+            int n=maijia.getOrDefault(c,0);
+            maijia.put(c,n+1);
+        }
+        boolean weatherBuy=true;
+        int lack=0;
+        for(Map.Entry<Character,Integer> e:maijia.entrySet()){
+            char c=e.getKey();
+            int count=e.getValue();
+            if(!shangren.containsKey(c)){
+                weatherBuy=false;
+                lack+=count;
+            }
+            if(shangren.containsKey(c)&&shangren.get(c)<count){
+                weatherBuy=false;
+                lack+=count-shangren.get(c);
+            }
+        }
+        if(weatherBuy){
+            System.out.println("Yes "+(have.length()-need.length()));
+        }else{
+            System.out.println("No "+lack);
+        }
+    }
+}
+
+
+
+148.
+
