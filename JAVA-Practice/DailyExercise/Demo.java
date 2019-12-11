@@ -7279,21 +7279,17 @@ public class Main2 {
         while(sc.hasNext()){
             int n=sc.nextInt();
             int[] a=new int[n];
-            double[] res=new double[n];
             for(int i=0;i<n;i++){
                 a[i]=sc.nextInt();
             }
-            int a1=0;
+            int a1=0,a2=0,a3=0,a5=0;
+            double a4=0;
             for(int e:a){
                 if ((e % 5 == 0) && (e % 2 == 0)) {
                     a1+=e;
                 }
             }
-            if(a1==0){
-                System.out.print("N"+" ");
-            }else{
-                System.out.print(a1+" ");
-            }
+
             int[] b=new int[n];
             int k=0;
             for(int e:a){
@@ -7301,7 +7297,6 @@ public class Main2 {
                     b[k++]=e;
                 }
             }
-            int a2=0;
             for(int j=0;j<k;j++){
                 if(j%2==0){
                     a2+=b[j];
@@ -7309,23 +7304,13 @@ public class Main2 {
                     a2-=b[j];
                 }
             }
-            if(a2==0){
-                System.out.print("N"+" ");
-            }else{
-                System.out.print(a2+" ");
-            }
-            int a3=0;
+
             for(int e:a){
                 if(e%5==2){
                     a3++;
                 }
             }
-            if(a3==0){
-                System.out.print("N"+" ");
-            }else{
-                System.out.print(a3+" ");
-            }
-            double a4=0;
+
             int count=0;
             for(int e:a){
                 if(e%5==3){
@@ -7333,12 +7318,7 @@ public class Main2 {
                     count++;
                 }
             }
-            if(count==0){
-                System.out.print("N"+" ");
-            }else{
-                System.out.printf("%.1f ",a4/count);
-            }
-            int a5=0;
+
             for(int e:a){
                 if(e%5==4){
                     if(e>a5){
@@ -7346,6 +7326,30 @@ public class Main2 {
                     }
                 }
             }
+            if(a1==0){
+                System.out.print("N"+" ");
+            }else{
+                System.out.print(a1+" ");
+            }
+
+            if(a2==0){
+                System.out.print("N"+" ");
+            }else{
+                System.out.print(a2+" ");
+            }
+
+            if(a3==0){
+                System.out.print("N"+" ");
+            }else{
+                System.out.print(a3+" ");
+            }
+
+            if(count==0){
+                System.out.print("N"+" ");
+            }else{
+                System.out.printf("%.1f ",a4/count);
+            }
+
             if(a5==0){
                 System.out.print("N");
             }else{
@@ -7472,4 +7476,9 @@ public class Main{
 
 
 148.
+
+
+
+
+
 
