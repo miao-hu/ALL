@@ -7515,7 +7515,97 @@ public class Main1 {
 
 
 
-149.
+149.import java.util.Scanner;
+
+public class Main2 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int n=sc.nextInt();
+            int[] a=new int[n];
+            for(int i=0;i<n;i++){
+                a[i]=sc.nextInt();
+            }
+            int a1=0,a2=0,a3=0,a5=0;
+            double a4=0;
+            for(int e:a){
+                if ((e % 5 == 0) && (e % 2 == 0)) {
+                    a1+=e;
+                }
+            }
+
+            int[] b=new int[n];
+            int k=0;
+            for(int e:a){
+                if(e%5==1){
+                    b[k++]=e;
+                }
+            }
+            for(int j=0;j<k;j++){
+                if(j%2==0){
+                    a2+=b[j];
+                }else{
+                    a2-=b[j];
+                }
+            }
+
+            for(int e:a){
+                if(e%5==2){
+                    a3++;
+                }
+            }
+
+            int count=0;
+            for(int e:a){
+                if(e%5==3){
+                    a4+=e;
+                    count++;
+                }
+            }
+
+            for(int e:a){
+                if(e%5==4){
+                    if(e>a5){
+                        a5=e;
+                    }
+                }
+            }
+            if(a1==0){
+                System.out.print("N"+" ");
+            }else{
+                System.out.print(a1+" ");
+            }
+
+            if(a2==0){
+                System.out.print("N"+" ");
+            }else{
+                System.out.print(a2+" ");
+            }
+
+            if(a3==0){
+                System.out.print("N"+" ");
+            }else{
+                System.out.print(a3+" ");
+            }
+
+            if(count==0){
+                System.out.print("N"+" ");
+            }else{
+                System.out.printf("%.1f ",a4/count);
+            }
+
+            if(a5==0){
+                System.out.print("N");
+            }else{
+                System.out.print(a5);
+            }
+        }
+    }
+}
+
+
+
+150.
 
 
 
