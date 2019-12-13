@@ -7747,7 +7747,46 @@ public class Main2 {
 
 
 
-153.
+153.import java.util.Scanner;
+
+public class Main1 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int n=sc.nextInt();
+            int[] a=new int[n];
+            int chu=sc.nextInt();
+            for(int i=0;i<n;i++){
+                a[i]=sc.nextInt();
+            }
+            for(int e:a){
+                if(e<=chu){
+                    chu+=e;
+                }else{
+                    chu+=gunyueshu(e,chu);
+                }
+            }
+            System.out.println(chu);
+        }
+    }
+
+    private static int gunyueshu(int e, int chu) {
+        int res=0;
+        for(int i=1;i<=chu;i++){
+            if((e%i==0)&&(chu%i==0)){
+                if(i>res){
+                    res=i;
+                }
+            }
+        }
+        return res;
+    }
+
+}
+
+
+
+154.
 
 
 
