@@ -7959,7 +7959,45 @@ public class Main11 {
 
 
 
-157.
+157.import java.util.*;
+/*
+链表A+B
+ */
+
+public class Main22 {
+    public static ListNode plusAB(ListNode a, ListNode b) {
+        int aValue=Convert(a);
+        int bValue=Convert(b);
+        int sum=aValue+bValue;
+        return intToListNode(sum);
+    }
+
+    private static ListNode intToListNode(int sum) {
+        ListNode res=new ListNode(-1);
+        ListNode last=res;
+        char[] arr=String.valueOf(sum).toCharArray();
+        for(int i=arr.length-1;i>=0;i--){
+            ListNode node=new ListNode(arr[i]-48);
+            last.next=node;
+            last=node;
+        }
+        return res.next;
+    }
+
+    private static int Convert(ListNode a) {
+        StringBuilder s=new StringBuilder();
+        while(a!=null){
+            s.append(a.val);
+            a=a.next;
+        }
+        s.reverse();
+        return Integer.valueOf(s.toString());
+    }
+}
+
+
+
+158.
 
 
 
