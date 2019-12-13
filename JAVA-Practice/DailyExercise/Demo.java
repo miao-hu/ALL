@@ -7696,7 +7696,58 @@ public class Main2 {
 
 
 
-152.
+152.import java.util.Scanner;
+/*
+这道题要特别注意要是查找范围 前者>后者 那么就要交换两者
+必须保证范围满足条件
+ */
+public class Main2 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int n=sc.nextInt();
+            int m=sc.nextInt();
+            int[] a=new int[n];
+            for(int i=0;i<n;i++){
+                a[i]=sc.nextInt();
+            }
+            String[][] b=new String[m][3];
+            for(int i=0;i<m;i++){
+                for(int j=0;j<3;j++){
+                    b[i][j]=sc.next();   //要用sc.next()
+                }
+            }
+            for(int i=0;i<m;i++){
+                if (b[i][0].equals("Q")) {
+                    int max=0;
+                    if(Integer.valueOf(b[i][1])>Integer.valueOf(b[i][2])){
+                        int t=Integer.valueOf(b[i][1]);
+                        b[i][1]=String.valueOf(Integer.valueOf(b[i][2]));
+                        b[i][2]=String.valueOf(t);
+                    }
+                    max=getMax(a,Integer.valueOf(b[i][1]),Integer.valueOf(b[i][2]));
+                    System.out.println(max);
+                }else{
+                    a[Integer.valueOf(b[i][1])-1]=Integer.valueOf(b[i][2]);
+                }
+            }
+        }
+    }
+
+    private static int getMax(int[] arr, int c1, int c2) {
+        int max=0;
+        for(int l=c1-1;l<=c2-1;l++){
+            if(arr[l]>max){
+                max=arr[l];
+            }
+        }
+        return max;
+    }
+}
+
+
+
+153.
 
 
 
