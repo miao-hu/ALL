@@ -7997,7 +7997,80 @@ public class Main22 {
 
 
 
-158.
+158.import java.util.Scanner;
+
+public class Main11 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int num=sc.nextInt();
+            int ability=sc.nextInt();
+            for(int i=0;i<num;i++){
+                int monster=sc.nextInt();
+                if(monster<=ability){
+                    ability+=monster;
+                }else{
+                    ability+=GCD(ability,monster);
+                }
+            }
+            System.out.println(ability);
+        }
+    }
+
+    private static int GCD(int a, int b) {
+        int temp=0;
+        while(b>0){
+            temp=b;
+            b=a%b;
+            a=temp;
+        }
+        return a;
+    }
+
+}
+
+
+
+159.import java.util.Scanner;
+/*
+这道题要特别注意要是查找范围 前者>后者 那么就要交换两者
+必须保证范围满足条件
+ */
+public class Main22 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int n=sc.nextInt();
+            int m=sc.nextInt();
+            int[] student=new int[n];
+            for(int i=0;i<n;i++){
+                student[i]=sc.nextInt();
+            }
+            for(int i=0;i<m;i++){
+                String c=sc.next();
+                int a=sc.nextInt();
+                int b=sc.nextInt();
+                if(c.equals("Q")){
+                    int begin=Math.min(a,b);
+                    int end=Math.max(a,b);
+                    int max=student[begin-1];
+                    for(int j=begin;j<end;j++){
+                        if(max<student[j]){
+                            max=student[j];
+                        }
+                    }
+                    System.out.println(max);
+                }else{
+                    student[a-1]=b;
+                }
+            }
+        }
+    }
+}
+
+
+
+160.
 
 
 
