@@ -8098,6 +8098,41 @@ public class Main {
 
 
 161.
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+/*
+        java.io.FileNotFoundException: 年后 (系统找不到指定的文件。)
+	    at java.io.FileInputStream.open0(Native Method)
+	    at java.io.FileInputStream.open(FileInputStream.java:195)
+	    at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	    at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	    at TryWithResource.main(TryWithResource.java:8)
+*/
+public class TryWithResource {
+    public static void main(String[] args) {
+        try (InputStream is = new FileInputStream("年后")) {
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // is 自动 close 的
+    }
+    /*
+    在try后面写的流   自动关闭   不用调用它的close()方法
+     */
+}
+
+
+
+162.
+
+
+
 
 
 
