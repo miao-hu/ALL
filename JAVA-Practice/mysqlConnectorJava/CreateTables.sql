@@ -1,0 +1,25 @@
+
+CREATE TABLE classes (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE students (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	sn VARCHAR(15) NOT NULL UNIQUE,
+	class_id INT NOT NULL,
+	name VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE courses (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(30) NOT NULL,
+	teacher VARCHAR(20)
+);
+
+CREATE TABLE student_course_relations (
+	student_id INT NOT NULL,
+	course_id INT NOT NULL,
+	score DOUBLE DEFAULT NULL,
+	PRIMARY KEY (student_id, course_id)
+);	
