@@ -8203,7 +8203,32 @@ public class Solution {
 
 
 
-164.
+164./*
+    例如，“student. a am I”。
+    正确的句子应该是“I am a student.”。
+ */
+public class Solution1 {
+    public static String ReverseSentence(String str){
+        if(str==null||str.trim().equals("")){// trim掉多余空格
+            return str;
+        }
+
+        StringBuilder s=new StringBuilder();
+        String[] a=str.split(" ");
+        for(int i=a.length-1;i>0;i--){
+            s.append(a[i]);
+            s.append(" ");
+        }
+        s.append(a[0]);   //注意：不能有多余的空格
+        return s.toString();
+    }
+}
+
+
+
+165.
+
+
 
 
 
