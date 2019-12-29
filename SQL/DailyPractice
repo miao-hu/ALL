@@ -79,4 +79,16 @@ where hire_date=(
                 );              
      
      
-4.
+4.select dept_manager.dept_no,dept_manager.emp_no,salaries.salary
+from dept_manager,salaries
+where dept_manager.emp_no=salaries.emp_no and
+        dept_manager.to_date=salaries.to_date
+        and dept_manager.to_date='9999-01-01';
+        
+        
+        
+5.
+
+
+
+
