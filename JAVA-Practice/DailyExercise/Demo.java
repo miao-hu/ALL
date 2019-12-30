@@ -8266,7 +8266,26 @@ public class Solution3 {
 
 
 
-166.
+166./*
+将一个字符串转换成一个整数，要求不能使用字符串转换整数的库函数。
+ 数值为0或者字符串不是一个合法的数值则返回0
+ */
+public class Solution4 {
+    public int StrToInt(String str) {
+        Integer dd=0;
+        try {
+            dd = new Integer(str);
+        } catch (NumberFormatException e) {
+
+        } finally {
+            return dd;
+        }
+    }
+}
+
+
+
+167.
 
 
 
