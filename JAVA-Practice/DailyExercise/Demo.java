@@ -8285,7 +8285,41 @@ public class Solution4 {
 
 
 
-167.
+167.import java.util.Scanner;
+/*
+“某商店规定：三个空汽水瓶可以换一瓶汽水。
+ */
+public class Solution5 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int n=sc.nextInt();
+            if(n==1){
+                System.out.println(0);
+            }else if(n==2){
+                System.out.println(1);
+            }else{
+                int kong=n;
+                int he=0;
+                int count=0;
+                while(kong>2){
+                    he=kong/3;
+                    kong=kong%3+he;
+                    count+=he;
+                }
+                if(kong==2){
+                    System.out.println(count+1);
+                }else{
+                    System.out.println(count);
+                }
+            }
+        }
+    }
+}
+
+
+
+168.
 
 
 
