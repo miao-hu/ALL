@@ -8356,7 +8356,25 @@ public class Solution6 {
 
 
 169.
+import java.util.Scanner;
+/*
+字符串反转
+ */
+public class Solution7 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String s=sc.nextLine();
+            StringBuilder ss=new StringBuilder(s);
+            ss.reverse();
+            System.out.println(ss.toString());
+        }
+    }
+}
 
+
+
+170.
 
 
 
