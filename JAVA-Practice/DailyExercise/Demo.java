@@ -8395,7 +8395,47 @@ public class Solution8 {
 
 
 
-171.
+171.import java.util.*;
+/*
+输入一个int型整数，按照从右向左的阅读顺序，返回一个不含重复数字的新的整数。
+输入:
+    9876673
+输出:
+    37689
+ */
+public class Solution9 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String s=sc.nextLine();
+            char[] a=s.toCharArray();
+            int[] arr=new int[s.length()];
+            for(int i=0;i<arr.length;i++){
+                arr[i]=a[i]-'0';
+            }
+            Stack<Integer> stack=new Stack<>();
+            for(int e:arr){
+                stack.push(e);
+            }
+            List<Integer> list=new ArrayList<>();
+            for(int i=stack.size()-1;i>=0;i--){
+                int e=stack.pop();
+                if(!list.contains(e)){
+                    list.add(e);
+                }
+            }
+            int sum=0;
+            for(int i=0;i<list.size();i++){
+                sum=sum*10+list.get(i);
+            }
+            System.out.println(sum);
+        }
+    }
+}
+
+
+
+172.
 
 
 
