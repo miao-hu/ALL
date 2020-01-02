@@ -8435,7 +8435,35 @@ public class Solution9 {
 
 
 
-172.
+172.import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+/*
+编写一个函数，计算字符串中含有的不同字符的个数。
+符在ACSII码范围内(0~127)，换行表示结束符，不算在字符里。不在范围内的不作统计。
+ */
+public class Solution10 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String s=sc.nextLine();
+            char[] c=s.toCharArray();
+            List<Character> list=new ArrayList<>();
+            for(char e:c){
+                if(!list.contains(e)){
+                    list.add(e);
+                }
+            }
+            System.out.println(list.size());
+        }
+    }
+}
+
+
+
+173.
+
 
 
 
