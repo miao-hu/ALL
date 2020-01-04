@@ -8588,7 +8588,47 @@ public class Solution15 {
 
 
 
-178.
+178.import java.util.Arrays;
+import java.util.Scanner;
+/*
+输入描述:
+        输入包括两行,第一行包含整数n(2 ≤ n ≤ 50),即数列的长度。
+        第二行n个元素x[i](0 ≤ x[i] ≤ 1000),即数列中的每个整数。
+输出描述:
+        如果可以变成等差数列输出"Possible",否则输出"Impossible"。
+ */
+public class Solution16 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            int n=sc.nextInt();
+            int[] arr=new int[n];
+            for(int i=0;i<n;i++){
+                arr[i]=sc.nextInt();
+            }
+            Arrays.sort(arr);
+            int d=arr[1]-arr[0];
+            boolean b=true;
+            for(int i=0;i<n;i++){
+                for(int j=i+1;j<n;j++){
+                    if((arr[i]+d*j)!=arr[j]){
+                        b=false;
+                        System.out.println("Impossible");
+                        break;
+                    }
+                }
+                if(b==true) {
+                    System.out.println("Possible");
+                }
+                break;
+            }
+        }
+    }
+}
+
+
+
+179.
 
 
 
