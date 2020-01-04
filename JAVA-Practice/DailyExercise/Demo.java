@@ -8699,7 +8699,49 @@ public class Solution18 {
 
 
 
-181.
+181.import java.util.Map;
+import java.util.Scanner;
+import java.util.LinkedHashMap;
+/*
+实现删除字符串中出现次数最少的字符，若多个字符出现次数一样，则都删除。
+输出删除这些单词后的字符串，字符串中其它字符保持原来的顺序。
+
+输入:
+    abcdd
+输出:
+    dd
+ */
+public class Solution19{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String s=sc.nextLine();
+            char[] arr=s.toCharArray();
+            Map<Character,Integer> map=new LinkedHashMap<>();
+            for(char c:arr){
+                int count=map.getOrDefault(c,0);
+                map.put(c,count+1);
+            }
+            int min=Integer.MAX_VALUE;
+            for(char c:arr){
+                if(map.get(c)<min){
+                    min=map.get(c);
+                }
+            }
+            String res="";
+            for(char c:arr){
+                if(map.get(c)!=min){
+                    res+=c;
+                }
+            }
+            System.out.println(res);
+        }
+    }
+}
+
+
+
+182.
 
 
 
