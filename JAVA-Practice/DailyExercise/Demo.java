@@ -8628,7 +8628,34 @@ public class Solution16 {
 
 
 
-179.
+179.import java.util.Scanner;
+/*
+输入一个字符串，求出该字符串包含的字符集合
+输入:
+    abcqweracb
+输出:
+    abcqwer
+ */
+public class Solution17 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String s=sc.nextLine();
+            String ret="";
+            for(int i=0;i<s.length();i++){
+                String cur=String.valueOf(s.charAt(i));
+                if(!ret.contains(cur)){
+                    ret+=cur;
+                }
+            }
+            System.out.println(ret);
+        }
+    }
+}
+
+
+
+180.
 
 
 
