@@ -8781,7 +8781,59 @@ public class Solution21 {
 
 
 
-184.
+184.import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+/*
+输入
+    BUTTER FLOUR
+    HONEY FLOUR EGG
+输出
+    4
+ */
+public class Solution22 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        Set<String> set=new HashSet<>();
+        while(sc.hasNext()){
+            String s=sc.nextLine();
+            String[] arr=s.split(" ");
+            for(String ss:arr){
+                set.add(ss);
+            }
+        }
+        System.out.println(set.size());
+    }
+}
+
+
+
+185.import java.util.Scanner;
+/*
+输入:
+    hello xiao mi
+输出:
+    mi xiao hello
+ */
+public class Solution23 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String s=sc.nextLine();
+            StringBuilder res=new StringBuilder();
+            String[] arr=s.split(" ");
+            for(int i=arr.length-1;i>0;i--){
+                res.append(arr[i]+" ");
+            }
+            res.append(arr[0]);
+            System.out.println(res.toString());
+        }
+    }
+}
+
+
+
+186.
 
 
 
