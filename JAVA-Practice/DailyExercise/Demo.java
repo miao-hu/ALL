@@ -8760,7 +8760,28 @@ public class Solution20 {
 
 
 
-183.
+183.import java.util.*;
+/*
+给定n个字符串，请对n个字符串按照字典序排列。
+ */
+public class Solution21 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        String[] arr=new String[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.next();
+        }
+        Arrays.sort(arr);
+        for(int i=0;i<arr.length;i++){
+            System.out.println(arr[i]);
+        }
+    }
+}
+
+
+
+184.
 
 
 
