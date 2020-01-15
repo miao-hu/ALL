@@ -8867,7 +8867,66 @@ public class Solution2 {
 
 
 
-188.
+188./*
+    给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素
+    返回移除后数组的新长度。
+    不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1)
+    额外空间的条件下完成。
+ */
+class Solution3 {
+    public int removeElement(int[] nums, int val) {
+        if(nums==null||nums.length==0){
+            return 0;
+        }
+        int index=0;
+        int len=0;
+        int cur=0;
+        while(cur<nums.length){
+            if(nums[cur]!=val){
+                nums[index]=nums[cur];
+                index++;
+                len++;
+            }
+            cur++;
+        }
+        return len;
+    }
+}
+
+
+
+189.import java.util.Arrays;
+/*
+给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。
+如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+
+你可以假设数组中无重复元素。
+ */
+public class Solution4 {
+    public int searchInsert(int[] nums, int target) {
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==target){
+                return i;
+            }
+        }
+        int[] arr=new int[nums.length+1];
+        for(int i=0;i<nums.length;i++){
+            arr[i]=nums[i];
+        }
+        arr[arr.length-1]=target;
+        Arrays.sort(arr);
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==target){
+                return i;
+            }
+        }
+        return 0;
+    }
+}
+
+
+
+190.
 
 
 
