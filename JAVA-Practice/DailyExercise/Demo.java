@@ -9065,7 +9065,59 @@ public class Solution8 {
 }
 
 
-196.
+196./*
+你的朋友正在使用键盘输入他的名字 name。
+偶尔，在键入字符 c 时，按键可能会被长按，而字符可能被输入 1 次或多次
+
+    输入： name = "saeed",  typed = "ssaaedd"
+    输出： false
+解释：'e' 一定需要被键入两次，但在 typed 的输出中不是这样。
+ */
+public class Solution10 {
+    public boolean isLongPressedName(String name, String typed) {
+        if(typed.length()<name.length()){
+            return false;
+        }
+        int t=0;
+        for(int i=0;i<name.length();i++){
+            boolean b=false;
+            for(int j=t;j<typed.length();j++){
+                if(name.charAt(i)==typed.charAt(j)){
+                    b=true;
+                    t=j+1;
+                    break;
+                }
+            }
+            if(b==false){
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+
+197.import java.util.HashMap;
+import java.util.Map;
+
+public class Solution9 {
+    public boolean containsDuplicate(int[] nums) {
+        Map<Integer,Integer> map=new HashMap<>();
+        for(int e:nums){
+            int count=map.getOrDefault(e,0);
+            map.put(e,count+1);
+        }
+        for(Map.Entry<Integer,Integer> e:map.entrySet()){
+            if(e.getValue()>=2){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+
+198.
 
 
 
