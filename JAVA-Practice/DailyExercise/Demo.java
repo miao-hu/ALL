@@ -9027,7 +9027,45 @@ public class Solution6 {
 
 
 
-194.
+194./*
+给定一个仅包含大小写字母和空格 ' ' 的字符串 s，返回其最后一个单词的长度。
+如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。
+如果不存在最后一个单词，请返回 0 。
+说明：一个单词是指仅由字母组成、不包含任何空格的 最大子字符串
+ */
+public class Solution7 {
+    public int lengthOfLastWord(String s) {
+        s=s.trim();
+        if(s.length()==0){
+            return 0;
+        }
+        String[] arr=s.split(" ");
+        int len=arr.length;
+        return arr[len-1].length();
+    }
+}
+
+
+
+195.import java.util.Arrays;
+/*
+给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，
+使得 num1 成为一个有序数组。
+
+初始化 nums1 和 nums2 的元素数量分别为 m 和 n。
+你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
+ */
+public class Solution8 {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        for(int i=0;i<n;i++){
+            nums1[m+i]=nums2[i];
+        }
+        Arrays.sort(nums1);
+    }
+}
+
+
+196.
 
 
 
