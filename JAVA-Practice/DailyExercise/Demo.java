@@ -9117,7 +9117,159 @@ public class Solution9 {
 }
 
 
-198.
+198./*
+给定一个整数类型的数组 nums，请编写一个能够返回数组“中心索引”的方法。
+我们是这样定义数组中心索引的：数组中心索引的左侧所有元素相加的和等于右侧所有元素相加的和。
+如果数组不存在中心索引，那么我们应该返回 -1。如果数组有多个中心索引，那么我们应该返回最靠近左边的那一个。
+
+题解： S 是数组的和，当索引 i 是中心索引时，位于 i 左边数组元素的和 leftsum 满足 S - nums[i] - leftsum。
+       我们只需要判断当前索引 i 是否满足 leftsum==S-nums[i]-leftsum 并动态计算 leftsum 的值。
+ */
+public class Solution1414 {
+    public int pivotIndex(int[] nums) {
+        int sum=0;
+        for(int e:nums){
+            sum+=e;
+        }
+        int left=0;
+        for(int i=0;i<nums.length;i++){
+            if(left==(sum-left-nums[i])){
+                return i;
+            }
+            left+=nums[i];
+        }
+        return -1;
+    }
+}
+
+
+199.import java.util.Arrays;
+/*
+给定一个按非递减顺序排序的整数数组 A，
+返回每个数字的平方组成的新数组，要求也按非递减顺序排序。
+ */
+public class Solution11 {
+    public int[] sortedSquares(int[] A) {
+        for(int i=0;i<A.length;i++){
+            A[i]=Math.abs(A[i]);
+            A[i]=A[i]*A[i];
+        }
+        Arrays.sort(A);
+        return A;
+    }
+}
+
+
+200.import java.util.Stack;
+/*
+给定一个字符串 S，返回 “反转后的” 字符串，
+其中不是字母的字符都保留在原地，而所有字母的位置发生反转。
+
+输入："a-bC-dEf-ghIj"
+输出："j-Ih-gfE-dCba"
+ */
+public class Solution12 {
+    public String reverseOnlyLetters(String S) {
+        Stack<Character> t=new Stack<>();
+        char[] arr=S.toCharArray();
+        for(char c:arr){
+            if((c>='a'&&c<='z')||(c>='A'&&c<='Z')){
+                t.push(c);
+            }
+        }
+        StringBuilder s=new StringBuilder();
+        for(char c:arr){
+            if((c>='a'&&c<='z')||(c>='A'&&c<='Z')){
+                s.append(t.pop());
+            }else{
+                s.append(c);
+            }
+        }
+        return s.toString();
+    }
+}
+
+
+201./*
+给定一个非负整数数组 A，返回一个数组，在该数组中， A 的所有偶数元素之后跟着所有奇数元素。
+你可以返回满足此条件的任何数组作为答案。
+ */
+public class Solution13 {
+    public int[] sortArrayByParity(int[] A) {
+        int i=0;
+        int j=A.length-1;
+        while(i<=j){
+            if(A[i]%2==0){
+                i++;
+            }else if(A[j]%2!=0){
+                j--;
+            }else {
+                int t = A[i];
+                A[i] = A[j];
+                A[j] = t;
+                i++;
+                j--;
+            }
+        }
+        return A;
+    }
+}
+
+
+202./*
+给定一个整数类型的数组 nums，请编写一个能够返回数组“中心索引”的方法。
+我们是这样定义数组中心索引的：数组中心索引的左侧所有元素相加的和等于右侧所有元素相加的和。
+如果数组不存在中心索引，那么我们应该返回 -1。如果数组有多个中心索引，那么我们应该返回最靠近左边的那一个。
+ */
+public class Solution14 {
+    public int pivotIndex(int[] nums) {
+        for(int index=0;index<nums.length;index++){
+            int left=sum(nums,0,index-1);
+            int right=sum(nums,index+1,nums.length-1);
+            if(left==right){
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    private int sum(int[] nums, int i, int j) {
+        int sum=0;
+        while(i<=j){
+            sum+=nums[i];
+            i++;
+        }
+        return sum;
+    }
+}
+
+
+203./*
+给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。
+最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。
+你可以假设除了整数 0 之外，这个整数不会以零开头。
+ */
+public class Solution15 {
+    public int[] plusOne(int[] digits) {
+        for(int i=digits.length-1;i>=0;i--){
+            digits[i]++;
+            digits[i]=digits[i]%10;
+            if(digits[i]!=0){
+                return digits;
+            }
+        }
+        digits=new int[digits.length+1];
+        digits[0]=1;
+        return digits;
+    }
+}
+
+
+204.
+
+
+
+
 
 
 
