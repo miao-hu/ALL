@@ -9376,7 +9376,65 @@ public class Solution18 {
 }
 
 
-208.
+208./*
+给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。
+你的算法时间复杂度必须是 O(log n) 级别。如果数组中不存在目标值，返回 [-1, -1]。
+ */
+public class Solution20 {
+    public int[] searchRange(int[] nums, int target) {
+        int[] arr=new int[]{-1,-1};
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==target){
+                arr[0]=i;
+                break;
+            }
+        }
+        for(int j=nums.length-1;j>=0;j--){
+            if(nums[j]==target){
+                arr[1]=j;
+                break;
+            }
+        }
+        return arr;
+    }
+}
+
+
+209./*
+给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+ */
+public class Solution21 {
+    public static boolean isPalindrome(String s) {
+        if(s==null){
+            return true;
+        }
+        s=s.toUpperCase();
+        char[] arr=new char[s.length()];
+        int k=0;
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            if((ch>='0'&&ch<='9')||(ch>='A'&&ch<='Z')){
+                arr[k++]=ch;
+            }
+        }
+        StringBuilder sb1=new StringBuilder();
+        for(int i=0;i<k;i++){
+            sb1.append(arr[i]);
+        }
+        StringBuilder sb2=new StringBuilder(sb1);
+        sb2.reverse();
+        String s1=sb1.toString();
+        String s2=sb2.toString();
+        if(s1.equals(s2)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+
+
+210.
 
 
 
