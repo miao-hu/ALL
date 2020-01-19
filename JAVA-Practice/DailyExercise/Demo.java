@@ -9308,7 +9308,75 @@ public class Solution17 {
 }
 
 
-206.
+206./*
+ 输入:  a = "1010",  b = "1011"
+ 输出:  "10101"
+ */
+public class Solution18 {
+    public static String addBinary(String a, String b) {
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int carry = 0;
+        String result = "";
+        while (i >= 0 || j >= 0){
+            int sum = carry;
+            if(i >= 0){
+                sum += (a.charAt(i) - '0');
+                i--;
+            }
+            if(j >= 0){
+                sum += (b.charAt(j) - '0');
+                j--;
+            }
+            // 追加结果
+            result = (sum % 2) + result;
+            // 进位
+            carry = sum / 2;
+        }
+        return carry > 0 ? carry + result : result;
+    }
+}
+
+
+207.class Solution19{
+    public int myAtoi(String str) {
+        str = str.trim();  //去掉两边空格
+        if (str == null || str.length() == 0)
+            return 0;
+        char firstChar = str.charAt(0);
+        int sign = 1;
+        int start = 0;
+        if (firstChar == '+') {
+            sign = 1;
+            start++;
+        } else if (firstChar == '-') {
+            sign = -1;
+            start++;
+        }else if(firstChar>='0'&&firstChar<='9'){
+            sign=1;
+        }else{  //不是数字或符号+-
+            return 0;
+        }
+        long res = 0;
+        char ch;
+        for (int i = start; i < str.length(); i++) {
+            ch=str.charAt(i);
+            if (!Character.isDigit(ch) ){  //不是数字，返回
+                return (int) res * sign;
+            }else {
+                res = res * 10 + (ch - '0');
+            }
+            if (sign == 1 && res > Integer.MAX_VALUE)
+                return Integer.MAX_VALUE;
+            if (sign == -1 && -res<Integer.MIN_VALUE)
+                return Integer.MIN_VALUE;
+        }
+        return (int) res * sign;
+    }
+}
+
+
+208.
 
 
 
