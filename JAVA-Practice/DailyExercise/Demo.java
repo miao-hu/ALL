@@ -9577,7 +9577,99 @@ public class Solution25 {
     }
 
 
-214
+214./*
+给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。说明：解集不能包含重复的子集。
+
+输入:   nums = [1,2,3]
+输出:
+        [
+          [3],
+          [1],
+          [2],
+          [1,2,3],
+          [1,3],
+          [2,3],
+          [1,2],
+          []
+        ]
+ */
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution26 {
+    /**
+     * <p>数组的每一位数字状态：选择（1） 不选（0），因此，每一个子集可由一组二进制数表示；
+     * <p>以 [1,2,3] 为例：000 表示 []，100 表示 [1]，101 表示 [1,3],111 表示 [1,2,3]；
+     * <p>列举所有可能的二进制数组合( 2^nums.length )，即得到所有可能的子集情况：
+     * <p>二进制：000  001  010  011  100  101  110  111   ( 8中情况)
+     * <p>十进制：  0    1    2    3    4    5    6    7
+     */
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> list=new ArrayList<>();
+        if(nums.length==0){
+            return list;   //返回空的list
+        }
+        int total=(int)Math.pow(2,nums.length);  //2^nums.length
+        for(int i=0;i<total;i++){  //0 1 2 3 4 5 6 7
+            List<Integer> temp=new ArrayList<>();
+            for(int j=0;j<nums.length;j++){  //右移0位  1位  2位
+                //右移0位代表第三额数字的状态
+                //右移1位代表第二额数字的状态
+                //右移2位代表第一额数字的状态
+                int status=(i>>j)&1;
+                if(status==1){
+                    temp.add(nums[nums.length-1-j]);
+                }
+            }
+            list.add(temp);
+        }
+        return list;
+    }
+}
+
+
+215.import java.util.*;
+
+public class Solution27 {
+    boolean isMatch(String str, String pattern) {
+        int s = 0, p = 0, match = 0, starIdx = -1;
+        //遍历整个字符串
+        while (s < str.length()){
+            // 一对一匹配，两指针同时后移。
+            if (p < pattern.length()  && (pattern.charAt(p) == '?' || str.charAt(s) == pattern.charAt(p))){
+                s++;
+                p++;
+            }
+            // 碰到 *，假设它匹配空串，并且用 startIdx 记录 * 的位置，记录当前字符串的位置，p 后移
+            else if (p < pattern.length() && pattern.charAt(p) == '*'){
+                starIdx = p;
+                match = s;
+                p++;
+            }
+            // 当前字符不匹配，并且也没有 *，回退
+            // p 回到 * 的下一个位置
+            // match 更新到下一个位置
+            // s 回到更新后的 match
+            // 这步代表用 * 匹配了一个字符
+            else if (starIdx != -1){
+                p = starIdx + 1;
+                match++;
+                s = match;
+            }
+            //字符不匹配，也没有 *，返回 false
+            else return false;
+        }
+
+        //将末尾多余的 * 直接匹配空串 例如 text = ab, pattern = a*******
+        while (p < pattern.length() && pattern.charAt(p) == '*')
+            p++;
+
+        return p == pattern.length();
+    }
+}
+
+
+216.
 
 
 
