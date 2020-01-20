@@ -9434,7 +9434,88 @@ public class Solution21 {
 }
 
 
-210.
+210./*
+给定一组字符，使用原地算法将其压缩。
+压缩后的长度必须始终小于或等于原数组长度。
+数组的每个元素应该是长度为1 的字符（不是 int 整数类型）。
+在完成原地修改输入数组后，返回数组的新长度。
+
+输入：
+["a","b","b","b","b","b","b","b","b","b","b","b","b"]
+
+输出：
+返回4，输入数组的前4个字符应该是：["a","b","1","2"]。
+ */
+public class Solution22 {
+    public int compress(char[] chars) {
+        int count=1;  //统计每个字符的个数
+        int k=0;     //下标
+        for(int i=0;i<chars.length;i++){
+            if(i+1<chars.length&&chars[i]==chars[i+1]){
+                count++;
+            }else{   //该修改数组了
+                chars[k]=chars[i]; //字符填入
+                k++;  //更新坐标
+                if(count>=2){  //个数为一不要统计
+                    String s=String.valueOf(count);
+                    for(int j=0;j<s.length();j++){
+                        chars[k]=s.charAt(j);
+                        k++;
+                    }
+                    count=1;   //要开始重新统计字符了，从1计数
+                }
+            }
+        }
+        return k;
+    }
+}
+
+
+211./*
+给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。
+你找到的子数组应是最短的，请输出它的长度。
+
+输入: [2, 6, 4, 8, 10, 9, 15]
+输出: 5
+解释: 你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。
+ */
+import java.util.Arrays;
+
+public class Solution23 {
+    public int findUnsortedSubarray(int[] nums) {
+        int[] arr=new int[nums.length];
+        for(int i=0;i<arr.length;i++){
+            arr[i]=nums[i];
+        }
+        Arrays.sort(arr);
+        int k=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==nums[i]){
+                k++;
+            }
+        }
+        if(k==arr.length){
+            return 0;
+        }
+        int l=0,r=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]!=nums[i]){
+                l=i;
+                break;
+            }
+        }
+        for(int i=nums.length-1;i>=0;i--){
+            if(arr[i]!=nums[i]){
+                r=i;
+                break;
+            }
+        }
+        return r - l + 1;
+    }
+}
+
+
+212.
 
 
 
