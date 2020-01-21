@@ -9669,7 +9669,145 @@ public class Solution27 {
 }
 
 
-216.
+216./*
+给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。
+输入: [1,2,3,null,5,null,4]
+输出: [1, 3, 4]
+                           1            <---
+                         /   \
+                        2     3         <---
+                         \     \
+                          5     4       <---
+ */
+import java.util.*;
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
+
+public class Solution28 {
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> list=new ArrayList<>();
+        if(root==null){
+            return list;   //返回空的线性表
+        }
+        Queue<TreeNode> queue=new LinkedList<>();   //队列：先进先出   层序遍历
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            int num=queue.size();  //每一层节点的个数
+            for(int i=0;i<num;i++){
+                if(i==(num-1)){  //每一层最右边的节点值入线性表
+                    list.add(queue.peek().val);
+                }
+                TreeNode node=queue.poll();  //不管怎样都弹出队列第一个元素
+                if(node.left!=null){
+                    queue.offer(node.left);
+                }
+                if(node.right!=null){
+                    queue.offer(node.right);
+                }
+            }
+        }
+        return list;
+    }
+}
+
+
+217.import java.util.*;
+import java.awt.Point;
+public class Solution29 {
+    class Solution {
+        public int numBusesToDestination(int[][] routes, int S, int T) {
+            if (S==T) return 0;
+            int N = routes.length;
+
+            List<List<Integer>> graph = new ArrayList();
+            for (int i = 0; i < N; ++i) {
+                Arrays.sort(routes[i]);
+                graph.add(new ArrayList());
+            }
+            Set<Integer> seen = new HashSet();
+            Set<Integer> targets = new HashSet();
+            Queue<Point> queue = new ArrayDeque();
+
+            // Build the graph.  Two buses are connected if
+            // they share at least one bus stop.
+            for (int i = 0; i < N; ++i)
+                for (int j = i+1; j < N; ++j)
+                    if (intersect(routes[i], routes[j])) {
+                        graph.get(i).add(j);
+                        graph.get(j).add(i);
+                    }
+
+            // Initialize seen, queue, targets.
+            // seen represents whether a node has ever been enqueued to queue.
+            // queue handles our breadth first search.
+            // targets is the set of goal states we have.
+            for (int i = 0; i < N; ++i) {
+                if (Arrays.binarySearch(routes[i], S) >= 0) {
+                    seen.add(i);
+                    queue.offer(new Point(i, 0));
+                }
+                if (Arrays.binarySearch(routes[i], T) >= 0)
+                    targets.add(i);
+            }
+
+            while (!queue.isEmpty()) {
+                Point info = queue.poll();
+                int node = info.x, depth = info.y;
+                if (targets.contains(node)) return depth+1;
+                for (Integer nei: graph.get(node)) {
+                    if (!seen.contains(nei)) {
+                        seen.add(nei);
+                        queue.offer(new Point(nei, depth+1));
+                    }
+                }
+            }
+
+            return -1;
+        }
+
+        public boolean intersect(int[] A, int[] B) {
+            int i = 0, j = 0;
+            while (i < A.length && j < B.length) {
+                if (A[i] == B[j]) return true;
+                if (A[i] < B[j]) i++; else j++;
+            }
+            return false;
+        }
+    }
+}
+
+
+218./*
+给定一个整数类型的数组 nums，请编写一个能够返回数组“中心索引”的方法。
+我们是这样定义数组中心索引的：数组中心索引的左侧所有元素相加的和等于右侧所有元素相加的和。
+如果数组不存在中心索引，那么我们应该返回 -1。如果数组有多个中心索引，那么我们应该返回最靠近左边的那一个。
+
+题解： S 是数组的和，当索引 i 是中心索引时，位于 i 左边数组元素的和 leftsum 满足 S - nums[i] - leftsum。
+       我们只需要判断当前索引 i 是否满足 leftsum==S-nums[i]-leftsum 并动态计算 leftsum 的值。
+ */
+public class Solution1414 {
+    public int pivotIndex(int[] nums) {
+        int sum=0;
+        for(int e:nums){
+            sum+=e;
+        }
+        int left=0;
+        for(int i=0;i<nums.length;i++){
+            if(left==(sum-left-nums[i])){
+                return i;
+            }
+            left+=nums[i];
+        }
+        return -1;
+    }
+}
+
+
+219.
 
 
 
