@@ -9807,7 +9807,48 @@ public class Solution1414 {
 }
 
 
-219.
+219.import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Solution555 {
+    public  ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
+       ArrayList<Integer> list=new ArrayList<>();
+       if(k>input.length){
+           return list;
+       }
+       Arrays.sort(input);
+       for(int i=0;i<k;i++){
+           list.add(input[i]);
+       }
+       return list;
+    }
+}
+
+
+220.import java.util.Scanner;
+
+public class Solution777 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        int max=0,num=0,end=0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)>='0'&&s.charAt(i)<='9'){
+                num++;
+                if(num>max){
+                    max=num;
+                    end=i;
+                }
+            }else{
+                num=0;
+            }
+        }
+        System.out.println(s.substring(end-max+1,end+1));
+    }
+}
+
+
+221.
 
 
 
