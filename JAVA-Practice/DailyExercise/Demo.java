@@ -9848,7 +9848,81 @@ public class Solution777 {
 }
 
 
-221.
+221.import java.util.Scanner;
+
+public class Main1 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum^=arr[i];
+        }
+        int index=-1;
+        for(int i=0;i<32;i++){
+            if(((sum>>i)&1)==1){
+                index=i;
+            }
+        }
+        int x=0,y=0;
+        for(int i=0;i<n;i++){
+            if(((arr[i]>>index)&1)==1){
+                x^=arr[i];
+            }else{
+                y^=arr[i];
+            }
+        }
+        if(x<=y){
+            System.out.println(x+" "+y);
+        }else{
+            System.out.println(y+" "+x);
+        }
+    }
+}
+
+
+222.import java.util.Scanner;
+
+public class Main2 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        for(int i=0;i<n;i++){
+            int x=left(arr,i);
+            int y=right(arr,i);
+            System.out.println(y+" "+x);
+        }
+    }
+
+    private static int right(int[] arr, int i) {
+        for(int j=i-1;j>=0;j--){
+            if(arr[j]<arr[i]){
+                return j;
+            }
+        }
+        return -1;
+    }
+
+    private static int left(int[] arr, int i) {
+        for(int j=i+1;j<arr.length;j++){
+            if(arr[j]<arr[i]){
+                return j;
+            }
+        }
+        return -1;
+    }
+}
+
+
+223.
 
 
 
