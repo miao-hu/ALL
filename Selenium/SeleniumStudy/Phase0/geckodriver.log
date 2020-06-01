@@ -1,0 +1,107 @@
+1590395945906	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\小露儿\\AppData\\Local\\Temp\\rust_mozprofileiiTTOb"
+1590395946569	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1590395948349	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1590395948349	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1590395948351	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1590395948351	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1590395953391	Marionette	INFO	Listening on port 50701
+1590395953931	Marionette	WARN	TLS certificate errors will be ignored for this session
+1590395962489	Marionette	INFO	Stopped listening on port 50701
+console.error: (new Error("SessionFile is closed", "resource:///modules/sessionstore/SessionFile.jsm", 433))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1590395987540	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\小露儿\\AppData\\Local\\Temp\\rust_mozprofileF0mNA1"
+1590395988209	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1590395990263	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1590395990263	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1590395990263	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1590395990263	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1590395995533	Marionette	INFO	Listening on port 50835
+1590395996074	Marionette	WARN	TLS certificate errors will be ignored for this session
+1590396006999	Marionette	INFO	Stopped listening on port 50835
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x590011,name=PHttpChannel::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x6A0029,name=PNecko::Msg_RemoveRequestContext) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x380128,name=PContent::Msg_ScriptError) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xB40006,name=PWebSocket::Msg_DeleteSelf) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1590396035159	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\小露儿\\AppData\\Local\\Temp\\rust_mozprofileb2gg4J"
+1590396035871	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1590396037498	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1590396037499	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1590396037499	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1590396037499	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1590396042223	Marionette	INFO	Listening on port 50976
+1590396042482	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://pos.baidu.com/zcym?conwid=250&conhei=250&rdid=1997633&dc=3&exps=110011&psi=3c5d6781ab475dc4a70bce24957dc7b0&di=u1997633&dri=0&dis=0&dai=1&ps=0x0&coa=wn%3D2%26hn%3D8&enu=encoding&ant=0&dcb=___adblockplus_&dtm=HTML_POST&dvi=0.0&dci=-1&dpt=none&tsr=0&tpr=1590396052047&ti=%E8%A5%BF%E5%AE%89%EF%BC%88%E9%99%95%E8%A5%BF%E7%9C%81%E7%9C%81%E4%BC%9A%E3%80%81%E5%89%AF%E7%9C%81%E7%BA%A7%E5%B8%82%EF%BC%89_%E7%99%BE%E5%BA%A6%E7%99%BE%E7%A7%91&ari=2&ver=0511&dbv=0&drs=3&pcs=1353x636&pss=1353x34859&cfv=0&cpl=0&chi=1&cce=true&cec=UTF-8&tlm=1590396052&prot=2&rw=636&ltu=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%25E8%25A5%25BF%25E5%25AE%2589%2F121614%3Ffr%3Daladdin&ltr=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3Dm_TNVpCCaevibhYSZGewPvsGAbY3QhoQjCb0vgVskccQHb3tvSF9DXHPlJP8lQjNNLIEcstq94faQFEoiqx59jVG5qslpcZJ22A8o4nYbWu%26wd%3D%26eqid%3De2fa13f20001f410000000055ecb848e&ecd=1&uc=1366x728&pis=-1x-1&sr=1366x768&tcn=1590396052&qn=4dabd9f753d654c8&tt=1590396052033.22.397.398, line 137: unreachable code after return statement
+JavaScript warning: https://pos.baidu.com/zcym?conwid=250&conhei=250&rdid=1997633&dc=3&exps=110011&psi=3c5d6781ab475dc4a70bce24957dc7b0&di=u1997633&dri=0&dis=0&dai=1&ps=0x0&coa=wn%3D2%26hn%3D8&enu=encoding&ant=0&dcb=___adblockplus_&dtm=HTML_POST&dvi=0.0&dci=-1&dpt=none&tsr=0&tpr=1590396052047&ti=%E8%A5%BF%E5%AE%89%EF%BC%88%E9%99%95%E8%A5%BF%E7%9C%81%E7%9C%81%E4%BC%9A%E3%80%81%E5%89%AF%E7%9C%81%E7%BA%A7%E5%B8%82%EF%BC%89_%E7%99%BE%E5%BA%A6%E7%99%BE%E7%A7%91&ari=2&ver=0511&dbv=0&drs=3&pcs=1353x636&pss=1353x34859&cfv=0&cpl=0&chi=1&cce=true&cec=UTF-8&tlm=1590396052&prot=2&rw=636&ltu=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%25E8%25A5%25BF%25E5%25AE%2589%2F121614%3Ffr%3Daladdin&ltr=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3Dm_TNVpCCaevibhYSZGewPvsGAbY3QhoQjCb0vgVskccQHb3tvSF9DXHPlJP8lQjNNLIEcstq94faQFEoiqx59jVG5qslpcZJ22A8o4nYbWu%26wd%3D%26eqid%3De2fa13f20001f410000000055ecb848e&ecd=1&uc=1366x728&pis=-1x-1&sr=1366x768&tcn=1590396052&qn=4dabd9f753d654c8&tt=1590396052033.22.397.398, line 137: unreachable code after return statement
+1590396054457	Marionette	INFO	Stopped listening on port 50976
+JavaScript error: https://gss0.baidu.com/9rA4cT8aBw9FktbgoI7O1ygwehsv/static/api/js/trans/logger.js?v=d16ec0e3.js, line 1: TypeError: n.ajax.request is not a function
+console.error: (new Error("SessionFile is closed", "resource:///modules/sessionstore/SessionFile.jsm", 433))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
